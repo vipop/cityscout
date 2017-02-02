@@ -1,7 +1,8 @@
 ### Project Ideas ###
 
 1. News Hub - X
-2.
-3.
+	a) Aggregated News Recommender System
+2. Game Matchmaking
+3. Social Lunch/Dinner planner
 4.
 5.
