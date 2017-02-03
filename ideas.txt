@@ -11,4 +11,13 @@
 	- food picker
 	- attendance checker
 4. Fact Checker
-5.
+5. Moving to a new city helper
+	-determines cost for basic living 
+	based on minimum wage and or income
+	determines popular jobs in the city
+	determines popular entertainment spots
+	determines cost for rent
+	cost for internet
+	cost for phone 
+	cost for food
+	etc..
