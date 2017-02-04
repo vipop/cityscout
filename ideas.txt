@@ -11,7 +11,7 @@
 	- food picker
 	- attendance checker
 4. Fact Checker
-5. Moving to a new city helper
+5. Moving to a new city helper (A.K.A askTheLocals.com working title)
 	-determines cost for basic living 
 	based on minimum wage and or income
 	determines popular jobs in the city
