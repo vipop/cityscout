@@ -21,3 +21,13 @@
 	cost for phone 
 	cost for food
 	etc..
+
+	So for the moving to a new city idea I have a concept for it
+So when you open the app you sign up and you provide information about where you live (price of rent in cheap area , price of rent downtown , average food item prices , average clothing prices )Seen by Gianluca Martellacci at 1:12pm
+And then of you want to move to another city you would use information that another user provided about his city
+So the users provide the information
+And we can average out the results
+Or use 10  most recent  information about certain city
+So for example I sign up and provide information about Cairo and Vlad signs up with information about Romania and Graham signs up with info about Canada
+And then if I want to move from Cairo to Canada I would use Graham's info to learn about the city
+And vice versa
