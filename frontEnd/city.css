@@ -24,7 +24,7 @@ h5,
 h6 {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
-    font-weight: 700
+    font-weight: 700;
 }
 
 .text-muted {
@@ -155,6 +155,17 @@ fieldset[disabled] .btn-xl:hover {
     background-color: #fff
 }
 
+#brand-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 18pt;
+    color: whitesmoke;
+}
+
+#brand-name:hover {
+    color: #9d9d9d;
+    cursor: pointer;
+}
+
 .navbar-custom {
     background-color: #222;
     border-color: transparent
@@ -258,23 +269,23 @@ header {
 }
 
 header .intro-text {
-	font-family: 'Pacifico', cursive;
+	/*font-family: 'Pacifico', cursive;*/
     padding-top: 100px;
     padding-bottom: 50px
 }
 
 header .intro-text .intro-lead-in {
    font-family: 'Pacifico', cursive;
-    
+
     font-size: 22px;
     line-height: 22px;
     margin-bottom: 25px
 }
 
 header .intro-text .intro-heading {
-    font-family: 'Pacifico', cursive;
+    /*font-family: 'Pacifico', cursive;*/
     text-transform: uppercase;
-  
+
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 25px
@@ -293,10 +304,11 @@ header .intro-text .intro-heading {
         margin-bottom: 25px
     }
     header .intro-text .intro-heading {
-        font-family: 'Pacifico', cursive;
+        /*font-family: 'Pacifico', cursive;*/
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 75px;
+        font-size: 75pt;
+        color: whitesmoke;
         line-height: 75px;
         margin-bottom: 50px
     }
@@ -313,7 +325,7 @@ section {
 }
 
 section h2.section-heading {
-	font-family: 'Pacifico', cursive;
+	/*font-family: 'Pacifico', cursive;*/
     font-size: 30px;
     margin-top: 0;
     margin-bottom: 15px
@@ -697,5 +709,3 @@ img::selection {
 img::-moz-selection {
     background: 0 0
 }
-
-
