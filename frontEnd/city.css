@@ -335,7 +335,7 @@ section h3.section-subheading {
     font-size: 16px;
     text-transform: none;
     font-weight: 400;
-    margin-bottom: 75px
+    margin-bottom: 25px
 }
 
 @media (min-width:768px) {
@@ -344,11 +344,24 @@ section h3.section-subheading {
     }
 }
 
+#summary {
+    width: 70%;
+    margin: auto;
+}
+
 .service-heading {
     margin: 15px 0;
     text-transform: none
 }
 
+#languages {
+    /*background-color: #101010;*/
+}
+
+#chart-div {
+    width: 600px;
+    margin: auto;
+}
 
 
 footer span.copyright,

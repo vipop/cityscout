@@ -7,6 +7,52 @@
     <title>City Template</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="city.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Language');
+        data.addColumn('number', 'People');
+        data.addRows([
+          ['English', 40],
+          ['French', 20],
+          ['Mandarin', 10],
+          ['Spanish', 15],
+          ['Tagalog', 15]
+        ]);
+
+        // Set chart options
+        var options = {'title': 'Languages',
+                       'titlePosition': 'none',
+                       'backgroundColor': '#ffffff',
+                       'is3D': 'true',
+                       'width': 600,
+                       'height': 500,
+                       'chartArea': {'width': '100%', 'height': '85%'},
+                       'legend': {  'textStyle': { 'color': '#101010' },
+                                    'position': 'bottom'},
+                        'colors': ['#2c5a71', 'whitesmoke', '#3e606f', '#406d80', '#29768a']
+                    };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
+        chart.draw(data, options);
+      }
+    </script>
+
     </head>
   <body>
 
@@ -52,52 +98,41 @@
             </div>
         </div>
     </header>
-    <section id="history">
+    <section id="description">
          <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">History</h2>
+                <div class="col-lg-6 text-center">
+                    <h2 class="section-heading">Summary</h2>
                     <h3 class="section-subheading text-muted" id="historyText">Lorem ipsum dolor sit amet consectetur.</h3>
                     <p id="summary">
                         Suspendisse elit velit, posuere eget mauris vel, mattis placerat magna. Nulla sollicitudin nulla eget sem interdum convallis sit amet at tellus. In malesuada, augue sed semper tristique, nisi augue posuere nulla, eget mattis nibh leo sit amet nisl. Donec fringilla quam id lectus pharetra, in faucibus nisi aliquam. Integer tristique dictum maximus. Nunc molestie risus vitae interdum condimentum. Curabitur hendrerit, est at convallis pharetra, purus elit tempus orci, et ullamcorper urna lorem in ligula. In hac habitasse platea dictumst.
                     </p>
                 </div>
+            <div class="col-lg-6 text-center">
+            <h2 class="section-heading text-center">Quick Facts</h2>
+                <div class="col-md-12 text-center">
+                    <p>Website: www.toronto.ca</p>
+                    <p>Country: Canada</p>
+                    <p>Population: 5,928,040</p>
+                    <p>Area: 5,905.71 km2</p>
+                </div>
 
             </div>
-            <hr>
-            <div class="row">
-            <h2 class="section-heading text-center">Facts</h2>
-            <hr>
-                <div class="col-md-3 text-center">
-                    <h2 class="section-heading">Population</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                 <div class="col-md-3 text-center">
-                    <h2 class="section-heading">Location</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                 <div class="col-md-3 text-center">
-                    <h2 class="section-heading">Size</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                 <div class="col-md-3 text-center">
-                    <h2 class="section-heading">Lattitude &amp; Longittude</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
+             </div>
     </section>
     <hr>
     <section id="languages">
-         <div class="row">
-         <h2 class="section-heading text-center">Languages graphs goes here</h2>
-
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <h2 class="section-heading text-center">Map</h2>
+                <div>
+                    <div id="map-div" style="width: 600px; height: 500px; margin:auto; padding: 30px;"></div>
+                </div>
             </div>
-    </section>
-    <hr>
-    <section id="weather">
-         <div class="row">
-         <h2 class="section-heading text-center">Weather</h2>
-
+            <div class="col-lg-6 text-center">
+                <h2 class="section-heading text-center">Languages</h2>
+                <div id="chart-div"></div>
             </div>
+        </div>
     </section>
     <hr>
     <section id="weather">
@@ -116,13 +151,13 @@
 
             </div>
             <hr>
-
     </section>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="citymap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
 
   </body>
 </html>
