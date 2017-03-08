@@ -29,13 +29,14 @@ function initMap(latitude, longitude, container) {
 	geocoder.geocode({'location': latlng}, function(results, status) {
 	    if (status === 'OK') {
 	      if (results[0]) {
-	        map.setZoom(10);
-	        var marker = new google.maps.Marker({
+	        map.setZoom(9);
+	        /*var marker = new google.maps.Marker({
 	          position: latlng,
 	          map: map
 	        });
 	        infowindow.setContent(results[0].formatted_address);
 	        infowindow.open(map, marker);
+			*/
 	      } else {
 	        window.alert('No results found');
 	      }
