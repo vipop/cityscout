@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 $(document.body)
 .on('show.bs.modal', function () {
 	fixModalPadding();
