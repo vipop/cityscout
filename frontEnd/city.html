@@ -6,64 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>City Template</title>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="city.css" rel="stylesheet">
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Language');
-        data.addColumn('number', 'People');
-        data.addRows([
-          ['English', 40],
-          ['French', 20],
-          ['Mandarin', 10],
-          ['Spanish', 15],
-          ['Tagalog', 15]
-        ]);
-
-        // Set chart options
-        var options = {'title': 'Languages',
-                       'titlePosition': 'none',
-                       'backgroundColor': '#ffffff',
-                       'is3D': 'true',
-                       'width': 600,
-                       'height': 500,
-                       'chartArea': {'width': '100%', 'height': '85%'},
-                       'legend': {  'textStyle': { 'color': '#101010' },
-                                    'position': 'bottom'},
-                        'colors': ['#2c5a71', 'whitesmoke', '#3e606f', '#406d80', '#29768a']
-                    };
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
-        chart.draw(data, options);
-      }
-    </script>
-
-    </head>
+    <script type="text/javascript" src="js/chartScript.js"></script>
+	<script src="js/city.js"></script>
+	<script src="js/citymap.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBLOi2G_ISyRvAe4GteCIupAwwF1aC-b0&callback=initMap" type="text/javascript"></script>
+  </head>
   <body>
-
-  	 <!-- Navigation -->
+	<!-- Navigation -->
    <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -86,25 +42,21 @@
        <ul class="nav navbar-nav navbar-right">
         <li><a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+      <ul class="nav navbar-nav navbar-right" id="pageLinks">
+        <li class="active" ><a href="#">Home</a></li>
+        <li><a href="comparePage.html">Compare Cities</a></li>
+        <li><a href="#">Information gathering</a></li>
       </ul>
-
     </div>
   </div>
 </nav>
- <header>
+ <header id = "header">
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To the 6ix</div>
-                <div class="intro-heading">Toronto</div>
+                <div class="intro-heading"><span id="cityTitle">Toronto</div>
             </div>
         </div>
-    </header>
+   </header>
     <section id="description">
          <div class="row" style="display: flex">
                 <div class="col-lg-6 text-center" style="align-self: center;">
@@ -116,7 +68,8 @@
                         </p>
                 </div>
             <div class="col-lg-6 text-center">
-                <h2 class="section-heading text-center">Overview</h2>
+				<h2 class="section-heading text-center"> 	
+				<h2 class="section-heading text-center">Overview</h2>
                 <table class="table table-bordered" style="width: 70%; margin: auto; margin-top: 15px">
                     <tbody>
                       <tr>
@@ -144,13 +97,6 @@
                         <div id="map-div" style="width: 400px; height: 300px; margin:auto; padding: 30px;"></div>
                     </div>
                     <table class="table table-bordered" style="width: 400px; margin: auto; margin-top: 15px">
-                        <!-- <thead>
-                          <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                          </tr>
-                        </thead>-->
                         <tbody>
                           <tr>
                             <td style="width: 120px;"><b>Country</b></td>
@@ -182,9 +128,8 @@
     <hr>
     <section id="weather">
          <div class="row">
-         <h2 class="section-heading text-center">Weather</h2>
-
-            </div>
+			<h2 class="section-heading text-center">Weather</h2>
+         </div>
     </section>
     <hr>
     <section id="housing">
@@ -193,16 +138,36 @@
                     <h2 class="section-heading">Housing Facts</h2>
                     <h3 class="section-subheading text-muted" id="housingText">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
-
-            </div>
+			</div>
             <hr>
     </section>
-
-  
-    <script src="js/bootstrap.min.js"></script>
-    <script src="citymap.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
-    <script src="js/city.js"></script>
+	<section id="entainment">
+         <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Entertainment</h2>
+                    <h3 class="section-subheading text-muted" id="housingText">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+			</div>
+            <hr>
+    </section>
+	<section id="transportation">
+         <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Transportation</h2>
+                    <h3 class="section-subheading text-muted" id="housingText">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+			</div>
+            <hr>
+    </section>
+	<section id="comment">
+         <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Comments</h2>
+                    <h3 class="section-subheading text-muted" id="housingText">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+			</div>
+            <hr>
+    </section>
 
     <!-- Registration Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -253,15 +218,13 @@
                     </div>
                   </div>
                 </fieldset>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-success center-block" data-dismiss="modal" <!--onSubmit="logIn()"-->>Sign Up</input>
+				</div>
               </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success center-block" data-dismiss="modal">Sign Up</button>
-          </div>
         </div>
-
-      </div>
+	</div>
     </div>
-
   </body>
 </html>

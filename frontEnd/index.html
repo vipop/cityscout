@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>City Scout</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="indexStyle.css">
+		<script type="text/javascript" src="indexScript.js"></script>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <p id="brand-name" class="navbar-brand">CityScout</p>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<form class="navbar-form navbar-right">
+				<div class="form-group">
+				  <input type="text" class="form-control" placeholder="Username">
+				  <input type="text" class="form-control" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-default">Login</button>
+			  </form>
+			   <ul class="nav navbar-nav navbar-right">
+				<li><a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				</ul>
+			</div>
+		  </div>
+		</nav>
+		<main id="mainId">
+			<div class="container-fluid" id="mainContainer">
+				<div class="row">
+					<div class="col-sm-6">
+						<h1> About us </h1>
+						<p> 
+							As the world’s leading manufacturer of both planes and trains, we’ve built an extensive and diverse portfolio of winning mobility solutions. 
+							Everywhere people travel by land and in the air, a Bombardier product is ready to transport them. From category-defining business jets and commercial aircraft designed for the challenges of today, to sleek high speed trains and public transit that’s smarter than ever.
+							But it’s not just our products and services that make us a global leader. The most important success factor is our employees, all 66,000 of them. Together we’re focused on making mobility more efficient, sustainable and inviting than ever before. We call it The Evolution of Mobility.
+							Bombardier is headquartered in Montréal, Canada. Our shares are traded on the Toronto Stock Exchange (BBD) and we are listed on the Dow Jones Sustainability North America Index. In the fiscal year ended December 31, 2016, we posted revenues of $16.3 billion.
+						</p>
+					</div>
+					<div class="col-sm-6">
+						<h1> City </h1>
+						<ul>
+							<li id="toronto" onClick="loadCity(this)">Toronto (Canada)</a></li>
+							<li id="vancouver" onClick="loadCity(this)">Vancouver (Canada)</a></li>
+							<li id="montreal" onClick="loadCity(this)">Montreal (Canada)</a></li>
+							<li id="newYork" onClick="loadCity(this)">New York(USA)</a></li>
+							<li id="losAngeles" onClick="loadCity(this)">Los Angeles(USA)</a></li>
+							<li id="london" onClick="loadCity(this)">London (England)</a></li>
+							<li id="paris" onClick="loadCity(this)">Paris (France)</a></li>
+							<li id="shanghai" onClick="loadCity(this)">Shanghai(China)</a></li>
+							<li id="tokyo" onClick="loadCity(this)">Tokyo(Japan)</a></li>
+							<li id="bucharest" onClick="loadCity(this)">Bucharest(Romania)</a></li>
+						</ul>
+						<p> More cities will be add at a later date </p>
+					</div>
+				</div>
+			</div>
+		</main>
+    <!-- Registration Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+              <form class="form-horizontal" action='' method="POST">
+                <fieldset>
+                  <div class="control-group">
+                    <!-- Username -->
+                    <label class="control-label"  for="username">Username</label>
+                    <div class="controls">
+                      <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                      <p class="help-block">Username can contain any letters or numbers, without spaces.</p>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <!-- E-mail -->
+                    <label class="control-label" for="email">E-mail</label>
+                    <div class="controls">
+                      <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+                      <p class="help-block">Please provide a valid E-mail address.</p>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <!-- Password-->
+                    <label class="control-label" for="password">Password</label>
+                    <div class="controls">
+                      <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                      <p class="help-block">Password should be at least 4 characters.</p>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <!-- Password -->
+                    <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                    <div class="controls">
+                      <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+                      <p class="help-block">Please confirm password.</p>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success center-block" data-dismiss="modal">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
