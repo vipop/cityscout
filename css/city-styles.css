@@ -1,0 +1,123 @@
+html, body {
+	background-color: whitesmoke;
+	color: #222222;
+}
+
+body {
+	margin-top: 70px;
+}
+
+#brand-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 18pt;
+    color: whitesmoke;
+}
+
+#brand-name:hover {
+    color: #9d9d9d;
+    cursor: pointer;
+}
+
+header {
+	height: 30%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: black;
+	font-weight: bold;
+	display: flex;
+	width: 100%;
+	height: 51%;
+}
+
+#header-text {
+	align-self: center;
+	margin: auto;
+	font-size: 56pt;
+	color: whitesmoke;
+}
+
+hr {
+	margin: 10px;
+}
+
+h2, h3 {
+	margin: 0px;
+	display: flex;
+}
+
+.glyphicon {
+	align-self: center;
+	margin-right: 10px;
+}
+.glyphicon.overview {
+	margin: 12px;
+	font-size: 21pt;
+	text-align: center;
+}
+
+.row {
+	margin: 0px;
+}
+
+.row.ninety {
+	margin: auto;
+	width: 90%;
+}
+
+.panel {
+	padding-top: 10px;
+	border: 1px solid #E6E9ED;
+}
+
+.col-sm-2 {
+	padding-top: 15px;
+}
+
+.col-sm-10 {
+	padding-top: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	display: flex;
+}
+
+.small-info {
+	margin-left: 30px;
+}
+
+.margin10 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.rating-bar {
+	background-color: antiquewhite;
+	width: 80%;
+	display: flex;
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+.my-progress-bar {
+	background-color: #333333;
+	height: 17pt;
+}
+
+.progress-text {
+	width: 15%;
+	text-align: center;
+	align-self: center;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	font-weight: bold;
+}
+
+p {
+	line-height: 2;
+	font-size: 12pt;
+}

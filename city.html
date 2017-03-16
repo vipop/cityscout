@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <title>CityScout</title>
+        <meta content="">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- CSS Stylesheet -->
+        <link href="css/city-styles.css" rel="stylesheet">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <script src="js/city.js"></script>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand-name" class="navbar-brand" href="#">CityScout</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">Cities</a></li>
+                        <li><a href="#">Overview</a></li>
+                        <li><a href="#">Graphs</a></li>
+                        <li><a href="#">Statistics</a></li>
+                    </ul>
+               </div>
+             </div>
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid">
+            <div class="row ninety">
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-flag"></span>Country</span>
+                        <h2 class="margin10"><b>Canada</b></h2>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
+                        <h2 class="margin10"><b>English</b></h2>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-user"></span>Population</span>
+                        <h2 class="margin10"><b>2,615,000</b></h2>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
+                        <h2 class="margin10"><b>5,905.71 km<sup>2</sup></b></h2>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-globe"></span>Website</span>
+                        <h2 class="margin10"><b>toronto.ca</b></h2>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-tower"></span>Mayor</span>
+                        <h2 class="margin10"><b>John Tory</b></h2>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row ninety">
+                <div class="col-sm-8">
+                    <header id="header" class="panel" style="border:10px solid white;">
+                        <div id="header-text"></div>
+                    </header>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel" style="padding-top: 0px;">
+                        <div id="map-div" style="width: 96%; height: 49%; margin:10px;"></div>
+                        <script src="js/citymap.js"></script>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
+                    </div>
+                </div>
+            </div>
+            <div class="row ninety">
+                <div class="col-sm-4">
+                    <div class="panel">
+                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
+                        <hr />
+                        <div class="panel-body">
+                            <p>
+                                Welcome to Toronto, the most multiculturally diverse city on the planet: over 140 languages are spoken. It's estimated that over half of Toronto's residents were born outside Canada, and despite its complex makeup, Torontonians generally get along. When the weather is fine, Toronto is a blast: a vibrant, big-time city abuzz with activity. Some of the world's finest restaurants are found here, alongside happening bars and clubs and eclectic festivals.
+
+Yes, winter in Toronto can be a real drag. Things get messy on the congested highways and archaic public transit system. But come with patience, an open mind and during the delightfully temperate and colorful spring or fall, and you're bound to have a great time.
+
+There is a fresh international buzz about Toronto. Perhaps it's the influx of flush new residents from across the globe; or was it the Pan-Am Games that shone a spotlight on Toronto? Either way, this is a city that is waking up to its own greatness.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel">
+                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 80%; background-color: #eec485;"></div>
+                                </div>
+                                <span class="progress-text">4 / 5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 100%; background-color: #80ba52;"></div>
+                                </div>
+                                <span class="progress-text">5 / 5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 60%; background-color: #b44545;"></div>
+                                </div>
+                                <span class="progress-text">3 / 5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 80%; background-color: #2c5a71;"></div>
+                                </div>
+                                <span class="progress-text">4 / 5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 40%; background-color: lightpink;"></div>
+                                </div>
+                                <span class="progress-text">2 / 5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="rating-bar">
+                                    <div class="my-progress-bar" style="width: 40%; background-color: #222222;"></div>
+                                </div>
+                                <span class="progress-text">2 / 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel">
+                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
+                        <hr />
+                        <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </body>
+</html>
