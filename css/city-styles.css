@@ -75,6 +75,7 @@ h2, h3 {
 }
 
 .panel {
+	margin: 0px;
 	padding-top: 10px;
 	border: 1px solid #E6E9ED;
 }

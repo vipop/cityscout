@@ -1,9 +1,10 @@
+
 window.onload = function() {
 	// information variables
 	var city, lat, lon, country, lang, pop, area, web, mayor, background, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime;
 
 	// get city
-	city = loadPage();
+	city = getCity();
 
 	// replace this with database queries
 	switch(city) {
@@ -222,23 +223,17 @@ window.onload = function() {
 	// replace this with database queries
 
 	initTopInfo(country, lang, pop, area, web, mayor);
+	initCityBanner(city);
 	initBackground(background);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 
 	initMap(lat, lon, document.getElementById("map-div"));
 };
 
-function loadPage(){
-	console.log("hello");
+function getCity(){
 	var search = new URLSearchParams(window.location.search);
-	var cityName = search.get('city');
-	//Queary database with cityName
-	if(cityName != undefined){
-		displayInformation(cityName);
-	}
-	//hide link untill user sign in
-	//hidePageLinks();
-	return cityName;
+	var city = search.get('city');
+	return city;
 };
 
 function initTopInfo(country, lang, pop, area, web, mayor) {
@@ -249,6 +244,13 @@ function initTopInfo(country, lang, pop, area, web, mayor) {
 	document.getElementById("top-info-web").innerHTML = web;
 	document.getElementById("top-info-mayor").innerHTML = mayor;
 }
+
+function initCityBanner(city){
+	if(city == "losAngeles") document.getElementById("header-text").innerHTML = "LOS ANGELES";
+	else if(city == "newYork") document.getElementById("header-text").innerHTML = "NEW YORK";
+	else document.getElementById("header-text").innerHTML = city.toUpperCase();
+	document.getElementById("header").style.backgroundImage = "url('images/" + city + "Image.jpg')";
+};
 
 function initBackground(background) {
 	document.getElementById("background").innerHTML = background;
@@ -276,52 +278,11 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-housing").innerHTML = ovHousing + " / 5";
 	document.getElementById("ov-housing-bar").style.width = ovHousing * 20 + "%";
 	// set color, text and width of crime bar
-	document.getElementById("ov-crime-bar").style["background-color"] = "#222222";
+	document.getElementById("ov-crime-bar").style["background-color"] = "#555555";
 	document.getElementById("ov-crime").innerHTML = ovCrime + " / 5";
 	document.getElementById("ov-crime-bar").style.width = ovCrime * 20 + "%";
 }
 
-// Display Information function
-function displayInformation(aCity){
-	if(aCity == "losAngeles") document.getElementById("header-text").innerHTML = "LOS ANGELES";
-	else if(aCity == "newYork") document.getElementById("header-text").innerHTML = "NEW YORK";
-	else document.getElementById("header-text").innerHTML = aCity.toUpperCase();
-	displayImage(aCity);
-};
-// Display Image function
-function displayImage(aCity){
-	switch(aCity){
-		case "vancouver":
-			document.getElementById("header").style.backgroundImage = "url('images/vancouverImage.jpg')";
-			break;
-		case "montreal":
-			document.getElementById("header").style.backgroundImage = "url('images/vancouverImage.jpg')";
-			break;
-		case "newYork":
-			document.getElementById("header").style.backgroundImage = "url('images/newYorkImage.jpg')";
-			break;
-		case "losAngeles":
-			document.getElementById("header").style.backgroundImage = "url('images/losAngelesImage.jpg')";
-			break;
-		case "london":
-			document.getElementById("header").style.backgroundImage = "url('images/londonImage.jpg')";
-			break;
-		case "paris":
-			document.getElementById("header").style.backgroundImage = "url('images/parisImage.jpg')";
-			break;
-		case "shanghai":
-			document.getElementById("header").style.backgroundImage = "url('images/shanghaiImage.jpg')";
-			break;
-		case "tokyo":
-			document.getElementById("header").style.backgroundImage = "url('images/tokyoImage.jpg')";
-			break;
-		case "bucharest":
-			document.getElementById("header").style.backgroundImage = "url('images/bucharestImage.jpg')";
-			break;
-		default:
-			document.getElementById("header").style.backgroundImage = "url('images/torontoImage.jpg')";
-	}
-};
 //log in clicked
 // need to check database
 /*function logIn(){
@@ -337,6 +298,7 @@ function hidePageLinks(){
 function unhidePageLinks(){
 	document.getElementById("pageLinks").style.display = 'block';
 };
+
 $(document.body)
 .on('show.bs.modal', function () {
 	fixModalPadding();
@@ -355,14 +317,35 @@ function initMap(latitude, longitude, container) {
     var map = new google.maps.Map(container, {
       zoom: 5,
       center: location,
-	  styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#193341"}]},
-	  {"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#2c5a71"}]},
-	  {"featureType":"road","elementType":"geometry","stylers":[{"color":"#29768a"},{"lightness":-37}]},
-	  {"featureType":"poi","elementType":"geometry","stylers":[{"color":"#406d80"}]},
-	  {"featureType":"transit","elementType":"geometry","stylers":[{"color":"#406d80"}]},
-	  {"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#3e606f"},{"weight":2},{"gamma":0.84}]},{"elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},
-	  {"featureType":"administrative","elementType":"geometry","stylers":[{"weight":0.6},{"color":"#1a3541"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},
-	  {"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#2c5a71"}]}]
+	  styles: [
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    }
+]
     });
     var marker = new google.maps.Marker({
       position: location,
@@ -375,13 +358,6 @@ function initMap(latitude, longitude, container) {
 	    if (status === 'OK') {
 	      if (results[0]) {
 	        map.setZoom(9);
-	        /*var marker = new google.maps.Marker({
-	          position: latlng,
-	          map: map
-	        });
-	        infowindow.setContent(results[0].formatted_address);
-	        infowindow.open(map, marker);
-			*/
 	      } else {
 	        window.alert('No results found');
 	      }
