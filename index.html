@@ -16,30 +16,71 @@
 	</head>
 	<body>
 		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
-			  <p id="brand-name" class="navbar-brand">CityScout</p>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<form class="navbar-form navbar-right">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Username">
-				  <input type="text" class="form-control" placeholder="Password">
-				</div>
-				<button type="submit" class="btn btn-default">Login</button>
-			  </form>
-			   <ul class="nav navbar-nav navbar-right">
-				<li><a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand-name" class="navbar-brand" href="index.html">CityScout</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input id="login-username" type="text" class="form-control" placeholder="Username">
+                            <input id="login-password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">Cities</a></li>
+                        <li><a href="#">Overview</a></li>
+                        <li><a href="#">Graphs</a></li>
+                        <li><a href="#">Statistics</a></li>
+                    </ul>
+               </div>
+             </div>
+        </nav>
+
+        <!-- Registration Modal -->
+        <div id="signup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Username</label>
+                                <input id="register-username" type="text" class="form-control" placeholder="Username">
+                                <p class="help-block">Username can contain any letters or numbers, without spaces.</p>
+                                <label for="inputName" class="control-label">Password</label>
+                                <input id="register-password" type="password" class="form-control" placeholder="Password">
+                                <p class="help-block">Password should be at least 4 characters.</p>
+                                <label for="inputName" class="control-label">Password (confirm)</label>
+                                <input id="register-password-confirm" type="password" class="form-control" placeholder="Password (confirm)">
+                                <p class="help-block">Please confirm password.</p>
+                                <label for="inputName" class="control-label">E-mail</label>
+                                <input id="register-email" type="text" class="form-control" placeholder="E-mail">
+                                <p class="help-block">Please provide a valid E-mail address.</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block" data-dismiss="modal" onclick="register()">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 		<main id="mainId">
 			<div class="container-fluid" id="mainContainer">
 				<div class="row">
@@ -71,58 +112,5 @@
 				</div>
 			</div>
 		</main>
-    <!-- Registration Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Sign Up</h4>
-          </div>
-          <div class="modal-body">
-              <form class="form-horizontal" action='' method="POST">
-                <fieldset>
-                  <div class="control-group">
-                    <!-- Username -->
-                    <label class="control-label"  for="username">Username</label>
-                    <div class="controls">
-                      <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-                      <p class="help-block">Username can contain any letters or numbers, without spaces.</p>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <!-- E-mail -->
-                    <label class="control-label" for="email">E-mail</label>
-                    <div class="controls">
-                      <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                      <p class="help-block">Please provide a valid E-mail address.</p>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <!-- Password-->
-                    <label class="control-label" for="password">Password</label>
-                    <div class="controls">
-                      <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                      <p class="help-block">Password should be at least 4 characters.</p>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <!-- Password -->
-                    <label class="control-label"  for="password_confirm">Password (Confirm)</label>
-                    <div class="controls">
-                      <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
-                      <p class="help-block">Please confirm password.</p>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success center-block" data-dismiss="modal">Sign Up</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
