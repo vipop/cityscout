@@ -224,10 +224,10 @@ window.onload = function() {
 
 	initTopInfo(country, lang, pop, area, web, mayor);
 	initCityBanner(city);
+	initMap(lat, lon, document.getElementById("map-div"));
 	initBackground(background);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 
-	initMap(lat, lon, document.getElementById("map-div"));
 };
 
 function getCity(){
@@ -283,6 +283,23 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-crime-bar").style.width = ovCrime * 20 + "%";
 }
 
+function login() {
+	var username = document.getElementById("login-username").value;
+	var password = document.getElementById("login-password").value;
+
+	// VERIFY USER AGAINST THE DATABASE
+
+}
+
+function register() {
+	var username = document.getElementById("register-username").value;
+	var password = document.getElementById("register-password").value;
+	var email = document.getElementById("register-email").value;
+
+	// INSERT USER IN THE DATABASE
+
+}
+
 //log in clicked
 // need to check database
 /*function logIn(){
@@ -299,54 +316,15 @@ function unhidePageLinks(){
 	document.getElementById("pageLinks").style.display = 'block';
 };
 
-$(document.body)
-.on('show.bs.modal', function () {
-	fixModalPadding();
-})
-.on('hidden.bs.modal', function () {
-    fixModalPadding();
-});
-
-function fixModalPadding() {
-	document.getElementsByTagName("body")[0].removeAttribute("style");
-	document.getElementsByTagName("body")[0].removeAttribute("class");
-}
-
 function initMap(latitude, longitude, container) {
     var location = {lat: latitude, lng: longitude};
     var map = new google.maps.Map(container, {
       zoom: 5,
       center: location,
-	  styles: [
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    }
-]
-    });
+	  styles: [{"featureType": "road","elementType": "labels","stylers": [{"visibility": "off"}]},
+    			{"featureType": "poi","elementType": "labels","stylers": [{"visibility": "off"}]},
+    			{"featureType": "transit","elementType": "labels.text","stylers": [{"visibility": "off"}]}]
+			});
     var marker = new google.maps.Marker({
       position: location,
       map: map
