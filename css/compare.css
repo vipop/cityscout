@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
-.navbar-inverse{
-	border-radius: 0px;
-}
-#brand-name{
-font-family: 'Pacifico', cursive;
-    font-size: 18pt;
-    color: whitesmoke;
+#header-text1, #header-text2 {
+	align-self: center;
+	margin: auto;
+	font-size: 56pt;
+	color: whitesmoke;
 }
