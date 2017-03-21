@@ -1,14 +1,30 @@
 
 window.onload = function() {
-
-	// get city 1
-	var city1 = getCity();
-	// populate it
-	populateCity(1, city1);
-
-	hideCity(2);
-	//showCity(2);
+	var search = new URLSearchParams(window.location.search);
+	var city1 = search.get('city');
+	if (city1 == undefined) {
+		loadPage(2);
+	} else {
+		loadPage(1);
+	}
 };
+
+function loadPage(type) {
+	// type 1 is with city 1 preloaded
+	if (type == 1) {
+		// get city 1
+		var city1 = getCity();
+		// populate it
+		populateCity(1, city1);
+		// hide city 2
+		hideCity(2);
+		document.getElementById("dropdown1").firstChild.nextSibling.innerHTML = getCityName(city1);
+	// type 2 is with no cities preloaded
+	} else {
+		hideCity(1);
+		hideCity(2);
+	}
+}
 
 function getCity(){
 	var search = new URLSearchParams(window.location.search);
@@ -354,7 +370,10 @@ function initOverview(cityNum, ovHappiness, ovEntertainment, ovHealthcare, ovEdu
 function hideCity(cityNum) {
 	var i;
 	if (cityNum == 1) {
-
+		var city1elements = document.getElementsByClassName("city1");
+		for (i = 0; i < city1elements.length; i++) {
+			city1elements[i].style.display = "none";
+		}
 	} else {
 		var city2elements = document.getElementsByClassName("city2");
 		for (i = 0; i < city2elements.length; i++) {
@@ -366,7 +385,10 @@ function hideCity(cityNum) {
 function showCity(cityNum) {
 	var i;
 	if (cityNum == 1) {
-
+		var city1elements = document.getElementsByClassName("city1");
+		for (i = 0; i < city1elements.length; i++) {
+			city1elements[i].removeAttribute("style");
+		}
 	} else {
 		var city2elements = document.getElementsByClassName("city2");
 		for (i = 0; i < city2elements.length; i++) {
@@ -393,41 +415,93 @@ function register() {
 
 }
 
-function dropdownSelect(ctl) {
+function dropdownSelect(ctl, cityNum) {
 	var cityName = ctl.innerText;
 	var city;
 	switch (cityName) {
 		case "Toronto (Canada)":
 			city = "toronto";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Toronto (Canada)";
 			break;
 		case "Vancouver (Canada)":
 			city = "vancouver";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Vancouver (Canada)";
 			break;
 		case "Montreal (Canada)":
 			city = "montreal";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Montreal (Canada)";
 			break;
 		case "New York (USA)":
 			city = "newYork";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "New York (Canada)";
 			break;
 		case "Los Angeles (USA)":
 			city = "losAngeles";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Los Angeles (USA)";
 			break;
 		case "London (UK)":
 			city = "london";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "London (UK)";
 			break;
 		case "Paris (France)":
 			city = "paris";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Paris (France)";
 			break;
 		case "Shanghai (China)":
 			city = "shanghai";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Shanghai (China)";
 			break;
 		case "Tokyo (Japan)":
 			city = "tokyo";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Tokyo (Japan)";
 			break;
 		case "Bucharest (Romania)":
 			city = "bucharest";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Bucharest (Romania)";
 			break;
 	}
-	populateCity(2, city);
-	showCity(2);
+	if (cityNum == 1) {
+		populateCity(1, city);
+		showCity(1);
+	} else {
+		populateCity(2, city);
+		showCity(2);
+	}
+}
+
+function getCityName(city) {
+	var name = "";
+	switch (city) {
+		case "toronto":
+			name = "Toronto (Canada)";
+			break;
+		case "vancouver":
+			name = "Vancouver (Canada)";
+			break;
+		case "montreal":
+			name = "Montreal (Canada)";
+			break;
+		case "newYork":
+			name = "New York (Canada)";
+			break;
+		case "losAngeles":
+			name = "Los Angeles (USA)";
+			break;
+		case "london":
+			name = "London (UK)";
+			break;
+		case "paris":
+			name = "Paris (France)";
+			break;
+		case "shanghai":
+			name = "Shanghai (China)";
+			break;
+		case "tokyo":
+			name = "Tokyo (Japan)";
+			break;
+		case "bucharest":
+			name = "Bucharest (Romania)";
+			break;
+	}
+	return name;
 }
