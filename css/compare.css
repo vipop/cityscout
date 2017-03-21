@@ -2,5 +2,7 @@
 	align-self: center;
 	margin: auto;
 	font-size: 56pt;
-	color: whitesmoke;
+	color: #222222;
+	font-weight: bold;
+	padding-left: 25px;
 }

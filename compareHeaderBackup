@@ -1,0 +1,31 @@
+<!-- Header -->
+<div class="row ninety">
+	<div class="col-sm-6">
+		<header id="header1" class="panel" style="border:10px solid white;">
+			<div id="header-text1"></div>
+		</header>
+	</div>
+	<div class="col-sm-6">
+		<header id="header2" class="panel" style="border:10px solid white;">
+			<div id="header-text2"></div>
+		</header>
+	</div>
+</div>
+<hr />
+<div class="row ninety">
+	<div class="col-sm-6">
+		<div class="panel" style="padding-top: 0px;">
+			<div id="map-div1" style="width: 96%; height: 49%; margin:10px;"></div>
+			<script src="js/citymap.js"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel" style="padding-top: 0px;">
+			<div id="map-div2" style="width: 96%; height: 49%; margin:10px;"></div>
+			<script src="js/citymap.js"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
+		</div>
+	</div>
+</div>
+<hr />

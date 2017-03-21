@@ -40,8 +40,8 @@
                         <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="compare.html">Compare</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="compare.html">Compare</a></li>
                         <li><a href="#">About</a></li>
                     </ul>
                </div>
@@ -82,26 +82,61 @@
             </div>
         </div>
 
+        <!-- Dropdown -->
+        <div class="row ninety">
+            <div class="col-sm-6">
+                <div></div>
+            </div>
+            <div class="col-sm-6">
+                <div id="dropdown" class="dropdown center-block" style="width: 130px; align-self: center;">
+                    <button class="btn btn-success dropdown-toggle" style="width: 100%" type="button" data-toggle="dropdown">Compare to
+                    <span class="caret" style="margin-left: 5px;"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Toronto (Canada)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Vancouver (Canada)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Montreal (Canada)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">New York (USA)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Los Angeles (USA)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">London (UK)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Paris (France)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Shanghai (China)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Tokyo (Japan)</a></li>
+                        <li><button class="btn btn-link" onclick="dropdownSelect(this)">Bucharest (Romania)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr />
         <!-- Content -->
         <div class="container-fluid">
+            <!-- Header -->
+            <div class="row ninety">
+            	<div class="col-sm-6">
+            		<div id="header-text1"></div>
+            	</div>
+            	<div class="col-sm-6">
+            		<div id="header-text2" class="city2"></div>
+            	</div>
+            </div>
+            <hr />
             <!-- Top Information -->
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                             <h2 id="top-info-country1" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                             <h2 id="top-info-lang1" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-user"></span>Population</span>
                             <h2 id="top-info-pop1" class="margin10 top-info"></h2>
                         </div>
@@ -110,19 +145,19 @@
                 <!-- City 2 -->
                 <div class="col-sm-6">
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                             <h2 id="top-info-country2" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                             <h2 id="top-info-lang2" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-user"></span>Population</span>
                             <h2 id="top-info-pop2" class="margin10 top-info"></h2>
                         </div>
@@ -133,19 +168,19 @@
                 <!-- City 1 -->
                 <div class="col-sm-6">
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                             <h2 id="top-info-area1" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-globe"></span>Website</span>
                             <h2 id="top-info-web1" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city1">
                             <span><span class="glyphicon glyphicon-tower"></span>Mayor</span>
                             <h2 id="top-info-mayor1" class="margin10 top-info"></h2>
                         </div>
@@ -154,53 +189,22 @@
                 <!-- City 2 -->
                 <div class="col-sm-6">
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                             <h2 id="top-info-area2" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-globe"></span>Website</span>
                             <h2 id="top-info-web2" class="margin10 top-info"></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="small-info">
+                        <div class="small-info city2">
                             <span><span class="glyphicon glyphicon-tower"></span>Mayor</span>
                             <h2 id="top-info-mayor2" class="margin10 top-info"></h2>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Header -->
-            <div class="row ninety">
-                <div class="col-sm-6">
-                    <header id="header1" class="panel" style="border:10px solid white;">
-                        <div id="header-text1"></div>
-                    </header>
-                </div>
-                <div class="col-sm-6">
-                    <header id="header2" class="panel" style="border:10px solid white;">
-                        <div id="header-text2"></div>
-                    </header>
-                </div>
-            </div>
-            <hr />
-            <div class="row ninety">
-                <div class="col-sm-6">
-                    <div class="panel" style="padding-top: 0px;">
-                        <div id="map-div1" style="width: 96%; height: 49%; margin:10px;"></div>
-                        <script src="js/citymap.js"></script>
-                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="panel" style="padding-top: 0px;">
-                        <div id="map-div2" style="width: 96%; height: 49%; margin:10px;"></div>
-                        <script src="js/citymap.js"></script>
-                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
                     </div>
                 </div>
             </div>
@@ -209,7 +213,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -219,7 +223,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -233,7 +237,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
                         <hr />
                         <div class="row">
@@ -307,7 +311,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
                         <hr />
                         <div class="row">
@@ -385,7 +389,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
                         <hr />
                         <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
@@ -393,7 +397,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
                         <hr />
                         <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
@@ -405,7 +409,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-home"></span>Housing</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -415,7 +419,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-home"></span>Housing</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -429,7 +433,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -439,7 +443,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -453,7 +457,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-road"></span>Transportation</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -463,7 +467,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-road"></span>Transportation</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -477,7 +481,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-education"></span>Education</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -487,7 +491,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-education"></span>Education</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -501,7 +505,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -511,7 +515,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -525,7 +529,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-tower"></span>Politics</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -535,7 +539,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-tower"></span>Politics</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -549,7 +553,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -559,7 +563,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -573,7 +577,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -583,7 +587,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -597,7 +601,7 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city1">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3></div>
                         <hr />
                         <div class="panel-body">
@@ -607,7 +611,7 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-sm-6">
-                    <div class="panel">
+                    <div class="panel city2">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3></div>
                         <hr />
                         <div class="panel-body">

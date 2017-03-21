@@ -55,6 +55,17 @@ h2, h3 {
 	font-weight: bold;
 }
 
+#compare-box {
+	height: 70px;
+	display: flex;
+}
+
+#compare-button {
+	align-self: center;
+	width: 60%;
+	min-width: 90px;
+}
+
 .glyphicon {
 	align-self: center;
 	margin-right: 10px;
