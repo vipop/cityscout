@@ -2,15 +2,18 @@ function login() {
 	var username = document.getElementById("login-username").value;
 	var password = document.getElementById("login-password").value;
 
-	console.log("Logging in: " + username + " " + password);
-
 	// VERIFY USER AGAINST THE DATABASE
-	// Change url depending on where the file will be located
     var url = "cgi-bin/queries.php"
     var params = "type=SIGN_IN_USER&username=" + username + "&password=" + password;
 
     sendRequest(url, params, function(result){
         console.log(result);
+		if (result["response-code"] == 0) {
+			// log in the user
+		} else {
+			// do not log in user
+			// show error
+		}
     }, function(statusText){
         console.log(statusText);
     })
@@ -22,8 +25,29 @@ function register() {
 	var passwordConfirm = document.getElementById("register-password-confirm").value;
 	var email = document.getElementById("register-email").value;
 
-	// INSERT USER IN THE DATABASE
+	if (password == passwordConfirm) {
+		// INSERT USER IN THE DATABASE
+	    var url = "cgi-bin/queries.php"
+	    var params = "type=REGISTER_USER&username=" + username + "&password=" + password + "&email=" + email;
 
+	    sendRequest(url, params, function(result){
+	        console.log(result);
+			if (result["response-code"] == 1) {
+				// registration successful
+				document.getElementById("registration-form").style.display = "none";
+				document.getElementById("registration-success").removeAttribute("style");
+				document.getElementById("registration-register").style.display = "none";
+				document.getElementById("registration-done").removeAttribute("style");
+			} else {
+				// registration failed
+				// show error
+			}
+	    }, function(statusText){
+	        console.log(statusText);
+	    })
+	} else {
+		// show passwords not matching error
+	}
 }
 
 function sendRequest(url, params, successCallback, failureCallback){
