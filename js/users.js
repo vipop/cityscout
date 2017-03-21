@@ -70,5 +70,4 @@ function sendRequest(url, params, successCallback, failureCallback){
         console.log("ERROR: Request timed out");
     }
     http.send(params);
-	console.log("Send request");
 }
