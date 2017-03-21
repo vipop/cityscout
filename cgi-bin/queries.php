@@ -93,7 +93,7 @@
 	* Query functions
 	*/
     function insertUser($conn, $username, $password, $email){
-		$query = "INSERT INTO `users` (username, pass, email) VALUES (\`$username\`, \`$password\`, \`$email\`)";
+		$query = "INSERT INTO `users` (username, pass, email) VALUES (\"$username\", \"$password\", \"$email\")";
 		if(!is_null($username) && !is_null(!$password) && !is_null($email)){
 	        $result = runQuery($conn, $query);
 
@@ -107,7 +107,7 @@
     }
 
 	function signInUser($conn, $username, $password){
-		$query = "SELECT `username` from `users` WHERE `username`=\`$username\` AND pass=\`$password\`";
+		$query = "SELECT `username` from `users` WHERE `username`=\"$username\" AND pass=\"$password\"";
 		if(!is_null($username) && !is_null(!$password)){
 
 			$result = runQuery($conn, $query);
@@ -126,7 +126,7 @@
 	}
 
 	function queryCityById($conn, $cityId){
-		$query = "SELECT * from `cities` WHERE `_id`=$cityId";
+		$query = "SELECT * from `cities` WHERE `_id`=\"$cityId\"";
 		if(!is_null($cityId)){
 			$result = runQuery($conn, $query);
 
@@ -139,12 +139,12 @@
 					$city['general'] = $generalInfo;
 
                     //LANGUAGE INFO
-                    $query  = "SELECT * FROM `citylanguages` WHERE city_id=$cityId ORDER BY population DESC";
+                    $query  = "SELECT * FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
                     $city['languages'] = fetchAssocArray($result);
 
                     //ATTRACTION INFO
-                    $query = "SELECT * FROM `cityentertainment` WHERE `city_id`=$cityId ORDER BY type ASC, rank ASC";
+                    $query = "SELECT * FROM `cityentertainment` WHERE `city_id`=\"$cityId\" ORDER BY type ASC, rank ASC";
                     $result = runQuery($conn, $query);
                     $city['attractions'] = fetchAssocArray($result);
 
@@ -170,7 +170,7 @@
 	*/
 	function getConnection(){
 		$dbhost = "localhost";
-        $dbname = "cityscope";
+        $dbname = "cityscout";
         $dbuser = "root";
         $dbpass = "";
 

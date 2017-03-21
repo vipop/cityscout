@@ -2,9 +2,11 @@ function login() {
 	var username = document.getElementById("login-username").value;
 	var password = document.getElementById("login-password").value;
 
+	console.log("Logging in: " + username + " " + password);
+
 	// VERIFY USER AGAINST THE DATABASE
 	// Change url depending on where the file will be located
-    var url = "queries.php"
+    var url = "cgi-bin/queries.php"
     var params = "type=SIGN_IN_USER&username=" + username + "&password=" + password;
 
     sendRequest(url, params, function(result){
@@ -42,4 +44,5 @@ function sendRequest(url, params, successCallback, failureCallback){
         console.log("ERROR: Request timed out");
     }
     http.send(params);
+	console.log("Send request");
 }
