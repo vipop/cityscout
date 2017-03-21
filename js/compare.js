@@ -397,24 +397,6 @@ function showCity(cityNum) {
 	}
 }
 
-function login() {
-	var username = document.getElementById("login-username").value;
-	var password = document.getElementById("login-password").value;
-
-	// VERIFY USER AGAINST THE DATABASE
-
-}
-
-function register() {
-	var username = document.getElementById("register-username").value;
-	var password = document.getElementById("register-password").value;
-	var passwordConfirm = document.getElementById("register-password-confirm").value;
-	var email = document.getElementById("register-email").value;
-
-	// INSERT USER IN THE DATABASE
-
-}
-
 function dropdownSelect(ctl, cityNum) {
 	var cityName = ctl.innerText;
 	var city;
