@@ -8,7 +8,8 @@ function login() {
 
     sendRequest(url, params, function(result){
         console.log(result);
-		if (result["response-code"] == 0) {
+		var json = JSON.parse(result);
+		if (json["code"] == 0) {
 			// log in the user
 		} else {
 			// do not log in user
@@ -31,8 +32,9 @@ function register() {
 	    var params = "type=REGISTER_USER&username=" + username + "&password=" + password + "&email=" + email;
 
 	    sendRequest(url, params, function(result){
-	        console.log(result);
-			if (result["response-code"] == 1) {
+
+			var json = JSON.parse(result);
+			if (json['code'] == 0) {
 				// registration successful
 				document.getElementById("registration-form").style.display = "none";
 				document.getElementById("registration-success").removeAttribute("style");
