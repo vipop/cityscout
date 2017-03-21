@@ -190,6 +190,6 @@
     }
 
 	function generateResult($resultCode, $message, $data){
-		return array('result-code'=>$resultCode, 'message'=>$message, 'data'=>$data);
+		return array('code'=>$resultCode, 'message'=>$message, 'data'=>$data);
 	}
 ?>
