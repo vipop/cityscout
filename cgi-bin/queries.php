@@ -206,10 +206,7 @@
 			$result = runQuery($conn, $query);
 			$comment_id = mysqli_insert_id($conn);
 
-            echo mysqli_error($conn);
-            echo $comment_id;
-
-			$rating = rateUserComment($conn, $comment_id, $city_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
+			$rating = rateUserComment($conn, $comment_id, $cityId, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
 
 			if($result && $rating){
 				return generateResult(SUCCESSFUL, "Adding comment successful" , true);
@@ -223,10 +220,11 @@
 	/*
 	* Rate a Comment
 	*/
-	function rateUserComment ($conn,  $comment_id, $city_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
+	function rateUserComment ($conn,  $comment_id, $cityId, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
 
-		$query  = "INSERT INTO `commentratings` (_id, comment_id, city_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\", \"$city_id\",";
+		$query  = "INSERT INTO `commentratings` (_id, comment_id, city_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\", \"$cityId\",";
         $valArr = [$happiness, $entertainment , $healthcare, $education, $housing, $crime];
+
         foreach($valArr as $value){
             if($value == 0){
                 $query .= "NULL, ";
@@ -234,6 +232,7 @@
                 $query .= $value . ", ";
             }
         }
+        $query = substr($query, 0, -2) . ")";
 
 		$result = runQuery($conn,$query);
 		return $result;
@@ -252,6 +251,8 @@
 	}
 
 	function runQuery($conn, $query){
+        //echo $query;
+
 		return mysqli_query($conn, $query);
 	}
 
