@@ -9,12 +9,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         <!-- CSS Stylesheets -->
         <link href="css/city.css" rel="stylesheet">
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
         <script src="js/city.js"></script>
-        <script src="js/users.js"></script>
+        <script src="js/rateyo.js"></script>
     </head>
     <body>
         <!-- Navigation -->
@@ -34,7 +38,7 @@
                             <input id="login-username" type="text" class="form-control" placeholder="Username">
                             <input id="login-password" type="password" class="form-control" placeholder="Password">
                         </div>
-                        <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
+                        <button type="submit" class="btn btn-default">Login</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -61,9 +65,6 @@
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div id="registration-success" style="display:none">
-								<p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
-							</div>
                             <div class="form-group">
                                 <label for="inputName" class="control-label">Username</label>
                                 <input id="register-username" type="text" class="form-control" placeholder="Username">
@@ -79,8 +80,7 @@
                                 <p class="help-block">Please provide a valid E-mail address.</p>
                             </div>
                             <hr />
-                            <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
-							<button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+                            <button type="button" class="btn btn-success center-block" data-dismiss="modal" onclick="register()">Register</button>
                         </div>
                     </div>
                 </div>
@@ -122,8 +122,9 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <div id="compare-box" class="small-info">
-                        <button id="compare-button" type="button" class="btn btn-success center-block" onclick="compare()">Compare</button>
+                    <div class="small-info">
+                        <span><span class="glyphicon glyphicon-tower"></span>Mayor</span>
+                        <h2 id="top-info-mayor" class="margin10 top-info"></h2>
                     </div>
                 </div>
             </div>
@@ -329,6 +330,68 @@
                 </div>
             </div>
             <hr />
+            <div class="row ninety">
+                    <div class="col-sm-8">
+                        <div class="panel">
+                            <div class="panel-heading"><h3><span class="glyphicon glyphicon-comment"></span>Leave a comment</h3></div>
+                            <hr />
+
+                            <div class="panel-body">
+                            <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                <textarea placeholder="Leave a comment" class="form-control"  id="commentText"></textarea>
+                                <button onclick="submitComment()" class="btn btn-default" style="margin-top: 15px;">Submit</button>
+                                </div>
+            </div>
+            <div class="col-sm-6">
+                                <div id="rating1" style="margin-left: 10.5%; width: 80%">
+                                    <span style="float: left;">Happiness</span>
+                                    <div style="float: right;" id="happiness-rating"></div>
+                                </div>
+                                <div style="clear:both"></div>
+                                 <div id="rating2" style="margin-left: 10.5%; width: 80%">
+                                    <span style="float: left;">Entertainment</span>
+                                    <div style="float: right;" id="entertainment-rating"></div>
+                                </div>
+                                <div style="clear:both"></div>
+                                <div id="rating3" style="margin-left: 10.5%; width: 80%;">
+                                    <span style="float: left;">Healthcare</span>
+                                    <div style="float: right;" id="healthcare-rating"></div>
+                                </div>
+
+                                <div style="clear:both"></div>
+                                <div id="rating4" style="margin-left: 10.5%; width: 80%;">
+                                    <span style="float: left;">Education</span>
+                                    <div id="education-rating" style="float: right;"></div>
+                                </div>
+
+                                <div style="clear:both"></div>
+                                 <div id="rating5" style="margin-left: 10.5%; width: 80%">
+                                    <span style="float: left;">Housing</span>
+                                    <div style="float: right;" id="housing-rating"></div>
+                                </div>
+                                <div style="clear:both"></div>
+                                <div id="rating6" style="margin-left: 10.5%; width: 80%">
+                                    <span style="float: left;">Crime</span>
+                                    <div style="float: right;" id="crime-rating"></div>
+                                </div>
+                                <div style="clear:both"></div>
+                                
+                        </div>
+                        </div>
+                        <div id="displayComments" class="row">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                
+
+            <hr>
         </div>
+
     </body>
+
 </html>
