@@ -17,11 +17,7 @@ body {
     color: #9d9d9d;
     cursor: pointer;
 }
-#commentText{
 
-	width: 100%;
-	height: 120px;
-}
 header {
 	height: 30%;
     background-repeat: no-repeat;
@@ -57,6 +53,17 @@ h2, h3 {
 
 .top-info {
 	font-weight: bold;
+}
+
+#compare-box {
+	height: 70px;
+	display: flex;
+}
+
+#compare-button {
+	align-self: center;
+	width: 60%;
+	min-width: 90px;
 }
 
 .glyphicon {
@@ -105,7 +112,8 @@ h2, h3 {
 }
 
 .rating-bar {
-	background-color: #FAEBD7;
+	background-color: antiquewhite;
+	width: 80%;
 	display: flex;
 	margin-top: 16px;
 	margin-bottom: 16px;
@@ -125,10 +133,35 @@ h2, h3 {
 	font-weight: bold;
 }
 
-
 p {
 	line-height: 2;
 	font-size: 12pt;
+}
+
+#commentText{
+	width: 100%;
+	height: 120px;
+}
+
+.lessStars{
+	color: red;
+	margin: 0px;
+	padding: 0px;
+}
+.threeStars{
+	color: green;
+	margin: 0px;
+	padding: 0px;
+}
+.greaterStars{
+	color: blue;
+	margin: 0px;
+	padding: 0px;
+}
+.starContainer{
+display: flex;
+display: -webkit-flex;
+-moz-display: flex;
 }
 
 /***** Modal *****/
@@ -177,24 +210,4 @@ p {
 
 .modal-body form .input-error {
 	border-color: #fd625e;
-}
-.lessStars{
-	color: red;
-	margin: 0px;
-	padding: 0px;
-}
-.threeStars{
-	color: green;
-	margin: 0px;
-	padding: 0px;
-}
-.greaterStars{
-	color: blue;
-	margin: 0px;
-	padding: 0px;
-}
-.starContainer{
-display: flex;
-display: -webkit-flex;
--moz-display: flex;
 }
