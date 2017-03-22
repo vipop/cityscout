@@ -49,14 +49,14 @@
 	https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
 	*/
 
-	define("SUCCESSFUL", 1);
+	define("SUCCESSFUL", 0);
 	define("UNSUCCESSFUL", -1);
 
 	ini_set('display_startup_errors', 1);
 	ini_set('display_errors', 1);
 	error_reporting(-1);
 	session_start();
-	$result = generateResult(-1, "ERROR: Unknown query: " + $_POST['type'], false);
+	$result = generateResult(UNSUCCESSFUL, "ERROR: Unknown query: " + $_POST['type'], false);
 	$conn = getConnection();
 
 	if(!$conn){
@@ -77,7 +77,7 @@
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
         default:
-			$result = generateResult(-1, "Unknown request: " + $_POST['type'], false);
+			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
             break;
     }
 	echo json_encode($result);
@@ -92,12 +92,12 @@
 	        $result = runQuery($conn, $query);
 
 			if($result){
-				return generateResult(mysqli_errno($conn), "Successfully regestered user", true);
+				return generateResult(SUCCESSFUL, "Successfully regestered user", true);
 			} else {
 				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
 			}
 		}
-		return generateResult(-1, "Invalid values", false);
+		return generateResult(UNSUCCESSFUL, "Invalid values", false);
     }
 
 	function signInUser($conn, $username, $password){
@@ -108,7 +108,7 @@
 
 			if($result){
 				if(mysqli_num_rows($result) == 1){
-					return generateResult(mysqli_errno($conn), "Successfully signed-in.", true);
+					return generateResult(SUCCESSFUL, "Successfully signed-in.", true);
 				} else {
 					return generateResult(mysqli_errno($conn), "Username and password do not match.", false);
 				}
@@ -116,11 +116,11 @@
 				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
 			}
 		}
-		return generateResult(-1, "Invalid values", false);
+		return generateResult(UNSUCCESSFUL, "Invalid values", false);
 	}
 
 	function queryCityById($conn, $cityId){
-		$query = "SELECT * from `cities` WHERE `city_id`=\"$cityId\"";
+		$query = "SELECT * from `cities` WHERE `_id`=\"$cityId\"";
 		if(!is_null($cityId)){
 			$result = runQuery($conn, $query);
 
@@ -162,42 +162,40 @@
                     $result = runQuery($conn, $query);
                     $city['transportation'] = fetchAssocArray($result);
 
-
 					//UTILITIES(cityutilities)
                     $query = "SELECT * FROM `cityutilities` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
                     $result = runQuery($conn, $query);
                     $city['utilities'] = fetchAssocArray($result);
 
 					//COMMENT (comment)
-                    $query = "SELECT * FROM `comment` WHERE `city_id`=\"$cityId\" ORDER BY time-entered ASC";
+                    $query = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
                     $result = runQuery($conn, $query);
 					$commentArr = fetchAssocArray($result);
 
-					//COMMENT RATINGS (commentratings)
-                    $query = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY time-entered ASC";
-                    $result2 = runQuery($conn, $query);
-                    $ratingArr = fetchAssocArray($result2);
+                    //COMMENT RATINGS (commentratings)
+                    $query = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
+                    $result = runQuery($conn, $query);
+					$ratingArr = fetchAssocArray($result);
 
-					for($i = 0; $i < $commentArr.length; $i++){
+					for($i = 0; $i < count($commentArr); $i++){
 						//append rating to comment
-						$commentArr[i]['rating'] = $ratingArr[i];
+						$commentArr[$i]['rating'] = $ratingArr[$i];
 					}
 
-					$city['comment'] = $commentArr;
+					$city['comments'] = $commentArr;
 
-					return generateResult(mysqli_errno($conn), "Successfully queried city: $cityId", $city);
+					return generateResult(SUCCESSFUL, "Successfully queried city: $cityId", $city);
 				}
 			} else {
 				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
 			}
 		}
-		return generateResult(-1, "Invalid city ID: $cityId", false);
+		return generateResult(UNSUCCESSFUL, "Invalid city ID: $cityId", false);
 	}
 
 	/*
-	* Posting a comment
+	* Post a Comment
 	*/
-
 	function postUserComment($conn, $cityId, $userId, $comment, $happiness, $entertainment , $healthcare, $education, $housing, $crime){
 		$today = getdate();
 		$todaysdate = $today['year'] . "-" . $today['mon'] . "-" . $today['mday'] . " " . $today['hours'] . ":" . $today['minutes'] . ":" . $today['seconds'] ;
@@ -211,69 +209,35 @@
             echo mysqli_error($conn);
             echo $comment_id;
 
-			$rating = rateUserComment($conn, $comment_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
+			$rating = rateUserComment($conn, $comment_id, $city_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
 
 			if($result && $rating){
-				return generateResult(mysqli_errno($conn), "Adding comment successful" , true);
+				return generateResult(SUCCESSFUL, "Adding comment successful" , true);
 			} else {
 				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
 			}
 		}
-		return generateResult(-1, "Invalid comment", false);
+		return generateResult(UNSUCCESSFUL, "Invalid comment", false);
 	}
 
-
 	/*
-	* Rating a comment
+	* Rate a Comment
 	*/
+	function rateUserComment ($conn,  $comment_id, $city_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
 
-	function rateUserComment ($conn,  $comment_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
-
-		$query  = "INSERT INTO `commentratings` (_id, comment_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\",";
-
-		if ($happiness == 0) {
-			$query = $query + "NULL, ";
-		}
-		else
-			$query = $query . $happiness . ", ";
-
-		if ($entertainment == 0) {
-			$query = $query + "NULL, ";
-		}
-		else
-			$query = $query . $entertainment .", ";
-
-		if ($healthcare == 0) {
-			$query = $query . "NULL, ";
-		}
-		else
-			$query = $query . $healthcare . ", ";
-
-		if ($education == 0) {
-			$query = $query . "NULL, ";
-		}
-		else
-			$query = $query . $education . ", ";
-
-		if ($housing == 0) {
-			$query = $query . "NULL, ";
-		}
-		else
-			$query = $query . $housing . ", ";
-
-		if ($crime == 0) {
-			$query = $query . "NULL)";
-		}
-		else
-			$query = $query . $crime . ")";
-
-        echo "CommentRating: " . $query;
+		$query  = "INSERT INTO `commentratings` (_id, comment_id, city_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\", \"$city_id\",";
+        $valArr = [$happiness, $entertainment , $healthcare, $education, $housing, $crime];
+        foreach($valArr as $value){
+            if($value == 0){
+                $query .= "NULL, ";
+            } else {
+                $query .= $value . ", ";
+            }
+        }
 
 		$result = runQuery($conn,$query);
 		return $result;
-
-}
-
+    }
 
 	/*
 	* Utility functions
