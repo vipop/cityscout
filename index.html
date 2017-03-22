@@ -11,6 +11,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		<link rel="stylesheet" href="css/index.css">
 		<script type="text/javascript" src="js/index.js"></script>
 		<script src="js/users.js"></script>
@@ -39,10 +41,9 @@
                         <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="index.html">Cities</a></li>
                         <li><a href="compare.html">Compare</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Statistics</a></li>
                     </ul>
                </div>
              </div>
@@ -90,29 +91,22 @@
 			<div class="container-fluid" id="mainContainer">
 				<div class="row">
 					<div class="col-sm-6">
-						<h1> About us </h1>
-						<p>
-							As the world’s leading manufacturer of both planes and trains, we’ve built an extensive and diverse portfolio of winning mobility solutions.
-							Everywhere people travel by land and in the air, a Bombardier product is ready to transport them. From category-defining business jets and commercial aircraft designed for the challenges of today, to sleek high speed trains and public transit that’s smarter than ever.
-							But it’s not just our products and services that make us a global leader. The most important success factor is our employees, all 66,000 of them. Together we’re focused on making mobility more efficient, sustainable and inviting than ever before. We call it The Evolution of Mobility.
-							Bombardier is headquartered in Montréal, Canada. Our shares are traded on the Toronto Stock Exchange (BBD) and we are listed on the Dow Jones Sustainability North America Index. In the fiscal year ended December 31, 2016, we posted revenues of $16.3 billion.
-						</p>
+
 					</div>
 					<div class="col-sm-6">
-						<h1> City </h1>
+						<h1> SELECT CITY </h1>
 						<ul>
-							<li id="toronto" onClick="loadCity(this)">Toronto (Canada)</a></li>
-							<li id="vancouver" onClick="loadCity(this)">Vancouver (Canada)</a></li>
-							<li id="montreal" onClick="loadCity(this)">Montreal (Canada)</a></li>
-							<li id="newYork" onClick="loadCity(this)">New York(USA)</a></li>
-							<li id="losAngeles" onClick="loadCity(this)">Los Angeles(USA)</a></li>
-							<li id="london" onClick="loadCity(this)">London (England)</a></li>
-							<li id="paris" onClick="loadCity(this)">Paris (France)</a></li>
-							<li id="shanghai" onClick="loadCity(this)">Shanghai(China)</a></li>
-							<li id="tokyo" onClick="loadCity(this)">Tokyo(Japan)</a></li>
-							<li id="bucharest" onClick="loadCity(this)">Bucharest(Romania)</a></li>
+							<li class="city" id="toronto" onClick="loadCity(this)">Toronto (Canada)</a></li>
+							<li class="city" id="vancouver" onClick="loadCity(this)">Vancouver (Canada)</a></li>
+							<li class="city" id="montreal" onClick="loadCity(this)">Montreal (Canada)</a></li>
+							<li class="city" id="newYork" onClick="loadCity(this)">New York(USA)</a></li>
+							<li class="city" id="losAngeles" onClick="loadCity(this)">Los Angeles(USA)</a></li>
+							<li class="city" id="london" onClick="loadCity(this)">London (England)</a></li>
+							<li class="city" id="paris" onClick="loadCity(this)">Paris (France)</a></li>
+							<li class="city" id="shanghai" onClick="loadCity(this)">Shanghai(China)</a></li>
+							<li class="city" id="tokyo" onClick="loadCity(this)">Tokyo(Japan)</a></li>
+							<li class="city" id="bucharest" onClick="loadCity(this)">Bucharest(Romania)</a></li>
 						</ul>
-						<p> More cities will be add at a later date </p>
 					</div>
 				</div>
 			</div>
