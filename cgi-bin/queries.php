@@ -10,7 +10,7 @@
 				['password'] - the desired password for the new user
 				['email'] - the email for the new user
 			Result:
-				['result-code'] - 1 if registration was successful, -1 if not
+				['code'] - 1 if registration was successful, -1 if not
 				['message'] - the error/success message
 				['data'] - true or false indicating success
 	SIGN_IN_USER: Attempts to sign in the user with the specified credentials
@@ -18,24 +18,30 @@
 				['username'] - the username of the user
 				['password'] - the password of the user
 			Result:
-				['result-code'] - the mysql errno (see link below)
+				['code'] - the mysql errno (see link below)
 				['message'] - the error/success message
 				['data'] - the session hash for the user
 	QUERY_CITY: Query all relevant information about the specified city
 			Required Fields:
-				['city-id'] - the id of the city;
+				['city_id'] - the id of the city;
 			Result:
-				['result-code'] - -1 if the parameters are unacceptable, or the
+				['code'] - -1 if the parameters are unacceptable, or the
 					mysql errno
 				['message'] - the error/success message
 				['data'] - the JSON encoding of the city
-	POST_COMMENT_ON_CITY:
+	POST_COMMENT_ON_CITY: Posts a comment on a city with a specific ratings
 			Required Fields:
-				['city-id'] - the ID for the city to comment on
-				['user-id'] - the ID for the user that is making the comment
+				['city_id'] - the ID for the city to comment on
+				['username'] - the ID for the user that is making the comment
 				['comment'] - the text for the comment
+                ['happiness'] - the hapiness rating from 0-5 (0 is NULL)
+                ['entertainment'] - the entertainment rating from 0-5 (0 is NULL)
+                ['healthcare'] - the healthcare rating from 0-5 (0 is NULL)
+                ['education'] - the education rating from 0-5 (0 is NULL)
+                ['housing'] - the housing rating from 0-5 (0 is NULL)
+                ['crime'] - the crime rating from 0-5 (0 is NULL)
 			Result:
-				['result-code'] - -1 if the parameters are unacceptable, or the
+				['code'] - -1 if the parameters are unacceptable, or the
 					mysql errno
 				['message'] - the error/success message
 				['data'] - true or false indicating success
@@ -76,8 +82,6 @@
     }
 	echo json_encode($result);
 	mysqli_close($conn);
-
-//postUserComment($conn, $cityId, $userId, $comment, $happiness, $entertainment , $healthcare, $education, $housing, $crime)
 
 	/**
 	* Query functions
