@@ -29,15 +29,6 @@
 					mysql errno
 				['message'] - the error/success message
 				['data'] - the JSON encoding of the city
-	COMPARE_CITIES:
-			Required Fields:
-				['city-id-1']: the ID for the first city to be compared
-				['city-id-2']: the ID for the second city to be compared
-			Result:
-				['result-code'] - -1 if the parameters are unacceptable, or the
-					mysql errno
-				['message'] - the error/success message
-				['data'] - the JSON encoding of the pair of cities
 	POST_COMMENT_ON_CITY:
 			Required Fields:
 				['city-id'] - the ID for the city to comment on
@@ -74,13 +65,10 @@
 			$result = signInUser($conn, $_POST['username'], $_POST['password']);
 			break;
 		case "QUERY_CITY":
-			$result = queryCityById($conn, $_POST['city-id']);
-			break;
-		case "COMPARE_CITIES":
-			$result = compareCities($conn, $_POST['city-id-1'], $_POST['city-id-2']);
+			$result = queryCityById($conn, $_POST['city_id']);
 			break;
 		case "POST_COMMENT_ON_CITY":
-			$result = postUserComment($conn, $_POST['city-id'], $_POST['user-id'], $_POST['comment']);
+			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
         default:
 			$result = generateResult(-1, "Unknown request: " + $_POST['type'], false);
@@ -88,6 +76,8 @@
     }
 	echo json_encode($result);
 	mysqli_close($conn);
+
+//postUserComment($conn, $cityId, $userId, $comment, $happiness, $entertainment , $healthcare, $education, $housing, $crime)
 
 	/**
 	* Query functions
@@ -126,7 +116,7 @@
 	}
 
 	function queryCityById($conn, $cityId){
-		$query = "SELECT * from `cities` WHERE `_id`=\"$cityId\"";
+		$query = "SELECT * from `cities` WHERE `city_id`=\"$cityId\"";
 		if(!is_null($cityId)){
 			$result = runQuery($conn, $query);
 
@@ -135,18 +125,61 @@
 					$generalInfo = mysqli_fetch_assoc($result);
 
 					$city = array();
-                    //GENERAL INFO
+                    //GENERAL INFO (Cities)
 					$city['general'] = $generalInfo;
 
-                    //LANGUAGE INFO
+                    //LANGUAGE INFO (citylanguages)
                     $query  = "SELECT * FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
                     $city['languages'] = fetchAssocArray($result);
 
-                    //ATTRACTION INFO
+                    //ATTRACTION INFO (cityentertainment)
                     $query = "SELECT * FROM `cityentertainment` WHERE `city_id`=\"$cityId\" ORDER BY type ASC, rank ASC";
                     $result = runQuery($conn, $query);
                     $city['attractions'] = fetchAssocArray($result);
+
+					 //FOOD (cityfood) ***** CHECK IF ASC OR DESC NEEDED
+                    $query = "SELECT * FROM `cityfood` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
+                    $result = runQuery($conn, $query);
+                    $city['food'] = fetchAssocArray($result);
+
+					 //HOUSING (cityhousing)
+                    $query = "SELECT * FROM `cityhousing` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $result = runQuery($conn, $query);
+                    $city['housing'] = fetchAssocArray($result);
+
+					//GDP/GEI.... (cityindices)
+                    $query = "SELECT * FROM `cityindices` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
+                    $result = runQuery($conn, $query);
+                    $city['indices'] = fetchAssocArray($result);
+
+					//TRANSPORTATION (citytransportation)
+                    $query = "SELECT * FROM `citytransportation` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $result = runQuery($conn, $query);
+                    $city['transportation'] = fetchAssocArray($result);
+
+
+					//UTILITIES(cityutilities)
+                    $query = "SELECT * FROM `cityutilities` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $result = runQuery($conn, $query);
+                    $city['utilities'] = fetchAssocArray($result);
+
+					//COMMENT (comment)
+                    $query = "SELECT * FROM `comment` WHERE `city_id`=\"$cityId\" ORDER BY time-entered ASC";
+                    $result = runQuery($conn, $query);
+					$commentArr = fetchAssocArray($result);
+
+					//COMMENT RATINGS (commentratings)
+                    $query = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY time-entered ASC";
+                    $result2 = runQuery($conn, $query);
+                    $ratingArr = fetchAssocArray($result2);
+
+					for($i = 0; $i < $commentArr.length; $i++){
+						//append rating to comment
+						$commentArr[i]['rating'] = $ratingArr[i];
+					}
+
+					$city['comment'] = $commentArr;
 
 					return generateResult(mysqli_errno($conn), "Successfully queried city: $cityId", $city);
 				}
@@ -157,13 +190,86 @@
 		return generateResult(-1, "Invalid city ID: $cityId", false);
 	}
 
-	function compareCities($conn, $cityId1, $cityId2){
-		//TODO
+	/*
+	* Posting a comment
+	*/
+
+	function postUserComment($conn, $cityId, $userId, $comment, $happiness, $entertainment , $healthcare, $education, $housing, $crime){
+		$today = getdate();
+		$todaysdate = $today['year'] . "-" . $today['mon'] . "-" . $today['mday'] . " " . $today['hours'] . ":" . $today['minutes'] . ":" . $today['seconds'] ;
+
+		$query = "INSERT INTO `comments` (_id, city_id, user_id, comment, time_entered) VALUES (NULL, \"$cityId\", \"$userId\", \"$comment\", \"$todaysdate\")";
+
+		if(!is_null($cityId) && !is_null($userId) && !is_null($comment)){
+			$result = runQuery($conn, $query);
+			$comment_id = mysqli_insert_id($conn);
+
+            echo mysqli_error($conn);
+            echo $comment_id;
+
+			$rating = rateUserComment($conn, $comment_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
+
+			if($result && $rating){
+				return generateResult(mysqli_errno($conn), "Adding comment successful" , true);
+			} else {
+				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
+			}
+		}
+		return generateResult(-1, "Invalid comment", false);
 	}
 
-	function postUserComment($conn, $cityId, $userId, $comment){
-		//TODO
-	}
+
+	/*
+	* Rating a comment
+	*/
+
+	function rateUserComment ($conn,  $comment_id, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
+
+		$query  = "INSERT INTO `commentratings` (_id, comment_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\",";
+
+		if ($happiness == 0) {
+			$query = $query + "NULL, ";
+		}
+		else
+			$query = $query . $happiness . ", ";
+
+		if ($entertainment == 0) {
+			$query = $query + "NULL, ";
+		}
+		else
+			$query = $query . $entertainment .", ";
+
+		if ($healthcare == 0) {
+			$query = $query . "NULL, ";
+		}
+		else
+			$query = $query . $healthcare . ", ";
+
+		if ($education == 0) {
+			$query = $query . "NULL, ";
+		}
+		else
+			$query = $query . $education . ", ";
+
+		if ($housing == 0) {
+			$query = $query . "NULL, ";
+		}
+		else
+			$query = $query . $housing . ", ";
+
+		if ($crime == 0) {
+			$query = $query . "NULL)";
+		}
+		else
+			$query = $query . $crime . ")";
+
+        echo "CommentRating: " . $query;
+
+		$result = runQuery($conn,$query);
+		return $result;
+
+}
+
 
 	/*
 	* Utility functions
