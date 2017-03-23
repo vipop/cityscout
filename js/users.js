@@ -11,6 +11,7 @@ function login() {
 		var json = JSON.parse(result);
 		if (json["code"] == 0) {
 			// log in the user
+			sessionStorage.setItem("userId", username);
 		} else {
 			// do not log in user
 			// show error
@@ -70,4 +71,5 @@ function sendRequest(url, params, successCallback, failureCallback){
         console.log("ERROR: Request timed out");
     }
     http.send(params);
+	console.log("Send request");
 }

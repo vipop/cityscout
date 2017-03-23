@@ -1,11 +1,12 @@
 window.onload = function() {
 	// information variables
-	var city, lat, lon, country, lang, pop, area, web, mayor, background, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime;
-
+	var city,lat,lon, country, lang, pop, area, web, mayor, background, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime;
 	// get city
 	city = getCity();
+	getCityInformation(city); //queries from database 
+};
 
-	// replace this with database queries
+function loadCity(city, json){
 	switch(city) {
 		case "toronto":
 			// map
@@ -210,15 +211,28 @@ window.onload = function() {
 			break;
 	}
 	// replace this with database queries
-
 	initTopInfo(country, lang, pop, area, web);
 	initCityBanner(city);
 	initMap(lat, lon, document.getElementById("map-div"));
 	initBackground(background);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
-	displayComments();
+	loadComments(json); //This function is defined in the comments.js
+}
 
-};
+function getCityInformation(city){
+	var url = "cgi-bin/queries.php";
+	var params = "type=QUERY_CITY&city_id=" + city;
+	sendRequest(url,params,
+			function(result){
+				var json = JSON.parse(result);
+				if(json.code == 0){
+					loadCity(city, json);
+					//return json;
+				}
+			},function(){
+			console.log("Fail to receive city information");
+	});
+}
 
 function getCity(){
 	var search = new URLSearchParams(window.location.search);

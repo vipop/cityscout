@@ -2,6 +2,10 @@
     /*=========================================================================\
 	| API                                                                      |
 	\==========================================================================/
+    The response code can have different values depending on the result:
+            -1 - One or more of the parameters were invalid (usually NULL)
+            0 - The request was successful
+    Otherwise, it will be the mysqli error code
 
 	Must have ['type'] set to one of the following values:
 	REGISTER_USER: Registers a new user with the specified credentials
@@ -10,7 +14,7 @@
 				['password'] - the desired password for the new user
 				['email'] - the email for the new user
 			Result:
-				['code'] - 1 if registration was successful, -1 if not
+				['code'] - See above
 				['message'] - the error/success message
 				['data'] - true or false indicating success
 	SIGN_IN_USER: Attempts to sign in the user with the specified credentials
@@ -18,17 +22,23 @@
 				['username'] - the username of the user
 				['password'] - the password of the user
 			Result:
-				['code'] - the mysql errno (see link below)
+				['code'] - See above
 				['message'] - the error/success message
 				['data'] - the session hash for the user
 	QUERY_CITY: Query all relevant information about the specified city
 			Required Fields:
 				['city_id'] - the id of the city;
 			Result:
-				['code'] - -1 if the parameters are unacceptable, or the
-					mysql errno
+				['code'] - See above
 				['message'] - the error/success message
 				['data'] - the JSON encoding of the city
+    QUERY_COMMENTS: Query the comments for the specified city
+            Required Fields:
+                ['city_id'] - the id of the city;
+            Result:
+                ['code'] - See above
+                ['message'] - the error/success message
+                ['data'] - the JSON encoding of the city
 	POST_COMMENT_ON_CITY: Posts a comment on a city with a specific ratings
 			Required Fields:
 				['city_id'] - the ID for the city to comment on
@@ -41,8 +51,7 @@
                 ['housing'] - the housing rating from 0-5 (0 is NULL)
                 ['crime'] - the crime rating from 0-5 (0 is NULL)
 			Result:
-				['code'] - -1 if the parameters are unacceptable, or the
-					mysql errno
+				['code'] - See above
 				['message'] - the error/success message
 				['data'] - true or false indicating success
 
@@ -73,6 +82,8 @@
 		case "QUERY_CITY":
 			$result = queryCityById($conn, $_POST['city_id']);
 			break;
+        case "QUERY_COMMENTS":
+            $result = queryCommentsForCity($conn, $_POST['city_id']);
 		case "POST_COMMENT_ON_CITY":
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
@@ -168,23 +179,14 @@
                     $city['utilities'] = fetchAssocArray($result);
 
 					//COMMENT (comment)
-                    $query = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
-                    $result = runQuery($conn, $query);
-					$commentArr = fetchAssocArray($result);
+                    $response = queryCommentsForCity($conn, $cityId);
+                    if($response['code'] == 0){
+                        $city['comments'] = $response['data'];
 
-                    //COMMENT RATINGS (commentratings)
-                    $query = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
-                    $result = runQuery($conn, $query);
-					$ratingArr = fetchAssocArray($result);
-
-					for($i = 0; $i < count($commentArr); $i++){
-						//append rating to comment
-						$commentArr[$i]['rating'] = $ratingArr[$i];
-					}
-
-					$city['comments'] = $commentArr;
-
-					return generateResult(SUCCESSFUL, "Successfully queried city: $cityId", $city);
+    					return generateResult(SUCCESSFUL, "Successfully queried city: $cityId", $city);
+                    } else {
+    					return $response;
+                    }
 				}
 			} else {
 				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
@@ -192,6 +194,31 @@
 		}
 		return generateResult(UNSUCCESSFUL, "Invalid city ID: $cityId", false);
 	}
+
+    function queryCommentsForCity($conn, $cityId){
+        $query1 = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
+        $query2 = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
+		if(!is_null($cityId)){
+			$result1 = runQuery($conn, $query1);
+            $result2 = runQuery($conn, $query2);
+
+			if($result1 && $result2){
+
+				$commentArr = fetchAssocArray($result1);
+				$ratingArr = fetchAssocArray($result2);
+
+				for($i = 0; $i < count($commentArr); $i++){
+					//append rating to comment
+					$commentArr[$i]['rating'] = $ratingArr[$i];
+				}
+
+				return generateResult(SUCCESSFUL, "Successfully queried city: $cityId", $commentArr);
+			} else {
+				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
+			}
+		}
+		return generateResult(UNSUCCESSFUL, "Invalid city ID: $cityId", false);
+    }
 
 	/*
 	* Post a Comment
