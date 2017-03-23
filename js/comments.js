@@ -27,11 +27,11 @@ function displayComments(comments){
 	while(document.getElementById("displayComments").firstChild){
 		document.getElementById("displayComments").removeChild(document.getElementById("displayComments").firstChild);
 	}
+	var parent_div = document.getElementById("displayComments");
 	for(var i=0;i<comments.length;i++){
-		var parent_div = document.getElementById("displayComments");
-		parent_div.setAttribute("class","panel panel-default");
-		parent_div.setAttribute("style","padding:5px");
-		var aComment=comments[i];
+		var commentParentDiv = document.createElement("DIV");
+		commentParentDiv.setAttribute("class","panel panel-default");
+		commentParentDiv.setAttribute("style","padding:5px; margin:5px;");
 		
 		var text=aComment.comment;
 		var userName = aComment.user_id;	
@@ -67,8 +67,9 @@ function displayComments(comments){
 		displayCommentHelper(ratingContainer,"Crime",crime_rating);
 
 		internalDiv.appendChild(ratingContainer);
-		parent_div.appendChild(userNameHeader);
-		parent_div.appendChild(internalDiv);
+		commentParentDiv.appendChild(userNameHeader);
+		commentParentDiv.appendChild(internalDiv);
+		parent_div.appendChild(commentParentDiv);
 	}
 
 }
@@ -80,7 +81,7 @@ function displayCommentHelper(div,attribute,numberOfStars){
 	var divTemp = document.createElement("DIV");
 	divTemp.setAttribute("Class","starContainer");
 	divTemp.appendChild(p);
-	//Remeber case must be string for database
+	//Remember cases must be string for database
 	switch(numberOfStars){
 		case "1":
 			loop(divTemp,1,"lessStars");
@@ -150,7 +151,7 @@ function requestComment(cityName){
 					displayComments(json.data);
 				}
 			},function(){
-			console.log("Fail to recieve comments");
+			console.log("Fail to receive comments");
 	});
 }
 
