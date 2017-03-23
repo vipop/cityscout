@@ -84,6 +84,7 @@
 			break;
         case "QUERY_COMMENTS":
             $result = queryCommentsForCity($conn, $_POST['city_id']);
+            break;
 		case "POST_COMMENT_ON_CITY":
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
@@ -196,8 +197,8 @@
 	}
 
     function queryCommentsForCity($conn, $cityId){
-        $query1 = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
-        $query2 = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id ASC";
+        $query1 = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
+        $query2 = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
 		if(!is_null($cityId)){
 			$result1 = runQuery($conn, $query1);
             $result2 = runQuery($conn, $query2);
@@ -231,15 +232,20 @@
 
 		if(!is_null($cityId) && !is_null($userId) && !is_null($comment)){
 			$result = runQuery($conn, $query);
-			$comment_id = mysqli_insert_id($conn);
 
-			$rating = rateUserComment($conn, $comment_id, $cityId, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
+            if($result){
+    			$comment_id = mysqli_insert_id($conn);
 
-			if($result && $rating){
-				return generateResult(SUCCESSFUL, "Adding comment successful" , true);
-			} else {
-				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
-			}
+    			$rating = rateUserComment($conn, $comment_id, $cityId, $happiness, $entertainment , $healthcare, $education, $housing, $crime);
+
+    			if($rating){
+    				return generateResult(SUCCESSFUL, "Adding comment successful" , true);
+    			} else {
+    				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
+    			}
+            } else {
+                return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
+            }
 		}
 		return generateResult(UNSUCCESSFUL, "Invalid comment", false);
 	}
@@ -278,8 +284,6 @@
 	}
 
 	function runQuery($conn, $query){
-        //echo $query;
-
 		return mysqli_query($conn, $query);
 	}
 
