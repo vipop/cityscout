@@ -29,6 +29,7 @@ function displayComments(comments){
 	}
 	var parent_div = document.getElementById("displayComments");
 	for(var i=0;i<comments.length;i++){
+		var aComment = comments[i];
 		var commentParentDiv = document.createElement("DIV");
 		commentParentDiv.setAttribute("class","panel panel-default");
 		commentParentDiv.setAttribute("style","padding:5px; margin:5px;");

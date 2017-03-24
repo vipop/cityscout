@@ -1,9 +1,15 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+   if(sessionStorage.getItem("userId") != null){
+		displayFullContent();
+	}
+});
 window.onload = function() {
 	// information variables
 	var city,lat,lon, country, lang, pop, area, web, mayor, background, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime;
 	// get city
 	city = getCity();
-	getCityInformation(city); //queries from database 
+	getCityInformation(city); //queries from database
+	
 };
 
 function loadCity(city, json){
@@ -218,7 +224,6 @@ function loadCity(city, json){
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 	loadComments(json); //This function is defined in the comments.js
 }
-
 function getCityInformation(city){
 	var url = "cgi-bin/queries.php";
 	var params = "type=QUERY_CITY&city_id=" + city;
@@ -234,6 +239,9 @@ function getCityInformation(city){
 	});
 }
 
+function hideCityAttributes(){
+
+};
 function getCity(){
 	var search = new URLSearchParams(window.location.search);
 	var city = search.get('city');

@@ -2,7 +2,9 @@ html, body {
 	background-color: whitesmoke;
 	color: #222222;
 }
-
+#compareLink,#signOutButton{
+	display:none;
+}
 body {
 	margin-top: 70px;
 }
