@@ -2,7 +2,7 @@
     <head>
         <title>CityScout</title>
         <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- jQuery library -->
@@ -25,9 +25,9 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                     </button>
                     <a id="brand-name" class="navbar-brand" href="index.html">CityScout</a>
                 </div>
@@ -47,14 +47,13 @@
                         <li><a href="compare.html">Compare</a></li>
                         <li><a href="#">About</a></li>
                     </ul>
-               </div>
-             </div>
+                </div>
+            </div>
         </nav>
-
         <!-- Registration Modal -->
         <div id="signup" class="modal fade" role="dialog">
             <div class="modal-dialog">
-            <!-- Modal content-->
+                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
@@ -64,8 +63,8 @@
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
                             <div id="registration-success" style="display:none">
-								<p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
-							</div>
+                                <p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
+                            </div>
                             <div class="form-group">
                                 <label for="inputName" class="control-label">Username</label>
                                 <input id="register-username" type="text" class="form-control" placeholder="Username">
@@ -82,13 +81,180 @@
                             </div>
                             <hr />
                             <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
-							<button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+                            <button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- Housing Modal -->
+        <div id="housingModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Housing</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Property Type</label>
+                                <select id="property-type" class="form-control">
+                                    <option>House</option>
+                                    <option>Appartment/Condo</option>
+                                </select>
+                                <p class="help-block">Property type , House Vs Condo</p>
+                                <label for="inputName" class="control-label">Price</label>
+                                <input id="housing-price" type="number"  class="form-control" placeholder=" Price">
+                                <p class="help-block">Average property price/Rent</p>
+                                <label for="inputName" class="control-label">Currency</label>
+                                <select id="property-cost-description" class="form-control">
+                                    <option>$</option>
+                                    <option>€</option>
+                                    <option>£</option>
+                                </select>
+                                <hr>
+                                <button type="button" class="btn btn-success center-block">Submit</button>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Utilities</label>
+                                <input id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost">
+                                <p class="help-block">Utilities cost.</p>
+                                <label for="inputName" class="control-label">Type</label>
+                                <select id="Utilities-cost-description" class="form-control">
+                                    <option>Electricity</option>
+                                    <option>Internet</option>
+                                    <option>Water</option>
+                                </select>
+                                <hr>
+                                <button type="button" class="btn btn-success center-block">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Modal -->
+        <div id="foodModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Food</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Type</label>
+                                <select id="food-group" class="form-control">
+                                    <option>Grains</option>
+                                    <option>Protein</option>
+                                    <option>Fruits and Vegetables</option>
+                                    <option>Dairy</option>
+                                </select>
+                                <label for="inputName" class="control-label">Description</label>
+                                <input id="food-description" type="text" class="form-control" placeholder="Description">
+                                <p class="help-block">Description (Loaf/pound/pint/etc..).</p>
+                                <label for="inputName" class="control-label">Cost</label>
+                                <input id="food-prices" type="number" class="form-control" placeholder="Cost">
+                                <p class="help-block">Cost.</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Transportation Modal -->
+        <div id="transportationModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Transportation</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Type</label>
+                                <select id="transportation-type" class="form-control">
+                                    <option>Public (Subway, bus,etc)</option>
+                                    <option>Personal (own car)</option>
+                                    <option>Private (Uber, taxi,etc)</option>
+                                </select>
+                                <br>
+                                <label for="inputName" class="control-label">Description</label>
+                                <input id="transportation-description" type="text" class="form-control" placeholder="Description">
+                                <p class="help-block">Description (Adult/child/senior/etc)</p>
+                                <label for="inputName" class="control-label">Cost</label>
+                                <input id="transportation-prices" type="number" class="form-control" placeholder="Cost">
+                                <p class="help-block">Cost.(For cars enter average price of gas)</p>
+                                <label for="inputName" class="control-label">Provider</label>
+                                <input id="transportation-provider" type="text" class="form-control" placeholder="Provider">
+                                <p class="help-block">Name of provider</p>
+                                <label for="inputName" class="control-label">Link</label>
+                                <input id="transportation-provider-link" type="text" class="form-control" placeholder="Provider">
+                                <p class="help-block">Link/URL to provider's website</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Entertainment Modal -->
+        <div id="entertainmentModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Entertainment</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Type</label>
+                                <select id="entertainment-type" class="form-control">
+                                    <option>Attraction</option>
+                                    <option>Music</option>
+                                    <option>Movies</option>
+                                    <option>Theatre</option>
+                                </select>
+                                <br>
+                                <label for="inputName" class="control-label">Name</label>
+                                <input id="entertainment-name" type="text" class="form-control" placeholder="Name">
+                                <p class="help-block">Name of entertainment item</p>
+                                <label for="inputName" class="control-label">Cost</label>
+                                <input id="entertainment-prices" type="number" class="form-control" placeholder="Cost">
+                                <p class="help-block">Cost of ticket/entry to entertainment item</p>
+                                <label for="inputName" class="control-label">About</label>
+                                <input id="entertainment-about" type="text" class="form-control" placeholder="About">
+                                <p class="help-block">brief about this item</p>
+                                <label for="inputName" class="control-label">Link</label>
+                                <input id="entertainment-provider-link" type="text" class="form-control" placeholder="Link">
+                                <p class="help-block">Link/URL to provider's website</p>
+                                <label for="inputName" class="control-label">Location</label>
+                                <input id="entertainment-location" type="text" class="form-control" placeholder="Location">
+                                <p class="help-block">Location of entertainment venue</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Content -->
         <div class="container-fluid">
             <!-- Top Information -->
@@ -150,7 +316,9 @@
             <div class="row ninety">
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-book"></span>Background</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="background"></p>
@@ -159,7 +327,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+                        </div>
                         <hr />
                         <div class="row">
                             <div class="col-sm-2">
@@ -231,7 +401,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-flash"></span>Weather</h3>
+                        </div>
                         <hr />
                         <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
                     </div>
@@ -242,7 +414,12 @@
             <div class="row ninety">
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-home"></span>Housing</h3></div>
+                        <div class="panel-heading">
+                            <h3>
+                                <span class="glyphicon glyphicon-home"></span>Housing
+                            </h3>
+                            <a type="button" style="float: right;" class="btn btn-link" data-toggle="modal" data-target="#housingModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="housing">This is housing.</p>
@@ -251,7 +428,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="employment">This is employment.</p>
@@ -260,7 +439,10 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-road"></span>Transportation</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                            <a type="button" style="float: right;" class="btn btn-link" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="transportation">This is transportation.</p>
@@ -273,7 +455,9 @@
             <div class="row ninety">
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-education"></span>Education</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-education"></span>Education</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="education">This is education.</p>
@@ -282,7 +466,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="healthcare">This is healthcare.</p>
@@ -291,7 +477,9 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-tower"></span>Politics</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-tower"></span>Politics</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="politics">This is politics.</p>
@@ -304,7 +492,9 @@
             <div class="row ninety">
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="attractions">This is attractions.</p>
@@ -313,7 +503,10 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
+                            <a type="button" style="float: right;" class="btn btn-link" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="entertainment">This is entertainment.</p>
@@ -322,7 +515,10 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                            <a type="button" style="float: right;" class="btn btn-link" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <p id="food">This is food.</p>
@@ -334,7 +530,9 @@
             <div class="row ninety">
                 <div class="col-sm-12">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-comment"></span>Leave a comment</h3></div>
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-comment"></span>Leave a comment</h3>
+                        </div>
                         <hr />
                         <div class="panel-body">
                             <div class="row">
@@ -350,7 +548,7 @@
                                         <div style="float: right;" id="happiness-rating"></div>
                                     </div>
                                     <div style="clear:both"></div>
-                                     <div id="rating2" style="margin-left: 10.5%; width: 80%">
+                                    <div id="rating2" style="margin-left: 10.5%; width: 80%">
                                         <span style="float: left;">Entertainment</span>
                                         <div style="float: right;" id="entertainment-rating"></div>
                                     </div>
