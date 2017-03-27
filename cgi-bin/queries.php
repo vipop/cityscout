@@ -89,7 +89,7 @@
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
         case "POST_CONTRIBUTION":
-            $result = postContribution($conn, $_POST['city_id'], $_POST['field']);
+            $result = postContribution($conn, $_POST['city_id'], $_POST['field'], $_POST);
             break;
         default:
 			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
@@ -288,17 +288,17 @@
     */
     function postContribution($conn, $city_id, $field, $post){
         if($city_id){
+            $result = generateResult(UNSUCCESSFUL, "Unknown field: " + $field, false)
             switch ($post['field']) {
                 case 'value':
-                    # code...
-                    break;
 
+                    break;
                 default:
-                    # code...
                     break;
             }
+            return $result;
         } else {
-
+            return generateResult(UNSUCCESSFUL, "Invalid city", false)
         }
     }
 

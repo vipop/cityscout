@@ -3,39 +3,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		displayFullContent();
 	}
 });
+
 window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
-	
+
 };
 
 function loadCity(city, json){
 	//top basic information
+    var cityName = json.data.general.name;
 	var country = json.data.general.country;
 	var language = json.data.languages[0].name;
 	var pop = json.data.general.population;
-	var area = json.data.general.area+"&sup2;";
+	var area = json.data.general.area + " km&sup2;";
 	var lat = json.data.general.lat;
 	var lng = json.data.general.lng;
 	var gdp = json.data.general.gdp;
-	//Background 
-	var history = json.data.general.history;	
-	//Overview 
-	var ovHappiness = json.data.rating.happiness;
-	var ovEntertainment = json.data.rating.entertainment;
-	var ovEducation = json.data.rating.education;
-	var ovHousing = json.data.rating.housing;
-	var ovCrime = json.data.rating.crime;
+	//Background
+	var history = json.data.general.history;
+	//Overview
+	var ovHappiness = json.data.ratings[0].happiness;
+	var ovEntertainment = json.data.ratings[0].entertainment;
+    var ovHealthcare = json.data.ratings[0].healthcare;
+	var ovEducation = json.data.ratings[0].education;
+	var ovHousing = json.data.ratings[0].housing;
+	var ovCrime = json.data.ratings[0].crime;
 	//Transportation
-	
+
 	//Education
 	//Entertainment
 	//Food
-}
 	// replace this with database queries
-	initTopInfo(country,language, pop, area,gdp);
-	initCityBanner(city);
-	initMap(lat,lng, document.getElementById("map-div"));
+	initTopInfo(country, language, pop, area, gdp);
+	initCityBanner(city, cityName);
+	initMap(parseFloat(lat), parseFloat(lng), document.getElementById("map-div"));
 	initBackground(history);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 	loadComments(json); //This function is defined in the comments.js
@@ -45,7 +47,9 @@ function getCityInformation(city){
 	var params = "type=QUERY_CITY&city_id=" + city;
 	sendRequest(url,params,
 			function(result){
-				var json = JSON.parse(result);
+                var json = JSON.parse(result);
+                console.log(result);
+                console.log(json);
 				if(json.code == 0){
 					loadCity(city, json);
 					//return json;
@@ -54,6 +58,7 @@ function getCityInformation(city){
 			console.log("Fail to receive city information");
 	});
 }
+
 function getCity(){
 	var search = new URLSearchParams(window.location.search);
 	var city = search.get('city');
@@ -68,15 +73,15 @@ function initTopInfo(country, lang, pop, area, gdp) {
 	document.getElementById("top-info-gdp").innerHTML = gdp;
 }
 
-function initCityBanner(city){
-	if(city == "losAngeles") document.getElementById("header-text").innerHTML = "LOS ANGELES";
-	else if(city == "newYork") document.getElementById("header-text").innerHTML = "NEW YORK";
-	else document.getElementById("header-text").innerHTML = city.toUpperCase();
+function initCityBanner(city, cityName){
+	document.getElementById("header-text").innerHTML = cityName.toUpperCase();
 	document.getElementById("header").style.backgroundImage = "url('images/" + city + "Image.jpg')";
-};
+}
+
 function initBackground(background) {
 	document.getElementById("background").innerHTML = background;
 }
+
 function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime) {
 	// set color, text and width of happiness bar
 	document.getElementById("ov-happiness-bar").style["background-color"] = "#eec485";
