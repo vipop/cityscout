@@ -88,6 +88,9 @@
 		case "POST_COMMENT_ON_CITY":
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
+        case "POST_CONTRIBUTION":
+            $result = postContribution($conn, $_POST['city_id'], $_POST['field']);
+            break;
         default:
 			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
             break;
@@ -145,39 +148,48 @@
 					$city['general'] = $generalInfo;
 
                     //LANGUAGE INFO (citylanguages)
-                    $query  = "SELECT * FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
+                    $query  = "SELECT `name`, `population` FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
                     $city['languages'] = fetchAssocArray($result);
 
                     //ATTRACTION INFO (cityentertainment)
-                    $query = "SELECT * FROM `cityentertainment` WHERE `city_id`=\"$cityId\" ORDER BY type ASC, rank ASC";
+                    $query = "SELECT `type`, `rank`, `name`, `about`, `cost`, `cost_desc`, `image`, `link`, `location` FROM `cityentertainment` WHERE `city_id`=\"$cityId\" ORDER BY type ASC, rank ASC";
                     $result = runQuery($conn, $query);
                     $city['attractions'] = fetchAssocArray($result);
 
-					 //FOOD (cityfood) ***** CHECK IF ASC OR DESC NEEDED
-                    $query = "SELECT * FROM `cityfood` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
+					//FOOD (cityfood) ***** CHECK IF ASC OR DESC NEEDED
+                    //$query = "SELECT * FROM `cityfood` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
+                    $query = "SELECT `name`, `cost_desc`, AVG(`cost`) AS `cost` FROM `cityfood` WHERE city_id=\"$cityId\" GROUP BY name ORDER BY name ASC";
                     $result = runQuery($conn, $query);
                     $city['food'] = fetchAssocArray($result);
 
 					 //HOUSING (cityhousing)
-                    $query = "SELECT * FROM `cityhousing` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    //$query = "SELECT * FROM `cityhousing` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $query = "SELECT type, cost_desc, AVG(cost) AS `cost` FROM `cityhousing` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type ASC";
                     $result = runQuery($conn, $query);
                     $city['housing'] = fetchAssocArray($result);
 
 					//GDP/GEI.... (cityindices)
-                    $query = "SELECT * FROM `cityindices` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
+                    $query = "SELECT `name`, `value_desc`, `value` FROM `cityindices` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
                     $result = runQuery($conn, $query);
                     $city['indices'] = fetchAssocArray($result);
 
 					//TRANSPORTATION (citytransportation)
-                    $query = "SELECT * FROM `citytransportation` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    //$query = "SELECT * FROM `citytransportation` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost`, `provider`, `link` FROM `citytransportation` WHERE `city_id`=\"$cityId\" GROUP BY `type` ORDER BY `type` ASC";
                     $result = runQuery($conn, $query);
                     $city['transportation'] = fetchAssocArray($result);
 
 					//UTILITIES(cityutilities)
-                    $query = "SELECT * FROM `cityutilities` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    //$query = "SELECT * FROM `cityutilities` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
+                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost` FROM `cityutilities` WHERE `city_id`=\"$cityId\" GROUP BY `type` ORDER BY `type`";
                     $result = runQuery($conn, $query);
                     $city['utilities'] = fetchAssocArray($result);
+
+                    //USERRATINGS
+                    $query = "SELECT AVG(`happiness`) AS `happiness`, AVG(`entertainment`) AS `entertainment`, AVG(`healthcare`) AS `healthcare`, AVG(`education`) AS `education`, AVG(`housing`) AS `housing`, AVG(crime) AS crime FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY comment_id";
+                    $result = runQuery($conn, $query);
+                    $city['ratings'] = fetchAssocArray($result);
 
 					//COMMENT (comment)
                     $response = queryCommentsForCity($conn, $cityId);
@@ -197,8 +209,8 @@
 	}
 
     function queryCommentsForCity($conn, $cityId){
-        $query1 = "SELECT * FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
-        $query2 = "SELECT * FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
+        $query1 = "SELECT `user_id`, `comment`, `time_entered` FROM `comments` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
+        $query2 = "SELECT `happiness`, `entertainment`, `healthcare`, `education`, `housing`, `crime` FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY _id DESC";
 		if(!is_null($cityId)){
 			$result1 = runQuery($conn, $query1);
             $result2 = runQuery($conn, $query2);
@@ -255,7 +267,7 @@
 	*/
 	function rateUserComment ($conn,  $comment_id, $cityId, $happiness, $entertainment , $healthcare, $education, $housing, $crime) {
 
-		$query  = "INSERT INTO `commentratings` (_id, comment_id, city_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\", \"$cityId\",";
+		$query = "INSERT INTO `commentratings` (_id, comment_id, city_id, happiness, entertainment, healthcare, education, housing, crime) VALUES (NULL, \"$comment_id\", \"$cityId\",";
         $valArr = [$happiness, $entertainment , $healthcare, $education, $housing, $crime];
 
         foreach($valArr as $value){
@@ -269,6 +281,25 @@
 
 		$result = runQuery($conn,$query);
 		return $result;
+    }
+
+    /**
+    * Submit a contribution
+    */
+    function postContribution($conn, $city_id, $field, $post){
+        if($city_id){
+            switch ($post['field']) {
+                case 'value':
+                    # code...
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        } else {
+
+        }
     }
 
 	/*
