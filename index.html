@@ -54,8 +54,83 @@
                </div>
              </div>
         </nav>
-
-        <!-- Registration Modal -->
+    <main id="mainId">
+		<div class="container-fluid" id="mainContainer">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="container">
+						<div class="row"> 
+							<div class="col-lg-12 col-md-12" id="cityImageBox">
+								<div class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner" role="listbox">
+										<div class="item active displayItem">
+											<img src="images\torontoImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\losAngelesImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\newYorkImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\shanghaiImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\vancouverImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\montrealImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\bucharestImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\londonImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\tokyoImage.jpg" class="displayImage">
+										</div>
+										<div class="item displayItem">
+											<img src="images\parisImage.jpg" class="displayImage">
+										</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<h2> asdfasd </h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<button type="button" class="btn btn-primary btm-lg btn-block btn-huge" data-toggle="modal" data-target="#signup">Button </button>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="container listContainer">
+						<h1> SELECT CITY </h1>
+						<ul>
+							<li class="city cityList" id="toronto" onClick="loadCity(this)">Toronto (Canada)</li>
+							<li class="city cityList" id="vancouver" onClick="loadCity(this)">Vancouver (Canada)</li>
+							<li class="city cityList" id="montreal" onClick="loadCity(this)">Montreal (Canada)</li>
+							<li class="city cityList" id="newYork" onClick="loadCity(this)">New York(USA)</li>
+							<li class="city cityList" id="losAngeles" onClick="loadCity(this)">Los Angeles(USA)</li>
+							<li class="city cityList" id="london" onClick="loadCity(this)">London (England)</li>
+							<li class="city cityList" id="paris" onClick="loadCity(this)">Paris (France)</li>
+							<li class="city cityList" id="shanghai" onClick="loadCity(this)">Shanghai(China)</li>
+							<li class="city cityList" id="tokyo" onClick="loadCity(this)">Tokyo(Japan)</li>
+							<li class="city cityList" id="bucharest" onClick="loadCity(this)">Bucharest(Romania)</li>
+						</ul>
+						<h4>More cities will be added soon</h4>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- Registration Modal -->
         <div id="signup" class="modal fade" role="dialog">
             <div class="modal-dialog">
             <!-- Modal content-->
@@ -91,31 +166,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-		<main id="mainId">
-			<div class="container-fluid" id="mainContainer">
-				<div class="row">
-					<div class="col-sm-6">
-
-					</div>
-					<div class="col-sm-6">
-						<h1> SELECT CITY </h1>
-						<ul>
-							<li class="city" id="toronto" onClick="loadCity(this)">Toronto (Canada)</a></li>
-							<li class="city" id="vancouver" onClick="loadCity(this)">Vancouver (Canada)</a></li>
-							<li class="city" id="montreal" onClick="loadCity(this)">Montreal (Canada)</a></li>
-							<li class="city" id="newYork" onClick="loadCity(this)">New York(USA)</a></li>
-							<li class="city" id="losAngeles" onClick="loadCity(this)">Los Angeles(USA)</a></li>
-							<li class="city" id="london" onClick="loadCity(this)">London (England)</a></li>
-							<li class="city" id="paris" onClick="loadCity(this)">Paris (France)</a></li>
-							<li class="city" id="shanghai" onClick="loadCity(this)">Shanghai(China)</a></li>
-							<li class="city" id="tokyo" onClick="loadCity(this)">Tokyo(Japan)</a></li>
-							<li class="city" id="bucharest" onClick="loadCity(this)">Bucharest(Romania)</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</main>
+        </div>	
   </body>
 </html>
