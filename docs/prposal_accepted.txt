@@ -1,0 +1,36 @@
+Project Name: City Scout
+	
+Overview:
+
+Description 	
+The web application compares two cities on various aspects such as cost of living, quality of life, and basic social and economic information. It would be targeting both people who are looking into moving to another city as well as people who recently moved to a city. It will provide information that will help people make informed decisions about whether it is the right place to relocate to and help newcomers learn more about their new city. Information available for cities will include quality of life, transit costs, job market health, city attractions, etc.
+
+Users would have the ability to research and compare their current city with another city. Furthermore, they will be able to submit their own opinion/information about the city they currently live in.There will be two main groups of users. Users without an account would have access to searching and viewing information about a city, however, they would not be able to see opinions/information submitted by other people. Users with accounts will have full access to the application. They will be asked to provide their current city, and other information about their city--voluntarily, of course. They can leave comments for other users to read in addition to comparing the two cities. 
+
+Inspirations: 
+	We have some group members that had difficulty finding information about Toronto when they moved here, mostly because there is no website available that provides all this information in one place. This prompted the idea.
+
+Goal and Novelty: 
+
+Goal:
+The goal of this web application is to provide valuable information about a city that people who are looking to move there can use to make an educated decision about whether that city is a good fit for them. Also, for newcomers to the city, the goal is to provide useful information and help them learn more about their new city.
+
+
+
+Novelty: 
+Although there are applications that do similar things, they are very basic in layout and primary only provide financial information. Any of these websites only provide information for US cities. We would like to include information collection from people who actually live in those cities. This would add a personal connection between users and could also add credibility to the information (see functionality and impact for deeper understand of our data collecting). We also want to add another social aspect by allowing users to comment on cities where they could recommend certain areas for living, a restaurant that they like and more. Things such as a happiness meter would be a fun way of learning about how people living in a city feel about it.
+
+Also, we would update the look of the website by having a strong visualization of the data using various graphing techniques (pie-charts, bar charts).
+
+Functionality and Impact: 
+
+The purpose of this website is to provide accurate, useful information to people. The idea of gathering the information from people who actually live in that city definitely makes the information feel more personal but it also relies on a trust system.Therefore, it is important to ensure that the information provided by other people is as accurate as possible and so we will provide a baseline(based on statistics from credible sources) for every officially supported city. This means that every information submitted by a user will be checked against our baseline and if it falls outside of the accepted ranges, we will discard such information and label it unlikely. However, if the information passes our validation, we will add it to our pool of information for that city.
+
+For the scope of the project, we would provide this service for 10 well-known cities. Users would be able to find information about these 10 cities as well as submit their own. However, for the purpose of this course, users would not be allowed to search/provide information about other locations. Also, the ability of users without an account to access/submit information depends on whether we will have time to include it, as it does not represent a major feature of the project.
+
+Sources and References:
+
+There are some websites that compare cities for moving purposes such as 
+http://www.moving.com/ 
+https://www.numbeo.com/cost-of-living
+http://www.bestplaces.net/city/texas/texline

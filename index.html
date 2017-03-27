@@ -30,19 +30,25 @@
                     <a id="brand-name" class="navbar-brand" href="index.html">CityScout</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <form class="navbar-form navbar-right">
+                    <form class="navbar-form navbar-right" id="logInForm">
                         <div class="form-group">
                             <input id="login-username" type="text" class="form-control" placeholder="Username">
                             <input id="login-password" type="password" class="form-control" placeholder="Password">
                         </div>
                         <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
                     </form>
+					<script type="text/javascript"> //script must be here
+						if(sessionStorage.getItem("userId") != null){
+							$("#logInForm").hide();
+						}	
+					</script>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    </ul>
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a type="button" class="btn btn-link" id="signOutButton" onClick="signOut()"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+					</ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="index.html">Cities</a></li>
-                        <li><a href="compare.html">Compare</a></li>
+                        <li id="compareLink"><a href="compare.html">Compare</a></li>
                         <li><a href="#">About</a></li>
                     </ul>
                </div>

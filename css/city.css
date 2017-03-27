@@ -2,7 +2,9 @@ html, body {
 	background-color: whitesmoke;
 	color: #222222;
 }
-
+#commentEnterArea,#compareLink,#compareBox,#signOutButton{
+	display:none;
+}
 body {
 	margin-top: 70px;
 }
@@ -144,24 +146,53 @@ p {
 }
 
 .lessStars{
-	color: red;
+	color: #b44545;
 	margin: 0px;
 	padding: 0px;
+	font-size:20px;
 }
 .threeStars{
-	color: green;
+	color: #9A804C;
 	margin: 0px;
 	padding: 0px;
+	font-size:20px;
 }
 .greaterStars{
-	color: blue;
+	color: #80ba52;
 	margin: 0px;
 	padding: 0px;
+	font-size:20px;
 }
-.starContainer{
-display: flex;
-display: -webkit-flex;
--moz-display: flex;
+h4.commentUserName{
+	font-weight:bold;
+	width:100%;
+}
+p.attHeader{
+	margin: 0px;
+	margin-right:auto;
+	width:100px;
+}
+div.starContainer{
+	display: flex;
+	display: -webkit-flex;
+	-moz-display: flex;
+	width:300px;
+	margin: 0px;
+	padding:0px;
+}
+div.starContainer div{
+	margin: 0px;
+	margin-right:auto;
+	width: 100px;
+	padding-top:4px;
+} 
+div.commentPanel{
+	word-wrap: break-word;
+	display:flex;
+}
+div.commentContainer{
+	flex:2;
+	word-wrap: break-word;
 }
 
 /***** Modal *****/
