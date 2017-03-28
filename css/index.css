@@ -25,13 +25,6 @@ body {
 .container{
 	width:auto;
 }
-div.displayItem{
-	
-}
-img.displayImage{
-	width:400px;
-	height:400px;
-}
 .btn-huge{
 	padding-top:20px;
 	padding-bottom:20px;
@@ -47,19 +40,20 @@ ul .cityList{
 	cursor:pointer;
 	font-family: 'Alegreya', serif;
 	font-size: 15px;
-	
 }
-.carousel {
-	width:500px;
-	height:350px;
-}
-.carousel .item{
-	
-}
-.item  img{
+.item >img{
 	width:100%; 
 	height:100%;
 }
+.carousel .carousel-inner {
+	width:100%;
+	height:350px;
+}
+.carousel .item{
+	width:100%;
+	height:100%;
+}
+
 @media (min-width:768px) {
 
 }

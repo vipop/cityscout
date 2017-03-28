@@ -29,17 +29,33 @@ function loadCity(city, json){
 	var ovEducation = json.data.ratings[0].education;
 	var ovHousing = json.data.ratings[0].housing;
 	var ovCrime = json.data.ratings[0].crime;
+	//Housing and Utilities(large)
+	var housing = json.data.housing;
+	var utilities = json.data.utilities;
 	//Transportation
-
-	//Education
+	var transportation = json.data.transportation;
+	//Climate
+	
+	
 	//Entertainment
+		
+	//Attractions
+	
 	//Food
-	// replace this with database queries
+	var food = json.data.food;
+	//Indices happiness quality of life
+	var indices = json.data.indices;
+	
 	initTopInfo(country, language, pop, area, gdp);
 	initCityBanner(city, cityName);
 	initMap(parseFloat(lat), parseFloat(lng), document.getElementById("map-div"));
 	initBackground(history);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
+	initHousing(housing);
+	initUtilities(utilities);
+	initTransportation(transportation);
+	initIndices(indices);
+	initFood(food);
 	loadComments(json); //This function is defined in the comments.js
 }
 function getCityInformation(city){
@@ -109,6 +125,51 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-crime-bar").style.width = ovCrime * 20 + "%";
 }
 
+function initHousing(house){
+	var i;
+	for(i = 0; i < house.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(house[i].type + " " + house[i].cost_desc + house[i].cost);
+		p.appendChild(t);
+		document.getElementById("housing").appendChild(p);
+	}
+};
+function initUtilites(uti){
+	var i;
+	for(i = 0; i < uti.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(uti[i].type + " " + uti[i].cost_desc + uti[i].cost);
+		p.appendChild(t);
+		document.getElementById("housing").appendChild(p);
+	}
+};
+function initTransportation(tran){
+	var i;
+	for(i = 0; i < tran.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(tran[i].type + " " + tran[i].cost_desc + tran[i].cost);
+		p.appendChild(t);
+		document.getElementById("transportation").appendChild(p);
+	}
+};
+function initIndices(ind){
+	var i;
+	for(i = 0; i < ind.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(ind[i].name + " " + ind[i].value_desc + tran[i].value);
+		p.appendChild(t);
+		document.getElementById("politics").appendChild(p);
+	}
+};
+function initFood(food){
+	var i;
+	for(i = 0; i < food.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(food[i].name + " " + ind[i].cost_desc + tran[i].cost);
+		p.appendChild(t);
+		document.getElementById("food").appendChild(p);
+	}
+};
 function compare(){
 	var id = getCity();
 	document.location.href = "compare.html?city=" + id;

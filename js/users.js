@@ -5,7 +5,6 @@ function login() {
 	// VERIFY USER AGAINST THE DATABASE
     var url = "cgi-bin/queries.php"
     var params = "type=SIGN_IN_USER&username=" + username + "&password=" + password;
-
 	sendRequest(url, params, function(result){
         console.log(result);
 		var json = JSON.parse(result);
@@ -26,6 +25,13 @@ function login() {
 function displayFullContent(){
 	if(document.getElementById("commentEnterArea") != null)document.getElementById("commentEnterArea").style.display="block";
 	if(document.getElementById("compareBox") != null)document.getElementById("compareBox").style.display="block";
+	if(document.getElementsByClassName("contribute") != null){
+		var theClass = document.getElementsByClassName("contribute");
+		var i; 
+		for(i=0;i<theClass.length;i++){
+			theClass[i].style.display="block";
+		}
+	}
 	document.getElementById("signOutButton").style.display="block";
 	document.getElementById("compareLink").style.display="block";
 	document.getElementById("signUpButton").style.display="none";
