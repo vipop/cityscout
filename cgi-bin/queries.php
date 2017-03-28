@@ -54,6 +54,27 @@
 				['code'] - See above
 				['message'] - the error/success message
 				['data'] - true or false indicating success
+    POST_CONTRIBUTION: Posts a contribution to a specific section on a specific
+    city
+            Required Fields:
+                ['city_id'] - the id of the city
+                ['field'] - the specific field to contribute to
+                Field Specific Data - see below
+
+    ----------------------------------------------------------------------------
+    In order to post a contribution to a city, the field must be one of the
+    following:
+            entertainment
+            food
+            housing
+            transportation
+            utilities
+    and must have the following attributes:
+            ['ctype'] - the normalized type of the contribution. This should be
+                provided via selector
+            ['cdesc'] - the string descriptor for the contribution cost (ex. $
+                or $/month)
+            ['ccost'] - the cost of the contribution
 
 	https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
 	*/
@@ -89,7 +110,7 @@
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
         case "POST_CONTRIBUTION":
-            $result = postContribution($conn, $_POST['city_id'], $_POST['field'], $_POST);
+            $result = postContribution($conn, $_POST['city_id'], $_POST['field'], $_POST['ctype'], $_POST['cdesc'], $_POST['ccost']);
             break;
         default:
 			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
@@ -150,46 +171,92 @@
                     //LANGUAGE INFO (citylanguages)
                     $query  = "SELECT `name`, `population` FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
-                    $city['languages'] = fetchAssocArray($result);
+                    if($result){
+                        $city['languages'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying citylanguages: " . mysqli_error($conn), false);
+                    }
 
-                    //ATTRACTION INFO (cityentertainment)
-                    $query = "SELECT `type`, `rank`, `name`, `about`, `cost`, `cost_desc`, `image`, `link`, `location` FROM `cityentertainment` WHERE `city_id`=\"$cityId\" ORDER BY type ASC, rank ASC";
+                    //ATTRACTION INFO (cityattractions)
+                    $query = "SELECT `name`, `about`, `cost`, `cost_desc`, `image`, `link`, `location` FROM `cityattractions` WHERE `city_id`=\"$cityId\"";
                     $result = runQuery($conn, $query);
-                    $city['attractions'] = fetchAssocArray($result);
+                    if($result){
+                        $city['attractions'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityattractions: " . mysqli_error($conn), false);
+                    }
 
-					//FOOD (cityfood) ***** CHECK IF ASC OR DESC NEEDED
-                    //$query = "SELECT * FROM `cityfood` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
-                    $query = "SELECT `name`, `cost_desc`, AVG(`cost`) AS `cost` FROM `cityfood` WHERE city_id=\"$cityId\" GROUP BY name ORDER BY name ASC";
+                    //ENTERTAINMENT INFO (cityentertainment)
+                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) as `cost` FROM `cityentertainment` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type";
                     $result = runQuery($conn, $query);
-                    $city['food'] = fetchAssocArray($result);
+                    if($result){
+                        $city['entertainment'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityentertainment: " . mysqli_error($conn), false);
+                    }
+
+					//FOOD (cityfood)
+                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost` FROM `cityfood` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type ASC";
+                    $result = runQuery($conn, $query);
+                    if($result){
+                        $city['food'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityfood: " . mysqli_error($conn), false);
+                    }
 
 					 //HOUSING (cityhousing)
-                    //$query = "SELECT * FROM `cityhousing` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
                     $query = "SELECT type, cost_desc, AVG(cost) AS `cost` FROM `cityhousing` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type ASC";
                     $result = runQuery($conn, $query);
-                    $city['housing'] = fetchAssocArray($result);
+                    if($result){
+                        $city['housing'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityhousing: " . mysqli_error($conn), false);
+                    }
 
 					//GDP/GEI.... (cityindices)
                     $query = "SELECT `name`, `value_desc`, `value` FROM `cityindices` WHERE `city_id`=\"$cityId\" ORDER BY name ASC";
                     $result = runQuery($conn, $query);
-                    $city['indices'] = fetchAssocArray($result);
+                    if($result){
+                        $city['indices'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityindices: " . mysqli_error($conn), false);
+                    }
 
 					//TRANSPORTATION (citytransportation)
-                    //$query = "SELECT * FROM `citytransportation` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
-                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost`, `provider`, `link` FROM `citytransportation` WHERE `city_id`=\"$cityId\" GROUP BY `type` ORDER BY `type` ASC";
+                    $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost` FROM `citytransportation` WHERE `city_id`=\"$cityId\" GROUP BY `type` ORDER BY `type` ASC";
                     $result = runQuery($conn, $query);
-                    $city['transportation'] = fetchAssocArray($result);
+                    if($result){
+                        $city['transportation'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying citytransportation: " . mysqli_error($conn), false);
+                    }
 
 					//UTILITIES(cityutilities)
-                    //$query = "SELECT * FROM `cityutilities` WHERE `city_id`=\"$cityId\" ORDER BY type ASC";
                     $query = "SELECT `type`, `cost_desc`, AVG(`cost`) AS `cost` FROM `cityutilities` WHERE `city_id`=\"$cityId\" GROUP BY `type` ORDER BY `type`";
                     $result = runQuery($conn, $query);
-                    $city['utilities'] = fetchAssocArray($result);
+                    if($result){
+                        $city['utilities'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityutilities: " . mysqli_error($conn), false);
+                    }
+
+                    //CLIMATE (cityclimate)
+                    $query = "SELECT `high_avg`, `low_avg`, `rainfall`, `snowfall` FROM `cityclimate` WHERE `city_id`=\"$cityId\"";
+                    $result = runQuery($conn, $query);
+                    if($result){
+                        $city['climate'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying cityclimate: " . mysqli_error($conn), false);
+                    }
 
                     //USERRATINGS
                     $query = "SELECT AVG(`happiness`) AS `happiness`, AVG(`entertainment`) AS `entertainment`, AVG(`healthcare`) AS `healthcare`, AVG(`education`) AS `education`, AVG(`housing`) AS `housing`, AVG(crime) AS crime FROM `commentratings` WHERE `city_id`=\"$cityId\" ORDER BY comment_id";
                     $result = runQuery($conn, $query);
-                    $city['ratings'] = fetchAssocArray($result);
+                    if($result){
+                        $city['ratings'] = fetchAssocArray($result);
+                    } else {
+                        return generateResult(mysqli_errno($conn), "Error querying commentratings: " . mysqli_error($conn), false);
+                    }
 
 					//COMMENT (comment)
                     $response = queryCommentsForCity($conn, $cityId);
@@ -286,19 +353,42 @@
     /**
     * Submit a contribution
     */
-    function postContribution($conn, $city_id, $field, $post){
-        if($city_id){
-            $result = generateResult(UNSUCCESSFUL, "Unknown field: " + $field, false)
-            switch ($post['field']) {
-                case 'value':
+    function postContribution($conn, $cityId, $field, $ctype, $cdesc, $ccost){
 
+        if($cityId){
+            $query = NULL;
+            switch ($post['field']) {
+                case 'entertainment':
+                    $query = "INSERT INTO `cityentertainment` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    break;
+                case 'food':
+                    $query = "INSERT INTO `cityfood` (`_id`, `city_id`, `name`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    break;
+                case 'housing':
+                    $query = "INSERT INTO `cityhousing` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    break;
+                case 'transportation':
+                    $query = "INSERT INTO `citytransportation` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    break;
+                case 'utilities':
+                    $query = "INSERT INTO `cityutilities` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
                     break;
                 default:
                     break;
             }
-            return $result;
+
+            if($query){
+                $result = runQuery($conn, $query);
+                if($result){
+    				return generateResult(SUCCESSFUL, "Adding contribution successful", true);
+    			} else {
+    				return generateResult(mysqli_errno($conn), mysqli_error($conn), false);
+    			}
+            } else {
+                return generateResult(UNSUCCESSFUL, "Unknown field: " + $field, false);;
+            }
         } else {
-            return generateResult(UNSUCCESSFUL, "Invalid city", false)
+            return generateResult(UNSUCCESSFUL, "Invalid city", false);
         }
     }
 
