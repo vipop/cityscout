@@ -1,0 +1,3 @@
+- Keeping track of user submiting numbers, so we can say how many user have submit information.
+- User can submit forms many times, this is not good and we need to state this in the report
+-   

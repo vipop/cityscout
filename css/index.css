@@ -1,4 +1,5 @@
-html, body {
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
+html,body {
 	background-color: whitesmoke;
 	color: #222222;
 }
@@ -8,21 +9,51 @@ html, body {
 body {
 	margin-top: 70px;
 }
-
 #brand-name {
     font-family: 'Pacifico', cursive;
     font-size: 18pt;
     color: whitesmoke;
 }
-
 #brand-name:hover {
     color: #9d9d9d;
     cursor: pointer;
 }
-
 .glyphicon {
 	align-self: center;
 	margin-right: 10px;
+}
+.container{
+	width:auto;
+}
+.btn-huge{
+	padding-top:20px;
+	padding-bottom:20px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+ul{
+	list-style-type:none;
+}
+div.listContainer{
+	text-align:center;
+}
+ul .cityList{
+	margin: 5px 50px 5px 0px;
+	cursor:pointer;
+	font-family: 'Alegreya', serif;
+	font-size: 15px;
+}
+.item >img{
+	width:100%; 
+	height:100%;
+}
+.carousel .carousel-inner {
+	width:100%;
+	height:350px;
+}
+.carousel .item{
+	width:100%;
+	height:100%;
 }
 
 @media (min-width:768px) {

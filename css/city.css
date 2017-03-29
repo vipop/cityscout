@@ -1,8 +1,11 @@
-html, body {
+html,body {
 	background-color: whitesmoke;
 	color: #222222;
 }
 #commentEnterArea,#compareLink,#compareBox,#signOutButton{
+	display:none;
+}
+.contribute{
 	display:none;
 }
 body {
