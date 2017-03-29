@@ -232,27 +232,53 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label">Type</label>
                                 <select id="entertainment-type" class="form-control">
-                                    <option>Attraction</option>
-                                    <option>Music</option>
+                                    <option>Concert</option>
                                     <option>Movies</option>
                                     <option>Theatre</option>
+                                    <option>Sports</option>
                                 </select>
                                 <br>
-                                <label for="inputName" class="control-label">Name</label>
-                                <input id="entertainment-name" type="text" class="form-control" placeholder="Name">
-                                <p class="help-block">Name of entertainment item</p>
                                 <label for="inputName" class="control-label">Cost</label>
                                 <input id="entertainment-prices" type="number" class="form-control" placeholder="Cost">
                                 <p class="help-block">Cost of ticket/entry to entertainment item</p>
-                                <label for="inputName" class="control-label">About</label>
-                                <input id="entertainment-about" type="text" class="form-control" placeholder="About">
-                                <p class="help-block">brief about this item</p>
-                                <label for="inputName" class="control-label">Link</label>
-                                <input id="entertainment-provider-link" type="text" class="form-control" placeholder="Link">
-                                <p class="help-block">Link/URL to provider's website</p>
-                                <label for="inputName" class="control-label">Location</label>
-                                <input id="entertainment-location" type="text" class="form-control" placeholder="Location">
-                                <p class="help-block">Location of entertainment venue</p>
+                                <label for="inputName" class="control-label">Cost Description</label>
+                                <input id="entertainment-prices-description" type="text" class="form-control" placeholder="Cost Description">
+                                <p class="help-block">$ per ticket or per game etc...</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Attractions Modal -->
+        <div id="attractionsModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Entertainment</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Type</label>
+                                <select id="entertainment-type" class="form-control">
+                                    <option>Concert</option>
+                                    <option>Movies</option>
+                                    <option>Theatre</option>
+                                    <option>Sports</option>
+                                </select>
+                                <br>
+                                <label for="inputName" class="control-label">Cost</label>
+                                <input id="entertainment-prices" type="number" class="form-control" placeholder="Cost">
+                                <p class="help-block">Cost of ticket/entry to entertainment item</p>
+                                <label for="inputName" class="control-label">Cost Description</label>
+                                <input id="entertainment-prices-description" type="text" class="form-control" placeholder="Cost Description">
+                                <p class="help-block">$ per ticket or per game etc...</p>
                             </div>
                             <hr />
                             <button type="button" class="btn btn-success center-block">Submit</button>
@@ -499,6 +525,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
+                            <a type="button" style="float: right;" class="btn btn-link" data-toggle="modal" data-target="#attractionsModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
                         <div class="panel-body">
