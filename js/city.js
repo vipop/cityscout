@@ -29,18 +29,17 @@ function loadCity(city, json){
 	var ovEducation = json.data.ratings[0].education;
 	var ovHousing = json.data.ratings[0].housing;
 	var ovCrime = json.data.ratings[0].crime;
-	//Housing and Utilities(large)
+	//Housing and Utilities
 	var housing = json.data.housing;
 	var utilities = json.data.utilities;
 	//Transportation
 	var transportation = json.data.transportation;
 	//Climate
-	
-	
+	var climate = json.data.climate;
 	//Entertainment
-		
+	var entertainments = json.data.entertainment;	
 	//Attractions
-	
+	var attractions = json.data.attractions;
 	//Food
 	var food = json.data.food;
 	//Indices happiness quality of life
@@ -54,6 +53,9 @@ function loadCity(city, json){
 	initHousing(housing);
 	initUtilities(utilities);
 	initTransportation(transportation);
+	initClimate(climate);
+	initEntertainment(entertainments);
+	initAttraction(attractions)
 	initIndices(indices);
 	initFood(food);
 	loadComments(json); //This function is defined in the comments.js
@@ -115,7 +117,7 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-education-bar").style["background-color"] = "#2c5a71";
 	document.getElementById("ov-education").innerHTML = ovEducation + " / 5";
 	document.getElementById("ov-education-bar").style.width = ovEducation * 20 + "%";
-	// set color, text and width of housing bar
+	// set color,text and width of housing bar
 	document.getElementById("ov-housing-bar").style["background-color"] = "lightpink";
 	document.getElementById("ov-housing").innerHTML = ovHousing + " / 5";
 	document.getElementById("ov-housing-bar").style.width = ovHousing * 20 + "%";
@@ -124,9 +126,9 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-crime").innerHTML = ovCrime + " / 5";
 	document.getElementById("ov-crime-bar").style.width = ovCrime * 20 + "%";
 }
-
 function initHousing(house){
 	var i;
+	resetFields("housing");
 	for(i = 0; i < house.length; i++){
 		var p = document.createElement("P");
 		var t = document.createTextNode(house[i].type + " " + house[i].cost_desc + house[i].cost);
@@ -136,6 +138,7 @@ function initHousing(house){
 };
 function initUtilites(uti){
 	var i;
+	resetFields("housing");
 	for(i = 0; i < uti.length; i++){
 		var p = document.createElement("P");
 		var t = document.createTextNode(uti[i].type + " " + uti[i].cost_desc + uti[i].cost);
@@ -145,6 +148,7 @@ function initUtilites(uti){
 };
 function initTransportation(tran){
 	var i;
+	resetFields("transportation");
 	for(i = 0; i < tran.length; i++){
 		var p = document.createElement("P");
 		var t = document.createTextNode(tran[i].type + " " + tran[i].cost_desc + tran[i].cost);
@@ -154,22 +158,59 @@ function initTransportation(tran){
 };
 function initIndices(ind){
 	var i;
+	resetFields("indices");
 	for(i = 0; i < ind.length; i++){
 		var p = document.createElement("P");
-		var t = document.createTextNode(ind[i].name + " " + ind[i].value_desc + tran[i].value);
+		var t = document.createTextNode(ind[i].name + " " + ind[i].value_desc + ind[i].value);
 		p.appendChild(t);
-		document.getElementById("politics").appendChild(p);
+		document.getElementById("indices").appendChild(p);
 	}
 };
 function initFood(food){
 	var i;
+	resetFields("food");
 	for(i = 0; i < food.length; i++){
 		var p = document.createElement("P");
-		var t = document.createTextNode(food[i].name + " " + ind[i].cost_desc + tran[i].cost);
+		var t = document.createTextNode(food[i].name + " " + food[i].cost_desc + food[i].cost);
 		p.appendChild(t);
 		document.getElementById("food").appendChild(p);
 	}
 };
+function initClimate(cli){
+	var i;
+	resetFields("climate");
+	for(i = 0; i < cli.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(cli[i].high_avg + " " + cli[i].low_avg + " "+ cli[i].rainfall + " " + cli[i].snowfall);
+		p.appendChild(t);
+		document.getElementById("climate").appendChild(p);
+	}
+}
+function initEntertainment(ent){
+	var i;
+	resetFields("entertainment");
+	for(i = 0; i < ent.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(ent[i].type + " " + ent[i].cost_desc + ent[i].cost);
+		p.appendChild(t);
+		document.getElementById("entertainment").appendChild(p);
+	}
+}
+function initAttraction(att){
+	var i;
+	resetFields("attractions");
+	for(i = 0; i < att.length; i++){
+		var p = document.createElement("P");
+		var t = document.createTextNode(att[i].name + " "+ att[i].about + " " + att[i].cost_desc + att[i].cost + " "+ att[i].link + " " + att[i].location + " " + att[i].image);
+		p.appendChild(t);
+		document.getElementById("entertainment").appendChild(p);
+	}
+}
+function resetFields(parentID){
+	while(document.getElementById(parentID).firstChild){
+		document.getElementById(parentID).removeChild(document.getElementById(parentID).firstChild);
+	}
+}
 function compare(){
 	var id = getCity();
 	document.location.href = "compare.html?city=" + id;

@@ -404,18 +404,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <!-- Climate  -->
+				<div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-flash"></span>Weather</h3>
+                            <h3><span class="glyphicon glyphicon-flash"></span>Climate</h3>
                         </div>
-                        <hr />
-                        <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
+                        <hr/>
+						<div class="panel-body" id="climate">
+						</div>
+                        <!--<div class="panel-body"><img src="images/weather.png" width="500px"/></div>-->
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Housing, Employment, Transportation -->
+            <!-- Housing -->
             <div class="row ninety">
                 <div class="col-sm-4">
                     <div class="panel">
@@ -426,22 +429,12 @@
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#housingModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="housing">This is housing.</p>
+                        <div class="panel-body" id="housing">
+                            <!--<p id="housing">This is housing.</p>-->
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3>
-                        </div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="employment">This is employment.</p>
-                        </div>
-                    </div>
-                </div>
+			<!-- Transportation -->	
                 <div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
@@ -449,63 +442,42 @@
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="transportation">This is transportation.</p>
-                        </div>
+                        <div class="panel-body" id="transportation">
+                            
+						</div>
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Education, Healthcare, Politics -->
             <div class="row ninety">
+            <!-- Attraction -->	
                 <div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-education"></span>Education</h3>
+                            <h3><span class="glyphicon glyphicon-heart"></span>Attractions</h3>
                         </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="education">This is education.</p>
+                        <div class="panel-body" id="attractions">
+                            
                         </div>
                     </div>
                 </div>
+			<!-- Indices -->	
                 <div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3>
+                            <h3><span class="glyphicon glyphicon-tower"></span>Quality of life and other information</h3>
                         </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="healthcare">This is healthcare.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-tower"></span>Politics</h3>
-                        </div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="politics">This is politics.</p>
-                        </div>
+                        <div class="panel-body" id="indices">
+                        
+						</div>
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Attractions, Entertainment, Food-->
+			<!--Entertainment -->
             <div class="row ninety">
-                <div class="col-sm-4">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
-                        </div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="attractions">This is attractions.</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
@@ -513,11 +485,12 @@
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
-                        <div class="panel-body">
+                        <div class="panel-body" id="entertainment">
                             <p id="entertainment">This is entertainment.</p>
                         </div>
                     </div>
                 </div>
+			<!-- Food -->	
                 <div class="col-sm-4">
                     <div class="panel">
                         <div class="panel-heading">
@@ -525,8 +498,8 @@
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="food">This is food.</p>
+                        <div class="panel-body" id="food">
+                        
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,8 @@ body {
 .btn-huge{
 	padding-top:20px;
 	padding-bottom:20px;
+	word-wrap: break-word;
+	white-space: normal;
 }
 ul{
 	list-style-type:none;
