@@ -247,3 +247,8 @@ div.commentContainer{
 .modal-body form .input-error {
 	border-color: #fd625e;
 }
+
+.chart {
+  width: 100%; 
+  min-height: 250px;
+}

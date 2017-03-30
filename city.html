@@ -10,6 +10,8 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="js/graphs.js"></script>
         <script src="js/comments.js"></script>
         <script src="js/city.js"></script>
         <script src="js/users.js"></script>
@@ -458,21 +460,37 @@
             <br>
             <div class="row ninety">
                 
-                <div class="col-sm-6 col-lg-6 col-md-6">
+                <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="panel" style="padding-top: 0px;">
                         <div id="map-div" style="width: 96%; height: 49%; margin:10px;"></div>
                         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
                     </div>
                 </div>
                 <!-- Climate  -->
-				<div class="col-sm-6 col-lg-6 col-md-6">
+				<div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-flash"></span>Climate</h3>
                         </div>
                         <hr/>
 						<div class="panel-body" id="climate">
+                        <div id="climate-bar-chart" class="chart">
+                            
+                        </div>
 						</div>
+                        <!--<div class="panel-body"><img src="images/weather.png" width="500px"/></div>-->
+                    </div>
+                </div>
+                <!-- Languages  -->
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                        </div>
+                        <hr/>
+                        <div class="panel-body" id="languages">
+                        <div id="languages-chart-div" class="chart"></div>
+                        </div>
                         <!--<div class="panel-body"><img src="images/weather.png" width="500px"/></div>-->
                     </div>
                 </div>
@@ -480,7 +498,7 @@
             <hr />
             <!-- Housing -->
             <div class="row ninety">
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3>
@@ -499,7 +517,7 @@
             <div class="row ninety">
                 
 			<!-- Transportation -->	
-                <div class="col-sm-12">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-road"></span>Transportation</h3>
@@ -516,7 +534,7 @@
             <br>
             <div class="row ninety">
             <!-- Attraction -->	
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-heart"></span>Attractions</h3>
@@ -527,7 +545,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col-sm-4">
+                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
@@ -539,7 +557,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
@@ -561,7 +579,7 @@
             </div>
             <hr />
             <div class="row ninety">
-                <div class="col-sm-12">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
                         <hr />
