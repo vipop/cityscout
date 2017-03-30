@@ -169,7 +169,7 @@
 					$city['general'] = $generalInfo;
 
                     //LANGUAGE INFO (citylanguages)
-                    $query  = "SELECT `name`, `population` ROUND(population / SUM(population) * 100, 2) AS percent FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
+                    $query  = "SELECT `name`, `population`, ROUND(population / SUM(population) * 100, 2) AS percent FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
                     if($result){
                         $city['languages'] = fetchAssocArray($result);
