@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function(event) {
    if(sessionStorage.getItem("userId") != null){
 		displayFullContent();
@@ -7,6 +8,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
+	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
+	var climate ={"high_avg":"21","low_avg":"-1000","rainfall":"55","snowfall":"566"}
+	prepareGraphs();
+	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")},{"lang":languages,"theId":document.getElementById("attractions")}];
+	var tempClimate = [{"climate":climate,"theId":document.getElementById("climate-bar-chart")},{"climate":climate,"theId":document.getElementById("entertainment")}];
+	loadGraphs(tempLang,tempClimate); //languages, document.getElementById("languages-chart-div"), climate, document.getElementById("climate-bar-chart"));
+	
+
 
 };
 
@@ -15,6 +24,7 @@ function loadCity(city, json){
     var cityName = json.data.general.name;
 	var country = json.data.general.country;
 	var language = json.data.languages[0].name;
+	var languages = json.data.languages;
 	var pop = json.data.general.population;
 	var area = json.data.general.area + " km&sup2;";
 	var lat = json.data.general.lat;
