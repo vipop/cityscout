@@ -18,6 +18,10 @@ body {
     color: #9d9d9d;
     cursor: pointer;
 }
+h1,h2,h3,h4,h5,h6{
+	margin-top:10px;
+	margin-bottom:10px;
+}
 .glyphicon {
 	align-self: center;
 	margin-right: 10px;
@@ -43,21 +47,104 @@ ul .cityList{
 	font-family: 'Alegreya', serif;
 	font-size: 15px;
 }
-.item >img{
-	width:100%; 
-	height:100%;
-}
 .carousel .carousel-inner {
 	width:100%;
-	height:350px;
+	height:300px;
 }
 .carousel .item{
 	width:100%;
 	height:100%;
 }
-
-@media (min-width:768px) {
-
+#torontoItem{
+	background-image:url("../images/torontoImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#losAngelesItem{
+	background-image:url("../images/losAngelesImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;	
+}
+#newYorkItem{
+	background-image:url("../images/newYorkImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#shanghaiItem{
+	background-image:url("../images/shanghaiImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#vancouverItem{
+	background-image:url("../images/vancouverImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#montrealItem{
+	background-image:url("../images/montrealImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#bucharestItem{
+	background-image:url("../images/bucharestImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#londonItem{
+	background-image:url("../images/londonImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#tokyoItem{
+	background-image:url("../images/tokyoImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+#parisItem{
+	background-image:url("../images/parisImage.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:100%;
+	height:100%;
+}
+p{
+	font-family: 'Alegreya', serif;
+	font-size: 15px;
+	margin:0px;
+}
+@media screen and (max-width:1194px) {
+	.carousel .carousel-inner {
+		width:100%;
+		height:250px;
+	}
 }
 @media screen and (max-width:850px){
 
