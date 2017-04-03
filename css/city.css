@@ -8,21 +8,15 @@ html,body {
 .contribute{
 	display:none;
 }
-body {
-	margin-top: 70px;
-}
-
 #brand-name {
     font-family: 'Pacifico', cursive;
     font-size: 18pt;
     color: whitesmoke;
 }
-
 #brand-name:hover {
     color: #9d9d9d;
     cursor: pointer;
 }
-
 header {
 	height: 30%;
     background-repeat: no-repeat;
@@ -46,14 +40,14 @@ header {
 	font-size: 56pt;
 	color: whitesmoke;
 }
-
+div.fillHeight{
+}
 hr {
 	margin: 10px;
 }
 
 h2, h3 {
 	margin: 0px;
-	display: flex;
 }
 
 .top-info {
@@ -80,35 +74,24 @@ h2, h3 {
 	font-size: 21pt;
 	text-align: center;
 }
-
-.row {
-	margin: 0px;
-}
-
-.row.ninety {
-	margin: auto;
-	width: 90%;
-}
-
 .panel {
 	margin: 0px;
 	padding-top: 10px;
 	border: 1px solid #E6E9ED;
 }
-
-.col-sm-2 {
-	/*padding-top: 15px;*/
+.row {
+	margin: 0px;
+}
+.row.ninety {
+	margin: auto;
+	width: 90%;
 }
 
-.col-sm-10 {
-	/*
-	padding-top: 15px;
-	padding-left: 0px;
-	padding-right: 0px;
-	display: flex;
-	*/
+#map-div{
+	height:396px;
+	width:100%;
+	margin:0px;
 }
-
 .small-info {
 	margin-left: 30px;
 }
@@ -120,7 +103,7 @@ h2, h3 {
 
 .rating-bar {
 	background-color: antiquewhite;
-	width: 80%;
+	width: 100%;
 	display: flex;
 	margin-top: 16px;
 	margin-bottom: 16px;
@@ -139,10 +122,12 @@ h2, h3 {
 	margin-bottom: 16px;
 	font-weight: bold;
 }
-
 p {
-	line-height: 2;
 	font-size: 12pt;
+	margin:0px;
+}
+p.inlineP{
+	padding-top:9px;
 }
 
 #commentText{
@@ -199,7 +184,19 @@ div.commentContainer{
 	flex:2;
 	word-wrap: break-word;
 }
-
+.fa{
+	padding:1px 5px 0px 0px;
+}
+div.flex{
+	display:flex;
+}
+.chart {
+  width: 100%; 
+  justify-content:center;
+  display:flex;
+  margin: 0px 0px 0px 0px;
+  height:300px;
+}
 /***** Modal *****/
 
 .modal-content {
@@ -235,7 +232,6 @@ div.commentContainer{
 	text-align: left;
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 }
-
 .modal-body img {
 	margin-bottom: 15px;
 }
@@ -247,8 +243,17 @@ div.commentContainer{
 .modal-body form .input-error {
 	border-color: #fd625e;
 }
-
-.chart {
-  width: 100%; 
-  min-height: 250px;
+/*Media */
+@media screen and (max-width: 991px) {
+	.climateChart{
+		height:150px;
+	}
+}
+@media screen and (max-width:763px){
+	#map-div{
+		height:200px;
+	}
+	#map-panel{
+		margin-top:20px;
+	}
 }

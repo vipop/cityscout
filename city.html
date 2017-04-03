@@ -11,6 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="https://use.fontawesome.com/c1cf09c438.js"></script>
         <script type="text/javascript" src="js/graphs.js"></script>
         <script src="js/comments.js"></script>
         <script src="js/city.js"></script>
@@ -23,7 +24,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-static-top"> <!-- navbar-fixed-top">-->
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -194,10 +195,14 @@
                             <div class="form-group">
                                 <label for="inputName" class="control-label">Type</label>
                                 <select id="transportation-type" class="form-control">
-                                    <option>Public (Subway, bus,etc)</option>
-                                    <option>Personal (own car)</option>
-                                    <option>Private (Uber, taxi,etc)</option>
+                                    <option>Subway</option>
+									<option>Car</option>
+									<option>Bus</option>
+									<option>Train</option>
+                                    <option>Taxi</option>
+                                    <option>Rideshare</option>
                                 </select>
+								<p class="help-block">Rideshare = uber,lyft etc..</p>
                                 <br>
                                 <label for="inputName" class="control-label">Description</label>
                                 <input id="transportation-description" type="text" class="form-control" placeholder="Description">
@@ -293,25 +298,25 @@
         <div class="container-fluid">
             <!-- Top Information -->
             <div class="row ninety">
-                <div class="col-sm-6 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                         <h2 id="top-info-country" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                         <h2 id="top-info-lang" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-user"></span>Population</span>
                         <h2 id="top-info-pop" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                         <h2 id="top-info-area" class="margin10 top-info"></h2>
@@ -329,95 +334,27 @@
                     </div>
 				</div>
 			</div>
-            <hr />
+            <hr/>
             <!-- Header -->
             <div class="row ninety">
-                <div class=" col-xs-12 col-sm-6 col-md-7 col-lg-8">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-8">
                     <header id="header" class="panel" >
                         <div id="header-text"></div>
                     </header>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-happiness-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-happiness" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-entertainment-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-entertainment" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-healthcare-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-healthcare" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-education-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-education" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-housing-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-housing" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-2">
-                                <span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10 col-xs-10">
-                                <div class="rating-bar">
-                                    <div id="ov-crime-bar" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-crime" class="progress-text"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+				<!--Map -->
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+					<div class="panel" id="map-panel">
+						<div id="map-div"></div>
+						<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
+					</div>
+				</div>	
             </div>
             <hr />
             <!-- Background -->
-            <div class="row ninety">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="panel">
+            <div class="row ninety row-eq-height"> 
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-book"></span>Background</h3>
                         </div>
@@ -427,62 +364,104 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <!-- Indices -->
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar">
+									<div id="ov-happiness-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-happiness" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar">
+									<div id="ov-entertainment-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-entertainment" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar">
+									<div id="ov-healthcare-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-healthcare" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
+							</div>
+							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar">
+									<div id="ov-education-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-education" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar">
+									<div id="ov-housing-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-housing" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+								<div class="rating-bar" style="margin: 16px 0px 0px 0px">
+									<div id="ov-crime-bar" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-crime" class="progress-text"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
             <div class="row ninety">
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-6">
-                    <div class="small-info">
-                        <span><span class="glyphicon glyphicon-briefcase"></span>Unemployment Rate</span>
-                        <h2 id="top-info-unemployment" class="margin10 top-info"></h2>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-6">
-                    <div class="small-info">
-                        <span><span class="glyphicon glyphicon-paperclip"></span>HDI</span>
-                        <h2 id="top-info-hdi" class="margin10 top-info"></h2>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-6">
-                    <div class="small-info">
-                        <span><span class="glyphicon glyphicon-user"></span>GDI</span>
-                        <h2 id="top-info-gdi" class="margin10 top-info"></h2>
-                    </div>
-                </div>
-                <!-- NEED to add ids for the 2 remaining things -->
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-6">
-                    <div class="small-info">
-                        <span><span class="glyphicon glyphicon-map-marker"></span>TEMP</span>
-                        <h2 id="temp1" class="margin10 top-info"></h2>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row ninety">
-                
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="panel" style="padding-top: 0px;">
-                        <div id="map-div" style="width: 96%; height: 49%; margin:10px;"></div>
-                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
-                    </div>
-                </div>
                 <!-- Climate  -->
-				<div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="panel">
+				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
+                   <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-flash"></span>Climate</h3>
                         </div>
                         <hr/>
 						<div class="panel-body" id="climate">
-                        <div id="climate-bar-chart" class="chart">
-                            
-                        </div>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-temp"></div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-fall" ></div>
+								</div>
+							</div>
 						</div>
-                        <!--<div class="panel-body"><img src="images/weather.png" width="500px"/></div>-->
                     </div>
                 </div>
                 <!-- Languages  -->
-                <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
@@ -491,61 +470,46 @@
                         <div class="panel-body" id="languages">
                         <div id="languages-chart-div" class="chart"></div>
                         </div>
-                        <!--<div class="panel-body"><img src="images/weather.png" width="500px"/></div>-->
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Housing -->
             <div class="row ninety">
-            <div class="col-sm-12 col-md-12 col-lg-12">
+				  <!-- Housing -->
+				  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3>
-                                <span class="glyphicon glyphicon-home"></span>Housing
+                                <span class="glyphicon glyphicon-home"></span>Housing and Utilities
                             </h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#housingModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
-                        </div>
+						</div>
                         <hr />
                         <div class="panel-body" id="housing">
-                            <!--<p id="housing">This is housing.</p>-->
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay"></div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									 <div id="utilities-chart-div" class="chart"></div>
+								</div>
+							</div>		
                         </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="row ninety">
-                
-			<!-- Transportation -->	
-                <div class="col-sm-12 col-md-12 col-lg-12">
+				<!-- Transportation -->	
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-road"></span>Transportation</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
-                        <hr />
-                        <div class="panel-body" id="transportation">
-                            
-						</div>
+                        <hr>
+                        <div class="panel-body" id="transportation"></div>
                     </div>
                 </div>
-            </div>
-            <hr />
+          	</div>
             <br>
             <div class="row ninety">
-            <!-- Attraction -->	
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-heart"></span>Attractions</h3>
-                        </div>
-                        <hr />
-                        <div class="panel-body" id="attractions">
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="col-sm-4 col-md-4 col-lg-4 ">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
@@ -563,22 +527,39 @@
                             <h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
-                        <hr />
+                        <hr>
                         <div class="panel-body" id="entertainment">
                             <p id="entertainment"></p>
                         </div>
                     </div>
                 </div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3><span class="fa fa-trophy"></span>Quality Of Life</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="qualityOfLife"></div>
+                    </div>
+                </div>
 			</div>
-            <hr />
-			<!--Entertainment -->
-            <div class="row ninety">
-                
-			<!-- Food -->	
-               
-            </div>
-            <hr />
-            <div class="row ninety">
+            <hr>
+			<div class="row ninety">
+				<!-- Attraction -->	
+                <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3><span class="glyphicon glyphicon-heart"></span>Attractions</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="attractions">
+                            
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<hr>
+			<div class="row ninety">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-heading"><h3><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
@@ -631,6 +612,6 @@
                 <hr>
             </div>
             <hr />
-        </div>
+		 </div>	
     </body>
 </html>

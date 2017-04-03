@@ -3,11 +3,9 @@ html,body {
 	background-color: whitesmoke;
 	color: #222222;
 }
+
 #compareLink,#signOutButton{
 	display:none;
-}
-body {
-	margin-top: 70px;
 }
 #brand-name {
     font-family: 'Pacifico', cursive;
@@ -17,6 +15,12 @@ body {
 #brand-name:hover {
     color: #9d9d9d;
     cursor: pointer;
+}
+.row{
+	padding:10px;
+}
+.panel{
+	margin: 5px 0px 0px 0px;
 }
 h1,h2,h3,h4,h5,h6{
 	margin-top:10px;
@@ -35,25 +39,32 @@ h1,h2,h3,h4,h5,h6{
 	word-wrap: break-word;
 	white-space: normal;
 }
+div.center{
+	text-align:center;
+}
 ul{
 	list-style-type:none;
 }
 div.listContainer{
 	text-align:center;
+	height:200px;
 }
 ul .cityList{
-	margin: 5px 50px 5px 0px;
+	margin: 15px 50px 15px 0px;
 	cursor:pointer;
 	font-family: 'Alegreya', serif;
-	font-size: 15px;
+	font-size: 20px;
 }
 .carousel .carousel-inner {
 	width:100%;
-	height:300px;
+	height:500px;
 }
 .carousel .item{
 	width:100%;
 	height:100%;
+}
+#cityImageBox{
+	padding:0px;
 }
 #torontoItem{
 	background-image:url("../images/torontoImage.jpg");
@@ -140,12 +151,37 @@ p{
 	font-size: 15px;
 	margin:0px;
 }
-@media screen and (max-width:1194px) {
-	.carousel .carousel-inner {
-		width:100%;
-		height:250px;
+@media screen and (max-height:505px){
+	.navbar{
+		margin:0px;
 	}
+	.carousel .carousel-inner {
+		height:230px;
+	}
+	ul .cityList{
+		margin: 1px 30px 1px 0px;
+		cursor:pointer;
+		font-family: 'Alegreya', serif;
+		font-size: 20px;
+	}
+	.row{
+		padding:5px;
+	}
+	h1{
+		margin:1px;
+	}
+	h4{
+		margin:0px;
+		padding:0px;
+	}
+	.btn-huge{
+		padding:10px;
+		
+	}
+	
 }
-@media screen and (max-width:850px){
-
+@media screen and (max-width:978px){
+	.carousel .carousel-inner {
+		height:300px;
+	}
 }

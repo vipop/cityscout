@@ -9,14 +9,31 @@ window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
 	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
-	var climate ={"high_avg":"21","low_avg":"-1000","rainfall":"55","snowfall":"566"}
+	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"}
+	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}]
+	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","asd":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","asd":"Buy"},
+					{"type":"Appartment","cost_desc":"$/month","cost":"1350","asd":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","asd":"Buy"}];
+	var transportation =[	{"type": "Subway", "cost_desc": "(Adult)", "cost": "3.25"},
+							{"type": "Train", "cost_desc": "(Adult)", "cost": "5.43"},
+							{"type": "Car", "cost_desc": "(Adult)", "cost": "3.25"},
+							{"type": "Bus", "cost_desc": "(Adult)", "cost": "5.43"},
+							{"type": "Taxi", "cost_desc": "(Adult)", "cost": "3.25"},
+							{"type": "RideShare", "cost_desc": "(Adult)", "cost": "5.43"}];
+	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
+	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
+					{"name": "HDI","value_desc": "", "value": "0.913"},
+					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
+	initBackground(background);
+	initHousing(housing);
+	initTransportation(transportation);
+	initIndices(indices);
 	prepareGraphs();
-	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")},{"lang":languages,"theId":document.getElementById("attractions")}];
-	var tempClimate = [{"climate":climate,"theId":document.getElementById("climate-bar-chart")},{"climate":climate,"theId":document.getElementById("entertainment")}];
-	loadGraphs(tempLang,tempClimate); //languages, document.getElementById("languages-chart-div"), climate, document.getElementById("climate-bar-chart"));
-	
-
-
+	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
+	var tempClimate = [{"climate":climate,"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
+	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
+	loadGraphs(tempLang,tempClimate,tempUtility);
 };
 
 function loadCity(city, json){
@@ -55,15 +72,13 @@ function loadCity(city, json){
 	//Indices happiness quality of life
 	var indices = json.data.indices;
 	
-	initTopInfo(country, language, pop, area, gdp);
+	initTopInfo(country,language, pop, area, gdp);
 	initCityBanner(city, cityName);
 	initMap(parseFloat(lat), parseFloat(lng), document.getElementById("map-div"));
 	initBackground(history);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 	initHousing(housing);
-	initUtilities(utilities);
 	initTransportation(transportation);
-	initClimate(climate);
 	initEntertainment(entertainments);
 	initAttraction(attractions)
 	initIndices(indices);
@@ -138,24 +153,44 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 }
 function initHousing(house){
 	var i;
-	resetFields("housing");
+	resetFields("housingDisplay")
 	for(i = 0; i < house.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(house[i].type + " " + house[i].cost_desc + house[i].cost);
-		p.appendChild(t);
-		document.getElementById("housing").appendChild(p);
+		if(house[i].type == "Appartment" ){
+			if(house[i].asd =="Buy"){
+				initHousingHelper("building",house[i].asd,house[i].cost,house[i].cost_desc,"");
+			}else{
+				var temp = house[i].cost_desc.split("/");
+				initHousingHelper("building",house[i].asd,house[i].cost,temp[0],"/"+temp[1]);
+			}
+		}
+		else {
+			if(house[i].asd =="Buy"){
+				initHousingHelper("home",house[i].asd,house[i].cost,house[i].cost_desc,"");
+			}else{
+				var temp = house[i].cost_desc.split("/");
+				initHousingHelper("home",house[i].asd,house[i].cost,temp[0],"/"+temp[1]);
+			}
+		}
 	}
 };
-function initUtilites(uti){
-	var i;
-	resetFields("housing");
-	for(i = 0; i < uti.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(uti[i].type + " " + uti[i].cost_desc + uti[i].cost);
-		p.appendChild(t);
-		document.getElementById("housing").appendChild(p);
-	}
-};
+
+function initHousingHelper(glif,asd,cost,pre,post){
+	var h4El = document.createElement("H4");
+	var div = document.createElement("DIV");
+	div.setAttribute("class","flex");
+	var spanEl = document.createElement("SPAN");
+	spanEl.setAttribute("class","fa fa-"+glif);
+	var headerText = document.createTextNode("Average " + asd);
+	div.appendChild(spanEl);
+	div.appendChild(headerText);
+	var h2 = document.createElement("H4");	
+	h2.setAttribute("style","padding-top:5px;text-align:center");
+	var h2Text = document.createTextNode(pre+cost+post);
+	h2.appendChild(h2Text);
+	h4El.appendChild(div);
+	h4El.appendChild(h2);
+	document.getElementById("housingDisplay").appendChild(h4El);
+}
 function initTransportation(tran){
 	var i;
 	resetFields("transportation");
@@ -168,13 +203,24 @@ function initTransportation(tran){
 };
 function initIndices(ind){
 	var i;
-	resetFields("indices");
+	resetFields("qualityOfLife");
 	for(i = 0; i < ind.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(ind[i].name + " " + ind[i].value_desc + ind[i].value);
-		p.appendChild(t);
-		document.getElementById("indices").appendChild(p);
+		indiceHelper(ind[i].name,ind[i].value,ind[i].value_desc,"qualityOfLife");
 	}
+};
+function indiceHelper(headerText,value,desc,panelId){
+		var h4 = document.createElement("H4");
+		var div = document.createElement("DIV");
+		div.setAttribute("class","flex");
+		var hText = document.createTextNode(headerText+":");
+		h4.appendChild(hText);
+		var p = document.createElement("P");
+		var pText = document.createTextNode(value + desc);
+		p.setAttribute("class","inlineP");
+		p.appendChild(pText);
+		div.appendChild(h4);
+		div.appendChild(p);
+		document.getElementById(panelId).appendChild(div);
 };
 function initFood(food){
 	var i;
@@ -186,16 +232,6 @@ function initFood(food){
 		document.getElementById("food").appendChild(p);
 	}
 };
-function initClimate(cli){
-	var i;
-	resetFields("climate");
-	for(i = 0; i < cli.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(cli[i].high_avg + " " + cli[i].low_avg + " "+ cli[i].rainfall + " " + cli[i].snowfall);
-		p.appendChild(t);
-		document.getElementById("climate").appendChild(p);
-	}
-}
 function initEntertainment(ent){
 	var i;
 	resetFields("entertainment");
@@ -254,3 +290,7 @@ function initMap(latitude, longitude, container) {
 	    }
   	});
 }
+//Overview tooltips
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});

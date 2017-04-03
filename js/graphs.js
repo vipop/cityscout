@@ -1,10 +1,9 @@
 
 function prepareGraphs(){
-
   google.charts.load('current', {'packages':['corechart']});
 }
 
-function loadGraphs(tempLang,tempClimate){ //languages,container_lang,climate,container_climate) {
+function loadGraphs(tempLang,tempClimate,tempUtility){ //languages,container_lang,climate,container_climate) {
  
   // Load the Visualization API and the corechart package.
   
@@ -13,24 +12,23 @@ function loadGraphs(tempLang,tempClimate){ //languages,container_lang,climate,co
     var i;
     for(i = 0 ; i < tempLang.length;i++){
       drawLanguageChart(tempLang[i].lang,tempLang[i].theId);
-
     }
   });
   google.charts.setOnLoadCallback(function(){
     var i;
     for(i = 0 ; i < tempClimate.length;i++){
-      drawClimateChart(tempClimate[i].climate,tempClimate[i].theId);
-
+		drawTempChart(tempClimate[i].climate.high_avg,tempClimate[i].climate.low_avg,tempClimate[i].theTemp);
+		drawFallChart(tempClimate[i].climate.snowfall,tempClimate[i].climate.rainfall,tempClimate[i].theFall);
+	}
+  });
+   google.charts.setOnLoadCallback(function(){
+    var i;
+	console.log(tempUtility.uti);
+	for(i = 0 ; i < tempUtility.length;i++){
+      drawUtilityChart(tempUtility[i].uti,tempUtility[i].theId);
     }
   });
-  //google.charts.setOnLoadCallback(drawClimateChart);
 }
-
-// Callback that creates and populates a data table,
-// instantiates the pie chart, passes in the data and
-// draws it.
-
-
 function drawLanguageChart(languages,container_lang) {
   // Create the data table. 
   var rowArray=[];
@@ -51,9 +49,9 @@ function drawLanguageChart(languages,container_lang) {
                  'titlePosition': 'none',
                  'backgroundColor': '#ffffff',
                  'is3D': 'true',
-                 'width': 300,
-                 'height': 300,
-                 'chartArea': {'width': '100%', 'height': '85%'},
+                 'width': 'auto',
+                 'height': 'auto',
+				 'chartArea': {'width': '100%', 'height': '85%'},
                  'legend': {  'textStyle': { 'color': '#101010' },
                               'position': 'bottom'},
                   'colors': ['#2c5a71', 'whitesmoke', '#3e606f', '#406d80', '#29768a']
@@ -62,26 +60,57 @@ function drawLanguageChart(languages,container_lang) {
   var chart = new google.visualization.PieChart(container_lang);
   chart.draw(data, options);
 }
-
-function drawClimateChart(climate,container_climate) {
+function drawTempChart(high_avg,low_avg,container_temp) {
   var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
-    ["High", parseInt(climate.high_avg), "#b87333"],
-    ["Low", parseInt(climate.low_avg), "silver"],
-    ["Rainfall", parseInt(climate.rainfall), "gold"],
-    ["Snowfall", parseInt(climate.snowfall), "color: #e5e4e2"]
+    ["High", parseInt(high_avg), "#b87333"],
+    ["Low", parseInt(low_avg), "silver"]]);
+    
+	var view = new google.visualization.DataView(data);
+	var options = {
+    title: "Average Annual Temperature(C)",
+    width: 'auto',
+    height: 'auto',
+    bar: {groupWidth: "100%"},
+    legend: { position: "none" },
+  };
+  var chart = new google.visualization.BarChart(container_temp);
+  chart.draw(view, options);
+}
+function drawFallChart(snowfall,rainfall,container_fall) {
+  var data = google.visualization.arrayToDataTable([
+    ["Element", "Value", { role: "style" } ],
+    ["Snowfall", parseInt(snowfall), "#b87333"],
+    ["Rainfall", parseInt(rainfall), "silver"]]);
+    var view = new google.visualization.DataView(data);
+	var options = {
+    title: "Average Annual Rainfall and Snowfall (cm)",
+    width: 'auto',
+    height: 'auto',
+    bar: {groupWidth: "100%"},
+    legend: { position: "none" },
+  };
+  var chart = new google.visualization.BarChart(container_fall);
+  chart.draw(view, options);
+}
+function drawUtilityChart(utility,container_utility) {
+  console.log(utility);
+  var data = google.visualization.arrayToDataTable([
+    ["Element", "Value", { role: "style" } ],
+    [utility[0].type,parseInt(utility[0].cost),"#b87333"],
+    [utility[1].type,parseInt(utility[1].cost),"silver"],
+    [utility[2].type,parseInt(utility[2].cost),"color: #e5e4e2"]
   ]);
 
   var view = new google.visualization.DataView(data);
 
-
   var options = {
-    title: "Average Annual Climate",
-    width: 300,
-    height: 300,
+    title: "Average Monthly Costs",
+    width: 'auto',
+    height: 'auto',
     bar: {groupWidth: "100%"},
     legend: { position: "none" },
   };
-  var chart = new google.visualization.BarChart(container_climate);
+  var chart = new google.visualization.ColumnChart(container_utility);
   chart.draw(view, options);
-  }
+}
