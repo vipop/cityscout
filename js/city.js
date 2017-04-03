@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function(event) {
    if(sessionStorage.getItem("userId") != null){
 		displayFullContent();
@@ -8,32 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
-	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
-	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"}
-	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}]
-	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","asd":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","asd":"Buy"},
-					{"type":"Appartment","cost_desc":"$/month","cost":"1350","asd":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","asd":"Buy"}];
-	var transportation =[	{"type": "Subway", "cost_desc": "(Adult)", "cost": "3.25"},
-							{"type": "Train", "cost_desc": "(Adult)", "cost": "5.43"},
-							{"type": "Car", "cost_desc": "(Adult)", "cost": "3.25"},
-							{"type": "Bus", "cost_desc": "(Adult)", "cost": "5.43"},
-							{"type": "Taxi", "cost_desc": "(Adult)", "cost": "3.25"},
-							{"type": "RideShare", "cost_desc": "(Adult)", "cost": "5.43"}];
-	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
-	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
-					{"name": "HDI","value_desc": "", "value": "0.913"},
-					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
-	initBackground(background);
-	initHousing(housing);
-	initTransportation(transportation);
-	initIndices(indices);
-	prepareGraphs();
-	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
-	var tempClimate = [{"climate":climate,"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
-	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
-	loadGraphs(tempLang,tempClimate,tempUtility);
 };
 
 function loadCity(city, json){
@@ -83,6 +56,11 @@ function loadCity(city, json){
 	initAttraction(attractions)
 	initIndices(indices);
 	initFood(food);
+	prepareGraphs();
+	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
+	var tempClimate = [{"climate":climate,"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
+	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
+	loadGraphs(tempLang,tempClimate,tempUtility);
 	loadComments(json); //This function is defined in the comments.js
 }
 function getCityInformation(city){
@@ -156,31 +134,31 @@ function initHousing(house){
 	resetFields("housingDisplay")
 	for(i = 0; i < house.length; i++){
 		if(house[i].type == "Appartment" ){
-			if(house[i].asd =="Buy"){
-				initHousingHelper("building",house[i].asd,house[i].cost,house[i].cost_desc,"");
+			if(house[i].payment =="Buy"){
+				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("building",house[i].asd,house[i].cost,temp[0],"/"+temp[1]);
+				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
 			}
 		}
 		else {
-			if(house[i].asd =="Buy"){
-				initHousingHelper("home",house[i].asd,house[i].cost,house[i].cost_desc,"");
+			if(house[i].payment =="Buy"){
+				initHousingHelper("home",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("home",house[i].asd,house[i].cost,temp[0],"/"+temp[1]);
+				initHousingHelper("home",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
 			}
 		}
 	}
 };
 
-function initHousingHelper(glif,asd,cost,pre,post){
+function initHousingHelper(glif,payment,cost,pre,post){
 	var h4El = document.createElement("H4");
 	var div = document.createElement("DIV");
 	div.setAttribute("class","flex");
 	var spanEl = document.createElement("SPAN");
 	spanEl.setAttribute("class","fa fa-"+glif);
-	var headerText = document.createTextNode("Average " + asd);
+	var headerText = document.createTextNode("Average " + payment);
 	div.appendChild(spanEl);
 	div.appendChild(headerText);
 	var h2 = document.createElement("H4");	
@@ -195,63 +173,126 @@ function initTransportation(tran){
 	var i;
 	resetFields("transportation");
 	for(i = 0; i < tran.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(tran[i].type + " " + tran[i].cost_desc + tran[i].cost);
-		p.appendChild(t);
-		document.getElementById("transportation").appendChild(p);
+		var temp = tran[i].cost_desc.split("/");
+		if(temp[1] != null){
+			printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
+		}else{
+			printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
+		}
 	}
 };
 function initIndices(ind){
 	var i;
 	resetFields("qualityOfLife");
 	for(i = 0; i < ind.length; i++){
-		indiceHelper(ind[i].name,ind[i].value,ind[i].value_desc,"qualityOfLife");
+		printHelper(ind[i].name,ind[i].value,"",ind[i].value_desc,"","qualityOfLife");
 	}
 };
-function indiceHelper(headerText,value,desc,panelId){
-		var h4 = document.createElement("H4");
-		var div = document.createElement("DIV");
-		div.setAttribute("class","flex");
-		var hText = document.createTextNode(headerText+":");
-		h4.appendChild(hText);
-		var p = document.createElement("P");
-		var pText = document.createTextNode(value + desc);
-		p.setAttribute("class","inlineP");
-		p.appendChild(pText);
-		div.appendChild(h4);
-		div.appendChild(p);
-		document.getElementById(panelId).appendChild(div);
-};
+
 function initFood(food){
 	var i;
 	resetFields("food");
 	for(i = 0; i < food.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(food[i].name + " " + food[i].cost_desc + food[i].cost);
-		p.appendChild(t);
-		document.getElementById("food").appendChild(p);
+		var temp = food[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			printHelper(food[i].type,food[i].cost,temp[0],temp[1],"/","food");
+		}else{
+			printHelper(food[i].type,food[i].cost,temp[0],"","","food");
+		}
 	}
 };
 function initEntertainment(ent){
 	var i;
 	resetFields("entertainment");
 	for(i = 0; i < ent.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(ent[i].type + " " + ent[i].cost_desc + ent[i].cost);
-		p.appendChild(t);
-		document.getElementById("entertainment").appendChild(p);
+		var temp = ent[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			printHelper(ent[i].type,ent[i].cost,temp[0],temp[1],"/","entertainment");
+		}else{
+			printHelper(ent[i].type,ent[i].cost,temp[0],"","","entertainment");
+		}
 	}
-}
+};
+function printHelper(headerText,value,pre,post,divider,panelId){
+		var h4 = document.createElement("H4");
+		var div = document.createElement("DIV");
+		div.setAttribute("class","flex");
+		var hText = document.createTextNode(headerText+":");
+		h4.appendChild(hText);
+		var p = document.createElement("P");
+		var pText = document.createTextNode(pre + value + divider + post);
+		p.setAttribute("class","inlineP");
+		p.appendChild(pText);
+		div.appendChild(h4);
+		div.appendChild(p);
+		document.getElementById(panelId).appendChild(div);
+};
 function initAttraction(att){
 	var i;
 	resetFields("attractions");
 	for(i = 0; i < att.length; i++){
-		var p = document.createElement("P");
-		var t = document.createTextNode(att[i].name + " "+ att[i].about + " " + att[i].cost_desc + att[i].cost + " "+ att[i].link + " " + att[i].location + " " + att[i].image);
-		p.appendChild(t);
-		document.getElementById("entertainment").appendChild(p);
+		var temp = att[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			initAttractionHelper(att[i].name,att[i].about,att[i].cost,temp[0],temp[1],att[i].image,att[i].link,att[i].location,"attractions");
+		}else{
+			initAttractionHelper(att[i].name,att[i].about,att[i].cost,temp[0],"",att[i].image,att[i].link,att[i].location,"attractions");
+		}
 	}
 }
+function initAttractionHelper(name,about,cost,pre,post,imgUrl,webLink,location,panelId){
+	var containerDiv = document.createElement("DIV");
+	var table = document.createElement("TABLE");
+	var tr = document.createElement("Tr");
+	var tdImg = document.createElement("Td");
+	var tdContent =document.createElement("Td");
+	
+	var img = document.createElement("IMG");
+	img.setAttribute("class","attractImg");
+	img.setAttribute("src",imgUrl);
+	
+	
+	var h3 = document.createElement("H3");
+	h3.setAttribute("class","paddingNeeded");
+	var h3Text = document.createTextNode(name);
+	h3.appendChild(h3Text);
+	
+	var aboutP = document.createElement("P");
+	aboutP.setAttribute("class","paddingNeeded");
+	var aboutPText = document.createTextNode("Description: " + about);
+	aboutP.appendChild(aboutPText);
+	
+	var costP = document.createElement("P");
+	costP.setAttribute("class","paddingNeeded");
+	var costPText = document.createTextNode("Cost: " + pre + cost + post);
+	costP.appendChild(costPText);
+	
+	var locationP = document.createElement("P");
+	locationP.setAttribute("class","paddingNeeded");
+	var locationPText = document.createTextNode("Address: " + location);
+	locationP.appendChild(locationPText);
+	
+	var linkA = document.createElement("A");
+	linkA.setAttribute("class","paddingNeeded");
+	linkA.setAttribute("src",webLink);
+	var linkAText = document.createTextNode("Website: " + webLink);
+	linkA.appendChild(linkAText);
+	
+	
+	tdImg.appendChild(img);
+	tdContent.appendChild(h3);
+	tdContent.appendChild(aboutP);
+	tdContent.appendChild(costP);
+	tdContent.appendChild(locationP);
+	tdContent.appendChild(linkA);
+	
+	tr.appendChild(tdImg);
+	tr.appendChild(tdContent);
+	table.appendChild(tr);
+	containerDiv.appendChild(table);
+	document.getElementById(panelId).appendChild(containerDiv);
+	
+}
+
 function resetFields(parentID){
 	while(document.getElementById(parentID).firstChild){
 		document.getElementById(parentID).removeChild(document.getElementById(parentID).firstChild);

@@ -16,6 +16,7 @@
         <script src="js/comments.js"></script>
         <script src="js/city.js"></script>
         <script src="js/users.js"></script>
+		<script src="js/contribute.js"></script>
         <!-- CSS Stylesheets -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
         <link href="css/city.css" rel="stylesheet">
@@ -24,7 +25,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-static-top"> <!-- navbar-fixed-top">-->
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -69,7 +70,7 @@
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
                             <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
-						<hr />
+						<hr>
                         <div class="panel-body" style="width: 85%; margin: auto;">
                             <div id="registration-success" style="display:none">
                                 <p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
@@ -88,7 +89,7 @@
                                 <input id="register-email" type="text" class="form-control" placeholder="E-mail">
                                 <p class="help-block">Please provide a valid E-mail address.</p>
                             </div>
-                            <hr />
+                            <hr>
                             <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
                             <button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
                         </div>
@@ -103,7 +104,7 @@
                 <div class="modal-content">
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
-                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Housing</h3>
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Housing and Utilities</h3>
                             <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
@@ -112,34 +113,28 @@
                                 <label for="inputName" class="control-label">Property Type</label>
                                 <select id="property-type" class="form-control">
                                     <option>House</option>
-                                    <option>Appartment/Condo</option>
+                                    <option>Appartment</option>
                                 </select>
-                                <p class="help-block">Property type , House Vs Condo</p>
+                                <p class="help-block">Property type, House or Appartment</p>
+								<label for="inputName" class="control-label">Buying or Renting</label>
+                                <select id="property-ownershipType" class="form-control">
+                                    <option>Buying</option>
+                                    <option>Renting</option>
+                                </select>
                                 <label for="inputName" class="control-label">Price</label>
-                                <input id="housing-price" type="number"  class="form-control" placeholder=" Price">
-                                <p class="help-block">Average property price/Rent</p>
-                                <label for="inputName" class="control-label">Currency</label>
-                                <select id="property-cost-description" class="form-control">
-                                    <option>$</option>
-                                    <option>€</option>
-                                    <option>£</option>
-                                </select>
-                                <hr>
-                                <button type="button" class="btn btn-success center-block">Submit</button>
-                            </div>
-                            <hr>
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Utilities</label>
-                                <input id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost">
-                                <p class="help-block">Utilities cost.</p>
-                                <label for="inputName" class="control-label">Type</label>
-                                <select id="Utilities-cost-description" class="form-control">
+                                <input id="housing-price" type="number"  class="form-control" placeholder="Price" min="0">
+                                <p class="help-block">property price buy/rent</p>
+								<label for="inputName" class="control-label">Utility Type</label>
+                                <select id="utilities-type" class="form-control">
                                     <option>Electricity</option>
                                     <option>Internet</option>
                                     <option>Water</option>
                                 </select>
                                 <hr>
-                                <button type="button" class="btn btn-success center-block">Submit</button>
+                                <label for="inputName" class="control-label">Cost</label>
+                                <input id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost" min="0">
+                                <p class="help-block">Utility cost.</p>
+                                <button type="button" class="btn btn-success center-block" onClick="submitHousingUtilities()">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -208,9 +203,9 @@
                                 <input id="transportation-description" type="text" class="form-control" placeholder="Description">
                                 <p class="help-block">Description (Adult/child/senior/etc)</p>
                                 <label for="inputName" class="control-label">Cost</label>
-                                <input id="transportation-prices" type="number" class="form-control" placeholder="Cost">
-                                <p class="help-block">Cost.(For cars enter average price of gas)</p>
-                                <label for="inputName" class="control-label">Provider</label>
+                               	<input id="transportation-prices" type="number" class="form-control" placeholder="Cost" min="0">
+								<p class="help-block">Cost.(For cars enter average price of gas)</p>
+								<label for="inputName" class="control-label">Provider</label>
                                 <input id="transportation-provider" type="text" class="form-control" placeholder="Provider">
                                 <p class="help-block">Name of provider</p>
                                 <label for="inputName" class="control-label">Link</label>
@@ -250,7 +245,7 @@
                                 <p class="help-block">Cost of ticket/entry to entertainment item</p>
                                 <label for="inputName" class="control-label">Cost Description</label>
                                 <input id="entertainment-prices-description" type="text" class="form-control" placeholder="Cost Description">
-                                <p class="help-block">$ per ticket or per game etc...</p>
+                                <p class="help-block">cost per ticket or per game etc...</p>
                             </div>
                             <hr />
                             <button type="button" class="btn btn-success center-block">Submit</button>
