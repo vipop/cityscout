@@ -26,9 +26,9 @@ function dummyInfo() {
 	var transportation =[	{"type": "Subway", "cost_desc": "$/(Adult)", "cost": "3.25"},
 							{"type": "Train", "cost_desc": "$", "cost": "5.43"},
 							{"type": "Car", "cost_desc": "$/(Adult)", "cost": "3.25"},
-							{"type": "Bus", "cost_desc": "(Adult)", "cost": "5.43"},
-							{"type": "Taxi", "cost_desc": "(Adult)", "cost": "3.25"},
-							{"type": "RideShare", "cost_desc": "(Adult)", "cost": "5.43"}];
+							{"type": "Bus", "cost_desc": "$", "cost": "5.43"},
+							{"type": "Taxi", "cost_desc": "$", "cost": "3.25"},
+							{"type": "RideShare", "cost_desc": "$", "cost": "5.43"}];
 
 	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
 
@@ -261,9 +261,79 @@ function initTransportation(tran){
 	for(i = 0; i < tran.length; i++){
 		var temp = tran[i].cost_desc.split("/");
 		if(temp[1] != null){
-			printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
+			var row = document.createElement("div");
+			row.style.display = "flex";
+			var g = document.createElement("p");
+			g.style.width = "20%";
+			g.style.display = "flex";
+			switch (tran[i].type) {
+				case "Subway":
+					g.innerHTML = '<i class="fa fa-subway center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Train":
+					g.innerHTML = '<i class="fa fa-train center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Car":
+					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Bus":
+					g.innerHTML = '<i class="fa fa-bus center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Taxi":
+					g.innerHTML = '<i class="fa fa-taxi center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "RideShare":
+					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+			}
+			var p = document.createElement("p");
+			p.style.width = "30%";
+			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
+			var p2 = document.createElement("p");
+			p2.style.width = "40%";
+			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + " " + temp[1];"<h4>";
+			row.appendChild(g);
+			row.appendChild(p);
+			row.appendChild(p2);
+			document.getElementById("transportation").appendChild(row);
+			//printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
 		}else{
-			printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
+			var row = document.createElement("div");
+			row.style.display = "flex";
+			var g = document.createElement("p");
+			g.style.width = "20%";
+			g.style.display = "flex";
+			switch (tran[i].type) {
+				case "Subway":
+					g.innerHTML = '<i class="fa fa-subway center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Train":
+					g.innerHTML = '<i class="fa fa-train center-block" aria-hidden="true style="font-size: 16pt;"></i>';
+					break;
+				case "Car":
+					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Bus":
+					g.innerHTML = '<i class="fa fa-bus center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "Taxi":
+					g.innerHTML = '<i class="fa fa-taxi center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+				case "RideShare":
+					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					break;
+			}
+			var p = document.createElement("p");
+			p.style.width = "30%";
+			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
+			var p2 = document.createElement("p");
+			p2.style.width = "40%";
+			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + "<h4>";
+			row.appendChild(g);
+			row.appendChild(p);
+			row.appendChild(p2);
+			document.getElementById("transportation").appendChild(row);
+			//printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
 		}
 	}
 };
