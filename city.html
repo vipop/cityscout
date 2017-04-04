@@ -46,7 +46,7 @@
 					<script type="text/javascript"> //script must be here
 						if(sessionStorage.getItem("userId") != null){
 							$("#logInForm").hide();
-						}	
+						}
 					</script>
 					<ul class="nav navbar-nav navbar-right">
                         <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -343,15 +343,15 @@
 						<div id="map-div"></div>
 						<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvE18u3mbUrMqJQk7M_XSGlLJkbmnv5c"></script>
 					</div>
-				</div>	
+				</div>
             </div>
             <hr />
             <!-- Background -->
-            <div class="row ninety row-eq-height"> 
+            <div class="row ninety row-eq-height">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-book"></span>Background</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background</h3>
                         </div>
                         <hr />
                         <div class="panel-body">
@@ -362,14 +362,14 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel">
 						<div class="panel-heading">
-							<h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
 						</div>
 						<hr />
 						<div class="row">
 							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
+								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
 							</div>
-							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-happiness-bar" class="my-progress-bar"></div>
 								</div>
@@ -378,9 +378,9 @@
 						</div>
 						<div class="row">
 							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
+								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview center-block" data-toggle="tooltip" title="Entertainment"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-entertainment-bar" class="my-progress-bar"></div>
 								</div>
@@ -389,9 +389,9 @@
 						</div>
 						<div class="row">
 							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
+								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview center-block" data-toggle="tooltip" title="Healthcare"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-healthcare-bar" class="my-progress-bar"></div>
 								</div>
@@ -400,9 +400,9 @@
 						</div>
 						<div class="row">
 							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
+								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview center-block" data-toggle="tooltip" title="Education"></span><br /></td>
 							</div>
-							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-education-bar" class="my-progress-bar"></div>
 								</div>
@@ -411,9 +411,9 @@
 						</div>
 						<div class="row">
 							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
+								<span style="color: lightpink;" class="glyphicon glyphicon-home overview center-block" data-toggle="tooltip" title="Housing"></span><br /></td>
 							</div>
-							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-housing-bar" class="my-progress-bar"></div>
 								</div>
@@ -422,10 +422,10 @@
 						</div>
 						<div class="row">
 							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
-								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
+								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview center-block" data-toggle="tooltip" title="Crime"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10">
-								<div class="rating-bar" style="margin: 16px 0px 0px 0px">
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
 									<div id="ov-crime-bar" class="my-progress-bar"></div>
 								</div>
 								<span id="ov-crime" class="progress-text"></span>
@@ -440,7 +440,7 @@
 				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
                    <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-flash"></span>Climate</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
                         </div>
                         <hr/>
 						<div class="panel-body" id="climate">
@@ -459,7 +459,7 @@
                 <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
                         </div>
                         <hr/>
                         <div class="panel-body" id="languages">
@@ -473,10 +473,8 @@
 				  <!-- Housing -->
 				  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3>
-                                <span class="glyphicon glyphicon-home"></span>Housing and Utilities
-                            </h3>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="contribute-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#housingModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
 						</div>
                         <hr />
@@ -486,15 +484,15 @@
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									 <div id="utilities-chart-div" class="chart"></div>
 								</div>
-							</div>		
+							</div>
                         </div>
                     </div>
                 </div>
-				<!-- Transportation -->	
+				<!-- Transportation -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="contribute-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr>
@@ -504,22 +502,22 @@
           	</div>
             <br>
             <div class="row ninety">
-                <div class="col-sm-4 col-md-4 col-lg-4 ">
+                <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="contribute-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
                         <div class="panel-body" id="food">
-                        
+
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="contribute-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
                             <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr>
@@ -531,7 +529,7 @@
 				<div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="fa fa-trophy"></span>Quality Of Life</h3>
+                            <h3 class="category-title"><span class="fa fa-trophy"></span>Quality of Life Indexes</h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="qualityOfLife"></div>
@@ -540,15 +538,15 @@
 			</div>
             <hr>
 			<div class="row ninety">
-				<!-- Attraction -->	
+				<!-- Attraction -->
                 <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-heart"></span>Attractions</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-flag"></span>Attractions</h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="attractions">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -557,7 +555,7 @@
 			<div class="row ninety">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
+                        <div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
                         <hr />
                         <div class="panel-body">
                             <div id="commentEnterArea" class="row">
@@ -607,6 +605,6 @@
                 <hr>
             </div>
             <hr />
-		 </div>	
+		 </div>
     </body>
 </html>

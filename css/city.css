@@ -5,9 +5,18 @@ html,body {
 #commentEnterArea,#compareLink,#compareBox,#signOutButton{
 	display:none;
 }
-.contribute{
-	/*display:none;*/
+.contribute-header {
+	display: flex;
 }
+
+.category-title {
+	display: flex;
+}
+
+.contribute-title {
+	width: 100%;
+}
+
 #brand-name {
     font-family: 'Pacifico', cursive;
     font-size: 18pt;
@@ -94,11 +103,6 @@ h2, h3 {
 .row.ninety {
 	margin: auto;
 	width: 90%;
-	display:flex;
-}
-.row  > [class*='col-'] {
-  display: flex;
-  flex-direction:column;
 }
 
 #map-div{
@@ -117,7 +121,7 @@ h2, h3 {
 
 .rating-bar {
 	background-color: antiquewhite;
-	width: 100%;
+	width: 80%;
 	display: flex;
 	margin-top: 16px;
 	margin-bottom: 16px;
@@ -129,17 +133,34 @@ h2, h3 {
 }
 
 .progress-text {
-	width: 15%;
+	width: 20%;
 	text-align: center;
 	align-self: center;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	font-weight: bold;
 }
+
+.ovProgress {
+	display: flex;
+	padding: 0px;
+}
+
 p{
 	font-size: 12pt;
 	margin:0px;
 }
+
+.btn-link {
+	color: black;
+	text-decoration: none;
+}
+
+.btn-link:hover {
+	color: #80ba52;
+	text-decoration: none;
+}
+
 .paddingNeeded{
 	padding:2px;
 }
@@ -192,7 +213,7 @@ div.starContainer div{
 	margin-right:auto;
 	width: 100px;
 	padding-top:4px;
-} 
+}
 div.commentPanel{
 	word-wrap: break-word;
 	display:flex;
@@ -208,7 +229,7 @@ div.flex{
 	display:flex;
 }
 .chart {
-  width: 100%; 
+  width: 100%;
   justify-content:center;
   display:flex;
   margin: 0px 0px 0px 0px;

@@ -1,7 +1,7 @@
 function login() {
 	var username = document.getElementById("login-username").value;
 	var password = document.getElementById("login-password").value;
-			
+
 	// VERIFY USER AGAINST THE DATABASE
     var url = "cgi-bin/queries.php"
     var params = "type=SIGN_IN_USER&username=" + username + "&password=" + password;
@@ -27,7 +27,7 @@ function displayFullContent(){
 	if(document.getElementById("compareBox") != null)document.getElementById("compareBox").style.display="block";
 	if(document.getElementsByClassName("contribute") != null){
 		var theClass = document.getElementsByClassName("contribute");
-		var i; 
+		var i;
 		for(i=0;i<theClass.length;i++){
 			theClass[i].style.display="block";
 		}

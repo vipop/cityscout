@@ -6,8 +6,90 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 window.onload = function() {
 	city = getCity();
-	getCityInformation(city); //queries from database
+	dummyInfo();
+	//getCityInformation(city); //queries from database
 };
+
+function dummyInfo() {
+
+	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
+
+	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"};
+
+	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}];
+
+	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"},
+					{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"}];
+
+	var transportation =[	{"type": "Subway", "cost_desc": "$/(Adult)", "cost": "3.25"},
+							{"type": "Train", "cost_desc": "$", "cost": "5.43"},
+							{"type": "Car", "cost_desc": "$/(Adult)", "cost": "3.25"},
+							{"type": "Bus", "cost_desc": "(Adult)", "cost": "5.43"},
+							{"type": "Taxi", "cost_desc": "(Adult)", "cost": "3.25"},
+							{"type": "RideShare", "cost_desc": "(Adult)", "cost": "5.43"}];
+
+	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
+
+	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
+					{"name": "HDI","value_desc": "", "value": "0.913"},
+					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
+
+	var entertainment = [	{"type": "Average cost of dinner (for 2)","cost_desc": "$","cost": "36"},
+							{"type": "Average cost of drink","cost_desc": "$","cost": "5.88"},
+							{"type": "Movie","cost_desc": "$/ticket","cost": "11"},
+							{"type": "Sports","cost_desc": "$/ticket","cost": "250"},
+							{"type": "Theatre","cost_desc": "$/ticket","cost": "55"}];
+
+	var food = [	{"type": "Dairy","cost_desc": "$/L","cost": "2.9"},
+					{"type": "Fruits","cost_desc": "$/kg","cost": "2.83"},
+					{"type": "Grains","cost_desc": "$/Loaf","cost": "1.89"},
+					{"type": "Protein","cost_desc": "$/kg","cost": "6.6"},
+					{"type": "Vegetables","cost_desc": "$/kg","cost": "1.11"}];
+
+	var attractions = [{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						},
+						{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						},
+						{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						}];
+
+	//Overview
+	var ovHappiness = 3;
+	var ovEntertainment = 1;
+	var ovHealthcare = 5;
+	var ovEducation = 2;
+	var ovHousing = 4;
+	var ovCrime = 1;
+
+	initBackground(background);
+	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
+	initHousing(housing);
+	initTransportation(transportation);
+	initIndices(indices);
+	initEntertainment(entertainment);
+	initFood(food);
+	initAttraction(attractions);
+}
 
 function loadCity(city, json){
 	//top basic information
@@ -131,6 +213,7 @@ function initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, o
 	document.getElementById("ov-crime").innerHTML = ovCrime + " / 5";
 	document.getElementById("ov-crime-bar").style.width = ovCrime * 20 + "%";
 }
+
 function initHousing(house){
 	var i;
 	resetFields("housingDisplay")
@@ -171,6 +254,7 @@ function initHousingHelper(glif,payment,cost,pre,post){
 	h4El.appendChild(h2);
 	document.getElementById("housingDisplay").appendChild(h4El);
 }
+
 function initTransportation(tran){
 	var i;
 	resetFields("transportation");
@@ -183,6 +267,7 @@ function initTransportation(tran){
 		}
 	}
 };
+
 function initIndices(ind){
 	var i;
 	resetFields("qualityOfLife");
@@ -203,6 +288,7 @@ function initFood(food){
 		}
 	}
 };
+
 function initEntertainment(ent){
 	var i;
 	resetFields("entertainment");
@@ -215,6 +301,7 @@ function initEntertainment(ent){
 		}
 	}
 };
+
 function printHelper(headerText,value,pre,post,divider,panelId){
 		var h4 = document.createElement("H4");
 		var div = document.createElement("DIV");
@@ -229,6 +316,7 @@ function printHelper(headerText,value,pre,post,divider,panelId){
 		div.appendChild(p);
 		document.getElementById(panelId).appendChild(div);
 };
+
 function initAttraction(att){
 	var i;
 	resetFields("attractions");
@@ -241,6 +329,7 @@ function initAttraction(att){
 		}
 	}
 }
+
 function initAttractionHelper(name,about,cost,pre,post,imgUrl,webLink,location,panelId){
 	var containerDiv = document.createElement("DIV");
 	var table = document.createElement("TABLE");
