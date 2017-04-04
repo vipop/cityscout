@@ -268,29 +268,29 @@ function initTransportation(tran){
 			g.style.display = "flex";
 			switch (tran[i].type) {
 				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-subway center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 			}
 			var p = document.createElement("p");
 			p.style.width = "30%";
 			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
 			var p2 = document.createElement("p");
-			p2.style.width = "40%";
+			p2.style.width = "50%";
 			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + " " + temp[1];"<h4>";
 			row.appendChild(g);
 			row.appendChild(p);
@@ -305,29 +305,29 @@ function initTransportation(tran){
 			g.style.display = "flex";
 			switch (tran[i].type) {
 				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-subway center-block 16pt global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block" aria-hidden="true style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block" aria-hidden="true" style="font-size: 16pt;"></i>';
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
 					break;
 			}
 			var p = document.createElement("p");
 			p.style.width = "30%";
 			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
 			var p2 = document.createElement("p");
-			p2.style.width = "40%";
+			p2.style.width = "50%";
 			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + "<h4>";
 			row.appendChild(g);
 			row.appendChild(p);

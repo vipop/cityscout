@@ -86,13 +86,18 @@ h2, h3 {
 .glyphicon {
 	align-self: center;
 	margin-right: 10px;
-	font-size: 16pt;
 }
 .glyphicon.overview {
 	margin: 12px;
 	font-size: 21pt;
 	text-align: center;
 }
+
+.global-glyphs {
+	font-size: 16pt;
+	align-self: center;
+}
+
 .panel {
 	margin: 0px;
 	padding-top: 10px;
