@@ -110,7 +110,7 @@
 			$result = postUserComment($conn, $_POST['city_id'], $_POST['username'], $_POST['comment'], $_POST['happiness'], $_POST['entertainment'], $_POST['healthcare'], $_POST['education'], $_POST['housing'], $_POST['crime']);
 			break;
         case "POST_CONTRIBUTION":
-            $result = postContribution($conn, $_POST['city_id'], $_POST['field'], $_POST['ctype'], $_POST['cdesc'], $_POST['ccost']);
+            $result = postContribution($conn, $_POST['city_id'], $_POST['field'], $_POST);
             break;
         default:
 			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
@@ -169,7 +169,7 @@
 					$city['general'] = $generalInfo;
 
                     //LANGUAGE INFO (citylanguages)
-                    $query  = "SELECT `name`, `population`, ROUND(population / SUM(population) * 100, 2) AS percent FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
+                    $query  = "SELECT `name`, `population` FROM `citylanguages` WHERE city_id=\"$cityId\" ORDER BY population DESC";
                     $result = runQuery($conn, $query);
                     if($result){
                         $city['languages'] = fetchAssocArray($result);
@@ -205,7 +205,7 @@
                     }
 
 					 //HOUSING (cityhousing)
-                    $query = "SELECT type, cost_desc, AVG(cost) AS `cost` FROM `cityhousing` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type ASC";
+                    $query = "SELECT type, payment, cost_desc, AVG(cost) AS `cost` FROM `cityhousing` WHERE city_id=\"$cityId\" GROUP BY type ORDER BY type ASC";
                     $result = runQuery($conn, $query);
                     if($result){
                         $city['housing'] = fetchAssocArray($result);
@@ -353,11 +353,15 @@
     /**
     * Submit a contribution
     */
-    function postContribution($conn, $cityId, $field, $ctype, $cdesc, $ccost){
+    function postContribution($conn, $cityId, $field, $post){
+
+        $ctype = $post['ctype'];
+        $cdesc = $post['cdesc'];
+        $ccost = $post['ccost'];
 
         if($cityId){
             $query = NULL;
-            switch ($post['field']) {
+            switch ($field) {
                 case 'entertainment':
                     $query = "INSERT INTO `cityentertainment` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
                     break;
@@ -365,7 +369,8 @@
                     $query = "INSERT INTO `cityfood` (`_id`, `city_id`, `name`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
                     break;
                 case 'housing':
-                    $query = "INSERT INTO `cityhousing` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    $cpay = $post['cpay'];
+                    $query = "INSERT INTO `cityhousing` (`_id`, `city_id`, `type`, `payment`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cpay\", \"$cdesc\", \"$ccost\")";
                     break;
                 case 'transportation':
                     $query = "INSERT INTO `citytransportation` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";

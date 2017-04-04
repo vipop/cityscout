@@ -4,9 +4,9 @@ function prepareGraphs(){
 }
 
 function loadGraphs(tempLang,tempClimate,tempUtility){ //languages,container_lang,climate,container_climate) {
- 
+
   // Load the Visualization API and the corechart package.
-  
+
   // Set a callback to run when the Google Visualization API is loaded.
   google.charts.setOnLoadCallback(function(){
     var i;
@@ -17,20 +17,22 @@ function loadGraphs(tempLang,tempClimate,tempUtility){ //languages,container_lan
   google.charts.setOnLoadCallback(function(){
     var i;
     for(i = 0 ; i < tempClimate.length;i++){
-		drawTempChart(tempClimate[i].climate.high_avg,tempClimate[i].climate.low_avg,tempClimate[i].theTemp);
-		drawFallChart(tempClimate[i].climate.snowfall,tempClimate[i].climate.rainfall,tempClimate[i].theFall);
+        console.log("tempClimate:");
+        console.log(tempClimate);
+		drawTempChart(tempClimate[i].climate.high_avg, tempClimate[i].climate.low_avg, tempClimate[i].theTemp);
+		drawFallChart(tempClimate[i].climate.snowfall, tempClimate[i].climate.rainfall, tempClimate[i].theFall);
 	}
   });
    google.charts.setOnLoadCallback(function(){
     var i;
-	console.log(tempUtility.uti);
 	for(i = 0 ; i < tempUtility.length;i++){
-      drawUtilityChart(tempUtility[i].uti,tempUtility[i].theId);
+        console.log(tempUtility[i].uti);
+      drawUtilityChart(tempUtility[i].uti, tempUtility[i].theId);
     }
   });
 }
 function drawLanguageChart(languages,container_lang) {
-  // Create the data table. 
+  // Create the data table.
   var rowArray=[];
   for (var i = 0; i < languages.length; i++) {
     languages[i];
@@ -61,11 +63,12 @@ function drawLanguageChart(languages,container_lang) {
   chart.draw(data, options);
 }
 function drawTempChart(high_avg,low_avg,container_temp) {
-  var data = google.visualization.arrayToDataTable([
+    console.log(high_avg + " " + low_avg);
+    var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
-    ["High", parseInt(high_avg), "#b87333"],
-    ["Low", parseInt(low_avg), "silver"]]);
-    
+    ["High", parseFloat(high_avg), "#b87333"],
+    ["Low", parseFloat(low_avg), "silver"]]);
+
 	var view = new google.visualization.DataView(data);
 	var options = {
     title: "Average Annual Temperature(C)",
@@ -95,11 +98,12 @@ function drawFallChart(snowfall,rainfall,container_fall) {
 }
 function drawUtilityChart(utility,container_utility) {
   console.log(utility);
+
   var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
-    [utility[0].type,parseInt(utility[0].cost),"#b87333"],
-    [utility[1].type,parseInt(utility[1].cost),"silver"],
-    [utility[2].type,parseInt(utility[2].cost),"color: #e5e4e2"]
+    [utility[0].type, parseInt(utility[0].cost),"#b87333"] /*,
+    [utility[1].type, parseInt(utility[1].cost),"silver"],
+    [utility[2].type, parseInt(utility[2].cost),"color: #e5e4e2"]*/
   ]);
 
   var view = new google.visualization.DataView(data);

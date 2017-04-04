@@ -32,19 +32,21 @@ function loadCity(city, json){
 	//Housing and Utilities
 	var housing = json.data.housing;
 	var utilities = json.data.utilities;
+    console.log("Utilities: ");
+    console.log(utilities);
 	//Transportation
 	var transportation = json.data.transportation;
 	//Climate
 	var climate = json.data.climate;
 	//Entertainment
-	var entertainments = json.data.entertainment;	
+	var entertainments = json.data.entertainment;
 	//Attractions
 	var attractions = json.data.attractions;
 	//Food
 	var food = json.data.food;
 	//Indices happiness quality of life
 	var indices = json.data.indices;
-	
+
 	initTopInfo(country,language, pop, area, gdp);
 	initCityBanner(city, cityName);
 	initMap(parseFloat(lat), parseFloat(lng), document.getElementById("map-div"));
@@ -58,7 +60,7 @@ function loadCity(city, json){
 	initFood(food);
 	prepareGraphs();
 	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
-	var tempClimate = [{"climate":climate,"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
+	var tempClimate = [{"climate":climate[0],"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
 	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
 	loadGraphs(tempLang,tempClimate,tempUtility);
 	loadComments(json); //This function is defined in the comments.js
@@ -68,8 +70,8 @@ function getCityInformation(city){
 	var params = "type=QUERY_CITY&city_id=" + city;
 	sendRequest(url,params,
 			function(result){
-                var json = JSON.parse(result);
                 console.log(result);
+                var json = JSON.parse(result);
                 console.log(json);
 				if(json.code == 0){
 					loadCity(city, json);
@@ -161,7 +163,7 @@ function initHousingHelper(glif,payment,cost,pre,post){
 	var headerText = document.createTextNode("Average " + payment);
 	div.appendChild(spanEl);
 	div.appendChild(headerText);
-	var h2 = document.createElement("H4");	
+	var h2 = document.createElement("H4");
 	h2.setAttribute("style","padding-top:5px;text-align:center");
 	var h2Text = document.createTextNode(pre+cost+post);
 	h2.appendChild(h2Text);
@@ -245,52 +247,52 @@ function initAttractionHelper(name,about,cost,pre,post,imgUrl,webLink,location,p
 	var tr = document.createElement("Tr");
 	var tdImg = document.createElement("Td");
 	var tdContent =document.createElement("Td");
-	
+
 	var img = document.createElement("IMG");
 	img.setAttribute("class","attractImg");
 	img.setAttribute("src",imgUrl);
-	
-	
+
+
 	var h3 = document.createElement("H3");
 	h3.setAttribute("class","paddingNeeded");
 	var h3Text = document.createTextNode(name);
 	h3.appendChild(h3Text);
-	
+
 	var aboutP = document.createElement("P");
 	aboutP.setAttribute("class","paddingNeeded");
 	var aboutPText = document.createTextNode("Description: " + about);
 	aboutP.appendChild(aboutPText);
-	
+
 	var costP = document.createElement("P");
 	costP.setAttribute("class","paddingNeeded");
 	var costPText = document.createTextNode("Cost: " + pre + cost + post);
 	costP.appendChild(costPText);
-	
+
 	var locationP = document.createElement("P");
 	locationP.setAttribute("class","paddingNeeded");
 	var locationPText = document.createTextNode("Address: " + location);
 	locationP.appendChild(locationPText);
-	
+
 	var linkA = document.createElement("A");
 	linkA.setAttribute("class","paddingNeeded");
 	linkA.setAttribute("src",webLink);
 	var linkAText = document.createTextNode("Website: " + webLink);
 	linkA.appendChild(linkAText);
-	
-	
+
+
 	tdImg.appendChild(img);
 	tdContent.appendChild(h3);
 	tdContent.appendChild(aboutP);
 	tdContent.appendChild(costP);
 	tdContent.appendChild(locationP);
 	tdContent.appendChild(linkA);
-	
+
 	tr.appendChild(tdImg);
 	tr.appendChild(tdContent);
 	table.appendChild(tr);
 	containerDiv.appendChild(table);
 	document.getElementById(panelId).appendChild(containerDiv);
-	
+
 }
 
 function resetFields(parentID){
@@ -333,5 +335,5 @@ function initMap(latitude, longitude, container) {
 }
 //Overview tooltips
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+    $('[data-toggle="tooltip"]').tooltip();
 });
