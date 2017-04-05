@@ -14,8 +14,7 @@ function loadPage(type) {
 	if (type == 1) {
 		// get city 1
 		var city1 = getCity();
-		// populate it
-		populateCity(1, city1);
+		getCityInformation(1, city1); //queries from database
 		// hide city 2
 		hideCity(2);
 		document.getElementById("dropdown1").firstChild.nextSibling.innerHTML = getCityName(city1);
@@ -32,8 +31,46 @@ function getCity(){
 	return city;
 };
 
-function populateCity(cityNum, city) {
+function populateCity(cityNum, city, json) {
 
+	//top basic information
+    var cityName = json.data.general.name;
+	var country = json.data.general.country;
+	var language = json.data.languages[0].name;
+	var languages = json.data.languages;
+	var pop = json.data.general.population;
+	var area = json.data.general.area + " km&sup2;";
+	var lat = json.data.general.lat;
+	var lng = json.data.general.lng;
+	var gdp = json.data.general.gdp;
+	//Background
+	var history = json.data.general.history;
+	//Overview
+	var ovHappiness = json.data.ratings[0].happiness;
+	var ovEntertainment = json.data.ratings[0].entertainment;
+    var ovHealthcare = json.data.ratings[0].healthcare;
+	var ovEducation = json.data.ratings[0].education;
+	var ovHousing = json.data.ratings[0].housing;
+	var ovCrime = json.data.ratings[0].crime;
+	//Housing and Utilities
+	var housing = json.data.housing;
+	var utilities = json.data.utilities;
+    console.log("Utilities: ");
+    console.log(utilities);
+	//Transportation
+	var transportation = json.data.transportation;
+	//Climate
+	var climate = json.data.climate;
+	//Entertainment
+	var entertainments = json.data.entertainment;
+	//Attractions
+	var attractions = json.data.attractions;
+	//Food
+	var food = json.data.food;
+	//Indices happiness quality of life
+	var indices = json.data.indices;
+
+	/*
 	// DUMMY DATA
 
 	var country = "Canada";
@@ -112,6 +149,7 @@ function populateCity(cityNum, city) {
 	var ovCrime = 1;
 
 	// DUMMY DATA
+	*/
 
 	if (cityNum == 1) {
 		// populate city 1
@@ -138,6 +176,23 @@ function populateCity(cityNum, city) {
 		initIndices(2, indices);
 		initAttraction(2, attractions);
 	}
+}
+
+function getCityInformation(cityNum, city){
+	var url = "cgi-bin/queries.php";
+	var params = "type=QUERY_CITY&city_id=" + city;
+	sendRequest(url,params,
+			function(result){
+                console.log(result);
+                var json = JSON.parse(result);
+                console.log(json);
+				if(json.code == 0){
+					populateCity(cityNum, city, json);
+					//return json;
+				}
+			},function(){
+			console.log("Fail to receive city information");
+	});
 }
 
 function initTopInfo(cityNum, country, lang, pop, area, gdp) {
