@@ -62,7 +62,7 @@ function populateCity(cityNum, city, json) {
 	//Climate
 	var climate = json.data.climate;
 	//Entertainment
-	var entertainments = json.data.entertainment;
+	var entertainment = json.data.entertainment;
 	//Attractions
 	var attractions = json.data.attractions;
 	//Food
@@ -155,7 +155,7 @@ function populateCity(cityNum, city, json) {
 		// populate city 1
 		initTopInfo(1, country, language, pop, area, gdp);
 		initCityBanner(1, city);
-		initBackground(1, background);
+		initBackground(1, history);
 		initOverview(1, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(1, transportation);
 		initHousing(1, housing);
@@ -167,7 +167,7 @@ function populateCity(cityNum, city, json) {
 		// populate city 2
 		initTopInfo(2, country, language, pop, area, gdp);
 		initCityBanner(2, city);
-		initBackground(2, background);
+		initBackground(2, history);
 		initOverview(2, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(2, transportation);
 		initHousing(2, housing);
@@ -405,12 +405,13 @@ function initHousing(cityNum, house){
 	}
 
 	for(i = 0; i < house.length; i++){
+		console.log(house[i].type + " " + house[i].payment);
 		if(house[i].type == "Appartment" ){
 			if(house[i].payment =="Buy"){
-				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
+				initHousingHelper(cityNum, "building",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+				initHousingHelper(cityNum, "building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
 			}
 		}
 		else {
@@ -425,6 +426,7 @@ function initHousing(cityNum, house){
 };
 
 function initHousingHelper(cityNum, glif,payment,cost,pre,post){
+	console.log(payment + " " + cost + " " + pre + " " + post);
 	var h4El = document.createElement("H4");
 	var div = document.createElement("DIV");
 	div.setAttribute("class","flex");
@@ -724,11 +726,14 @@ function dropdownSelect(ctl, cityNum) {
 			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Bucharest (Romania)";
 			break;
 	}
+
 	if (cityNum == 1) {
-		populateCity(1, city);
+		getCityInformation(1, city);
+		//populateCity(1, city);
 		showCity(1);
 	} else {
-		populateCity(2, city);
+		getCityInformation(2, city);
+		//populateCity(2, city);
 		showCity(2);
 	}
 }
