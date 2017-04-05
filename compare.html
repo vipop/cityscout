@@ -14,8 +14,11 @@
         <link href="css/compare.css" rel="stylesheet">
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+		<script src="https://use.fontawesome.com/c1cf09c438.js"></script>
         <script src="js/compare.js"></script>
         <script src="js/users.js"></script>
+
     </head>
     <body>
         <!-- Navigation -->
@@ -132,7 +135,7 @@
             </div>
             <hr />
             <!-- Top Information -->
-            <div class="row">
+            <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="col-sm-4">
@@ -176,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="col-sm-4">
@@ -236,315 +239,361 @@
             <!-- Overview -->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-happiness-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-happiness1" class="progress-text"></span>
-                            </div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel city1">
+						<div class="panel-heading">
+							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-happiness-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-happiness1" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview center-block" data-toggle="tooltip" title="Entertainment"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-entertainment-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-entertainment1" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview center-block" data-toggle="tooltip" title="Healthcare"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-healthcare-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-healthcare1" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview center-block" data-toggle="tooltip" title="Education"></span><br /></td>
+							</div>
+							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-education-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-education1" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: lightpink;" class="glyphicon glyphicon-home overview center-block" data-toggle="tooltip" title="Housing"></span><br /></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-housing-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-housing1" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview center-block" data-toggle="tooltip" title="Crime"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-crime-bar1" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-crime1" class="progress-text"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+                <!-- City 2 -->
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="panel city2">
+						<div class="panel-heading">
+							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-happiness-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-happiness2" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview center-block" data-toggle="tooltip" title="Entertainment"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-entertainment-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-entertainment2" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview center-block" data-toggle="tooltip" title="Healthcare"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-healthcare-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-healthcare2" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview center-block" data-toggle="tooltip" title="Education"></span><br /></td>
+							</div>
+							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-education-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-education2" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: lightpink;" class="glyphicon glyphicon-home overview center-block" data-toggle="tooltip" title="Housing"></span><br /></td>
+							</div>
+							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-housing-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-housing2" class="progress-text"></span>
+							</div>
+						</div>
+						<div class="row">
+							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview center-block" data-toggle="tooltip" title="Crime"></span><br /></td>
+							</div>
+							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+								<div class="rating-bar">
+									<div id="ov-crime-bar2" class="my-progress-bar"></div>
+								</div>
+								<span id="ov-crime2" class="progress-text"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <hr />
+            <!-- Climate -->
+            <div class="row ninety">
+                <!-- City 1 -->
+				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
+                   <div class="panel city1">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-entertainment-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-entertainment1" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-healthcare-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-healthcare1" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-education-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-education1" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-housing-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-housing1" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-crime-bar1" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-crime1" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <br />
+                        <hr/>
+						<div class="panel-body" id="climate">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-temp"></div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-fall" ></div>
+								</div>
+							</div>
+						</div>
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-pushpin"></span>Overview</h3></div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview" data-toggle="tooltip" title="Happiness"></span></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-happiness-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-happiness2" class="progress-text"></span>
-                            </div>
+				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
+                   <div class="panel city2">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #80ba52;" class="glyphicon glyphicon-film overview" data-toggle="tooltip" title="Entertainment"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-entertainment-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-entertainment2" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #b44545;" class="glyphicon glyphicon-heart overview" data-toggle="tooltip" title="Healthcare"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-healthcare-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-healthcare2" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #2c5a71;" class="glyphicon glyphicon-education overview" data-toggle="tooltip" title="Education"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-education-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-education2" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: lightpink;" class="glyphicon glyphicon-home overview" data-toggle="tooltip" title="Housing"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-housing-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-housing2" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview" data-toggle="tooltip" title="Crime"></span><br /></td>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="rating-bar">
-                                    <div id="ov-crime-bar2" class="my-progress-bar"></div>
-                                </div>
-                                <span id="ov-crime2" class="progress-text"></span>
-                            </div>
-                        </div>
-                        <br />
+                        <hr/>
+						<div class="panel-body" id="climate">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-temp"></div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+									<div class="chart climateChart" id="climate-bar-fall" ></div>
+								</div>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Weather -->
+			<!-- Languages -->
+			<div class="row ninety">
+				<!-- City 1 -->
+                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
+                    <div class="panel city1">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                        </div>
+                        <hr/>
+                        <div class="panel-body" id="languages">
+                        <div id="languages-chart-div1" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+				<!-- City 2 -->
+                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
+                    <div class="panel city2">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                        </div>
+                        <hr/>
+                        <div class="panel-body" id="languages">
+                        <div id="languages-chart-div2" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<hr />
+			<!-- Transportation -->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
-                        <hr />
-                        <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="transportation1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-flash"></span>Weather</h3></div>
-                        <hr />
-                        <div class="panel-body"><img src="images/weather.png" width="500px"/></div>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="transportation2"></div>
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Housing -->
+            <!-- Housing & Utilities-->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-home"></span>Housing</h3></div>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
+						</div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="housing1">This is housing 1.</p>
+                        <div class="panel-body" id="housing">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay1"></div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									 <div id="utilities-chart-div1" class="chart"></div>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-home"></span>Housing</h3></div>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
+						</div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="housing2">This is housing 2.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Employment -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="employment1">This is employment 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-briefcase"></span>Employment</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="employment2">This is employment 2.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Transportation -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-road"></span>Transportation</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="transportation1">This is transportation 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-road"></span>Transportation</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="transportation2">This is transportation 2.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Education, Employment, Transportation -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-education"></span>Education</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="education1">This is education 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-education"></span>Education</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="education2">This is education 2.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Healthcare -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="healthcare1">This is healthcare 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-heart"></span>Healthcare</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="healthcare2">This is healthcare 2.</p>
+                        <div class="panel-body" id="housing">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay2"></div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									 <div id="utilities-chart-div2" class="chart"></div>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
             </div>
             <hr />
-            <!-- Politics -->
+			<!-- Food -->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
+				<div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-tower"></span>Politics</h3></div>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                        </div>
                         <hr />
-                        <div class="panel-body">
-                            <p id="politics1">This is politics 1.</p>
+                        <div class="panel-body" id="food1"></div>
+                    </div>
+                </div>
+                <!-- City 2 -->
+				<div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="panel city2">
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                        </div>
+                        <hr />
+                        <div class="panel-body" id="food2"></div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+			<!-- Entertainment -->
+            <div class="row ninety">
+                <!-- City 1 -->
+				<div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="panel city1">
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="entertainment">
+                            <p id="entertainment1"></p>
                         </div>
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
+				<div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-tower"></span>Politics</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="politics2">This is politics 2.</p>
+                        <div class="panel-heading contribute-header">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
                         </div>
+                        <hr>
+                        <div class="panel-body" id="entertainment">
+                            <p id="entertainment2"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <!-- Quality of Life Indexes -->
+            <div class="row ninety">
+                <!-- City 1 -->
+				<div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="panel city1">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="qualityOfLife1"></div>
+                    </div>
+                </div>
+                <!-- City 2 -->
+				<div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="panel city2">
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes</h3>
+                        </div>
+                        <hr>
+                        <div class="panel-body" id="qualityOfLife2"></div>
                     </div>
                 </div>
             </div>
@@ -552,71 +601,23 @@
             <!-- Attractions -->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
+				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="attractions1">This is attractions 1.</p>
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
                         </div>
+                        <hr>
+                        <div class="panel-body" id="attractions1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
+				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-camera"></span>Attractions</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="attractions2">This is attractions 2.</p>
+                        <div class="panel-heading">
+                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Entertainment -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="entertainment1">This is entertainment 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-film"></span>Entertainment</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="entertainment2">This is entertainment 2.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <!-- Food -->
-            <div class="row ninety">
-                <!-- City 1 -->
-                <div class="col-sm-6">
-                    <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="food1">This is food 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- City 2 -->
-                <div class="col-sm-6">
-                    <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-cutlery"></span>Food</h3></div>
-                        <hr />
-                        <div class="panel-body">
-                            <p id="food2">This is food 2.</p>
-                        </div>
+                        <hr>
+                        <div class="panel-body" id="attractions2"></div>
                     </div>
                 </div>
             </div>

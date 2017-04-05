@@ -33,256 +33,128 @@ function getCity(){
 };
 
 function populateCity(cityNum, city) {
-	var lat, lon, country, lang, pop, area, web, mayor, background, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime;
 
-	// replace this with database queries
-	switch(city) {
-		case "toronto":
-			// map
-			lat = 43.6532;
-			lon = -79.3832;
-			// top info
-			country = "Canada";
-			lang = "English";
-			pop = "2,615,000";
-			area = "<span>5,905.71 km<sup>2</sup></span>";
-			web = "toronto.ca";
-			mayor = "John Tory";
-			// background
-			background = "This is Toronto";
-			background = "Welcome to Toronto, the most multiculturally diverse city on the planet: over 140 languages are spoken. It's estimated that over half of Toronto's residents were born outside Canada, and despite its complex makeup, Torontonians generally get along. When the weather is fine, Toronto is a blast: a vibrant, big-time city abuzz with activity. Some of the world's finest restaurants are found here, alongside happening bars and clubs and eclectic festivals. Yes, winter in Toronto can be a real drag. Things get messy on the congested highways and archaic public transit system. But come with patience, an open mind and during the delightfully temperate and colorful spring or fall, and you're bound to have a great time. There is a fresh international buzz about Toronto. Perhaps it's the influx of flush new residents from across the globe; or was it the Pan-Am Games that shone a spotlight on Toronto? Either way, this is a city that is waking up to its own greatness.";
-			// overview
-			ovHappiness = 4;
-			ovEntertainment = 5;
-			ovHealthcare = 3;
-			ovEducation = 5;
-			ovHousing = 2;
-			ovCrime = 2;
-			break;
-		case "vancouver":
-			// map
-			lat = 49.2827;
-			lon = -123.1207;
-			// top info
-			country = "Canada";
-			lang = "English";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "vancouver.ca";
-			mayor = "Robert Ash";
-			// background
-			background = "Don't tell Toronto or Montreal but Vancouver is the real culinary capital of Canada. Loosen your belt and dive right into North America's best Asian dining scene, from chatty Chinese restaurants to authentic izakayas (Japanese neighborhood pubs), or taste a rich smorgasbord of fresh-caught seafood, including seasonal spot prawns and juicy wild salmon. The farm-to-table movement has also revitalized the notion of West Coast cuisine – anyone for succulent Fraser Valley duck and a side dish of foraged morels? And we haven't even started on the nation-leading craft-beer scene, plus the city's emerging craft liquor producers.";
-			// overview
-			ovHappiness = 5;
-			ovEntertainment = 5;
-			ovHealthcare = 4;
-			ovEducation = 3;
-			ovHousing = 3;
-			ovCrime = 4;
-			break;
-		case "montreal":
-			// map
-			lat = 45.5017;
-			lon = -73.5673;
-			// top info
-			country = "Canada";
-			lang = "French";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "montreal.ca";
-			mayor = "Jean Pierre";
-			// background
-			background = "Montréal is a slice of old Europe in a pie of contemporary design. A day’s wander might take in the photogenic 18th-century facades of Old Montréal before a cycling tour of the lovely Canal de Lachine, or a wander through the glittering shops and restaurants of downtown before ending at the inviting terraced cafes of Plateau Mont-Royal. The architectural sweep of the city takes in a wealth of heritage churches such as the breathtaking Basilique Notre-Dame, as well as 20th-century icons like the Stade Olympique and Habitat 67. Montréal's hotels and museums additionally push the edges of contemporary interior design.";
-			// overview
-			ovHappiness = 3;
-			ovEntertainment = 4;
-			ovHealthcare = 4;
-			ovEducation = 4;
-			ovHousing = 1;
-			ovCrime = 3;
-			break;
-		case "newYork":
-			// map
-			lat = 40.7128;
-			lon = -74.0059;
-			// top info
-			country = "United States";
-			lang = "English";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "newyork.com";
-			mayor = "Tom Rathburn";
-			// background
-			background = "While there are many reasons to fall for New York, I’ve always loved the energy here. There’s so much creativity in the air, with wildly imaginative works filling the city’s galleries and concert halls – not to mention its restaurants, with ever more inventive mash-ups of global cuisines. Despite living for many years in New York, I never tire of exploring the metropolis. You can cross continents with the mere swipe of a MetroCard, visiting colorful neighborhoods that contain an astonishing variety of cultures and ethnicities (particularly in Queens). The people, the food, the art: NYC has many virtues, which is why so many of us can’t imagine living anywhere else.";
-			// overview
-			ovHappiness = 5;
-			ovEntertainment = 5;
-			ovHealthcare = 1;
-			ovEducation = 4;
-			ovHousing = 4;
-			ovCrime = 1;
-			break;
-		case "losAngeles":
-			// map
-			lat = 34.0522;
-			lon = -118.2437;
-			// top info
-			country = "United States";
-			lang = "English";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "losangeles.com";
-			mayor = "Catherine Jewel";
-			// background
-			background = "LA runs deeper than her blonde beaches, rolling hills and bumper-to-bumper traffic would have you believe. She’s a myth. A beacon for countless small-town dreamers, rockers and risk-takers, an open-minded angel who encourages her people to live and let live without judgement or shame. She has given us Quentin Tarantino, Jim Morrison and Serena and Venus Williams; spawned skateboarding and gangsta rap; popularized implants, electrolysis and Spandex; and has nurtured not just great writers, performers and directors, but also the ground-breaking yogis who first brought Eastern wisdom to the Western world. LA is best defined by simple life-affirming moments: a cracked-ice, jazz-age cocktail on Beverly Blvd, a hike high into the Hollywood Hills sagebrush, a swirling pod of dolphins off Point Dume, a pink-washed sunset over a thundering Venice Beach drum circle, the perfect taco. LA is even greater than the sum of her parts.";
-			// overview
-			ovHappiness = 5;
-			ovEntertainment = 5;
-			ovHealthcare = 3;
-			ovEducation = 2;
-			ovHousing = 1;
-			ovCrime = 4;
-			break;
-		case "london":
-			// map
-			lat = 51.5074
-			lon = -0.1278;
-			// top info
-			country = "Great Britain";
-			lang = "English";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "london.uk";
-			mayor = "James Barley";
-			// background
-			background = "Like most Londoners, I revel in all our familiar landmarks – Big Ben, Tower Bridge, the murky Thames, the London Eye. I still thank the former government that made some of the greatest museums and art galleries in the world free to one and all. The choice of restaurants, bars and clubs is legion, and what’s not to love about a city with more lush parkland than any other world capital? But the one thing that sets my adopted city apart from any other is its amazing tolerance. 'As long as you don’t scare the horses, mate, you’ll be all right here,’ I was told when I arrived here more than 20 years ago. Guess what…it still hasn’t happened.";
-			// overview
-			ovHappiness = 3;
-			ovEntertainment = 4;
-			ovHealthcare = 4;
-			ovEducation = 5;
-			ovHousing = 2;
-			ovCrime = 3;
-			break;
-		case "paris":
-			// map
-			lat = 48.8566;
-			lon = 2.3522;
-			// top info
-			country = "France";
-			lang = "French";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "paris.fr";
-			mayor = "Louis De Funes";
-			// background
-			background = "aris’ grandeur is inspiring but what I love most about the city is its intimacy. Its quartiers (quarters) are like a patchwork of villages, and while it’s one of the world’s major metropolises – with all of the culture and facilities that go with it – there’s a real sense of community at the local shops, markets and cafes that hasn’t changed since my childhood. Yet because every little ‘village’ has its own evolving character, I’m constantly discovering and rediscovering hidden corners of the city.";
-			// overview
-			ovHappiness = 5;
-			ovEntertainment = 5;
-			ovHealthcare = 4;
-			ovEducation = 5;
-			ovHousing = 3;
-			ovCrime = 3;
-			break;
-		case "shanghai":
-			// map
-			lat = 31.2304;
-			lon = 121.4737;
-			// top info
-			country = "China";
-			lang = "Mandarin";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "shanghai.cn";
-			mayor = "Ji Qi";
-			// background
-			background = "From the architectural landmarks lining the Bund and the rickety charm of the Old Town to the leafy backstreets of the former French Concession, Shànghǎi is a city that just begs for wandering. And eating. I love that you can slurp a bowl of hand-pulled noodles or bite into soupy xiǎolóngbāo dumplings for next to nothing, then splurge on cocktails and fusion fare while gazing out from a rooftop bar on the Bund, over the Huángpǔ River to Pǔdōng’s space-age night scene. Shànghǎi's roller-coaster backstory is as decadent as it is debauched, but these days there is a palpable energy and confidence that the city is on the rise…again.";
-			// overview
-			ovHappiness = 3;
-			ovEntertainment = 5;
-			ovHealthcare = 1;
-			ovEducation = 3;
-			ovHousing = 1;
-			ovCrime = 3;
-			break;
-		case "tokyo":
-			// map
-			lat = 35.6895;
-			lon = 139.6917;
-			// top info
-			country = "Japan";
-			lang = "Japanese";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "tokyo.jp";
-			mayor = "Cliff Nguyen";
-			// background
-			background = "I’ve lived in Tokyo for 15 years now and am continuously surprised – sometimes on a daily basis – by something new. Such is the joy of living in a city that prides itself on constant renewal and reinvention; it seriously never gets old. Tokyo has everything you can ask of a city, and has it in spades: a rich, cosmopolitan dining scene, more cafes and bars than you could visit in a lifetime, fantastic public transport and grassy parks – plus it's clean and safe. Really, what's not to love?";
-			// overview
-			ovHappiness = 3;
-			ovEntertainment = 5;
-			ovHealthcare = 2;
-			ovEducation = 3;
-			ovHousing = 1;
-			ovCrime = 2;
-			break;
-		case "bucharest":
-			// map
-			lat = 44.4268;
-			lon = 26.1025;
-			// top info
-			country = "Romania";
-			lang = "Romanian";
-			pop = "1,234,542";
-			area = "<span>3,325.12 km<sup>2</sup></span>";
-			web = "bucuresti.ro";
-			mayor = "Bogdan Popescu";
-			// background
-			background = "Romania’s capital gets a bad rap, but in fact it's dynamic, energetic and fun. It’s where still-unreconstructed communism meets unbridled capitalism; where the soporific forces of the EU meet the passions of the Balkans. Many travellers give the city just a night or two before heading off to Transylvania, but that’s clearly not enough. Allow at least a few days to take in the good museums, stroll the parks and hang out at trendy cafes. While much of the centre is modern and garish, you'll find splendid 17th- and 18th-century Orthodox churches and graceful art nouveau villas tucked away in quiet corners. Communism changed the face of the city forever, and nowhere is this more evident than at the gargantuan Palace of Parliament, the craziest and crassest tribute to dictatorial megalomania you’ll probably ever see.";
-			// overview
-			ovHappiness = 3;
-			ovEntertainment = 5;
-			ovHealthcare = 4;
-			ovEducation = 2;
-			ovHousing = 4;
-			ovCrime = 4;
-			break;
-	}
-	// replace this with database queries
+	// DUMMY DATA
+
+	var country = "Canada";
+	var language = "English";
+	var pop = "2,991,312";
+	var area = "1,400,200" + " km&sup2;";
+	var gdp = 1231;
+
+	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
+
+	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"};
+
+	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}];
+
+	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"},
+					{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
+					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"}];
+
+	var transportation =[	{"type": "Subway", "cost_desc": "$/(Adult)", "cost": "3.25"},
+							{"type": "Train", "cost_desc": "$", "cost": "5.43"},
+							{"type": "Car", "cost_desc": "$/(Adult)", "cost": "3.25"},
+							{"type": "Bus", "cost_desc": "$", "cost": "5.43"},
+							{"type": "Taxi", "cost_desc": "$", "cost": "3.25"},
+							{"type": "RideShare", "cost_desc": "$", "cost": "5.43"}];
+
+	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
+
+	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
+					{"name": "HDI","value_desc": "", "value": "0.913"},
+					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
+
+	var entertainment = [	{"type": "Average cost of dinner (for 2)","cost_desc": "$","cost": "36"},
+							{"type": "Average cost of drink","cost_desc": "$","cost": "5.88"},
+							{"type": "Movie","cost_desc": "$/ticket","cost": "11"},
+							{"type": "Sports","cost_desc": "$/ticket","cost": "250"},
+							{"type": "Theatre","cost_desc": "$/ticket","cost": "55"}];
+
+	var food = [	{"type": "Dairy","cost_desc": "$/L","cost": "2.9"},
+					{"type": "Fruits","cost_desc": "$/kg","cost": "2.83"},
+					{"type": "Grains","cost_desc": "$/Loaf","cost": "1.89"},
+					{"type": "Protein","cost_desc": "$/kg","cost": "6.6"},
+					{"type": "Vegetables","cost_desc": "$/kg","cost": "1.11"}];
+
+	var attractions = [{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						},
+						{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						},
+						{"name": "CN Tower",
+						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
+						"cost": "47",
+						"cost_desc": "$/Adult (13-64)",
+						"image": "images/attractions/CNTower.png",
+						"link": "http://www.cntower.ca/en-ca/home.html",
+						"location": "301 Front St W, Toronto, ON M5V 2T6"
+						}];
+
+	//Overview
+	var ovHappiness = 3;
+	var ovEntertainment = 1;
+	var ovHealthcare = 5;
+	var ovEducation = 2;
+	var ovHousing = 4;
+	var ovCrime = 1;
+
+	// DUMMY DATA
 
 	if (cityNum == 1) {
 		// populate city 1
-		initTopInfo(1, country, lang, pop, area, web, mayor);
+		initTopInfo(1, country, language, pop, area, gdp);
 		initCityBanner(1, city);
 		initBackground(1, background);
 		initOverview(1, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
+		initTransportation(1, transportation);
+		initHousing(1, housing);
+		initFood(1, food);
+		initEntertainment(1, entertainment);
+		initIndices(1, indices);
+		initAttraction(1, attractions);
 	} else {
 		// populate city 2
-		initTopInfo(2, country, lang, pop, area, web, mayor);
+		initTopInfo(2, country, language, pop, area, gdp);
 		initCityBanner(2, city);
 		initBackground(2, background);
 		initOverview(2, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
+		initTransportation(2, transportation);
+		initHousing(2, housing);
+		initFood(2, food);
+		initEntertainment(2, entertainment);
+		initIndices(2, indices);
+		initAttraction(2, attractions);
 	}
 }
 
-function initTopInfo(cityNum, country, lang, pop, area, web, mayor) {
+function initTopInfo(cityNum, country, lang, pop, area, gdp) {
 	if (cityNum == 1) {
 		// city 1
-		document.getElementById("top-info-country1").innerHTML = country;
-		document.getElementById("top-info-lang1").innerHTML = lang;
-		document.getElementById("top-info-pop1").innerHTML = pop;
-		document.getElementById("top-info-area1").innerHTML = area;
-		document.getElementById("top-info-web1").innerHTML = web;
-		document.getElementById("top-info-mayor1").innerHTML = mayor;
+		document.getElementById("city1-country").innerHTML = country;
+		document.getElementById("city1-lang").innerHTML = lang;
+		document.getElementById("city1-pop").innerHTML = pop;
+		document.getElementById("city1-area").innerHTML = area;
+		document.getElementById("city1-gdp").innerHTML = gdp;
 	} else {
 		// city 2
-		document.getElementById("top-info-country2").innerHTML = country;
-		document.getElementById("top-info-lang2").innerHTML = lang;
-		document.getElementById("top-info-pop2").innerHTML = pop;
-		document.getElementById("top-info-area2").innerHTML = area;
-		document.getElementById("top-info-web2").innerHTML = web;
-		document.getElementById("top-info-mayor2").innerHTML = mayor;
+		document.getElementById("city2-country").innerHTML = country;
+		document.getElementById("city2-lang").innerHTML = lang;
+		document.getElementById("city2-pop").innerHTML = pop;
+		document.getElementById("city2-area").innerHTML = area;
+		document.getElementById("city2-gdp").innerHTML = gdp;
 	}
 }
 
@@ -295,7 +167,6 @@ function initCityBanner(cityNum, city){
 		//document.getElementById("header1").style.backgroundImage = "url('images/" + city1 + "Image.jpg')";
 	} else {
 		// city 2
-		console.log(city);
 		if(city == "losAngeles") document.getElementById("header-text2").innerHTML = "LOS ANGELES";
 		else if(city == "newYork") document.getElementById("header-text2").innerHTML = "NEW YORK";
 		else document.getElementById("header-text2").innerHTML = city.toUpperCase();
@@ -364,6 +235,362 @@ function initOverview(cityNum, ovHappiness, ovEntertainment, ovHealthcare, ovEdu
 		document.getElementById("ov-crime-bar2").style["background-color"] = "#555555";
 		document.getElementById("ov-crime2").innerHTML = ovCrime + " / 5";
 		document.getElementById("ov-crime-bar2").style.width = ovCrime * 20 + "%";
+	}
+}
+
+function initTransportation(cityNum, tran){
+	var i;
+	if (cityNum == 1) {
+		// city 1
+		resetFields("transportation1");
+	} else {
+		// city 2
+		resetFields("transportation2");
+	}
+	for(i = 0; i < tran.length; i++){
+		var temp = tran[i].cost_desc.split("/");
+		if(temp[1] != null){
+			var row = document.createElement("div");
+			row.style.display = "flex";
+			var g = document.createElement("p");
+			g.style.width = "20%";
+			g.style.display = "flex";
+			switch (tran[i].type) {
+				case "Subway":
+					g.innerHTML = '<i class="fa fa-subway center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Train":
+					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Car":
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Bus":
+					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Taxi":
+					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "RideShare":
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+			}
+			var p = document.createElement("p");
+			p.style.width = "30%";
+			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
+			var p2 = document.createElement("p");
+			p2.style.width = "50%";
+			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + " " + temp[1];"<h4>";
+			row.appendChild(g);
+			row.appendChild(p);
+			row.appendChild(p2);
+
+			if (cityNum == 1) {
+				// city 1
+				document.getElementById("transportation1").appendChild(row);
+			} else {
+				// city 2
+				document.getElementById("transportation2").appendChild(row);
+			}
+			//printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
+		}else{
+			var row = document.createElement("div");
+			row.style.display = "flex";
+			var g = document.createElement("p");
+			g.style.width = "20%";
+			g.style.display = "flex";
+			switch (tran[i].type) {
+				case "Subway":
+					g.innerHTML = '<i class="fa fa-subway center-block 16pt global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Train":
+					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Car":
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Bus":
+					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "Taxi":
+					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+				case "RideShare":
+					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
+					break;
+			}
+			var p = document.createElement("p");
+			p.style.width = "30%";
+			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
+			var p2 = document.createElement("p");
+			p2.style.width = "50%";
+			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + "<h4>";
+			row.appendChild(g);
+			row.appendChild(p);
+			row.appendChild(p2);
+
+			if (cityNum == 1) {
+				// city 1
+				document.getElementById("transportation1").appendChild(row);
+			} else {
+				// city 2
+				document.getElementById("transportation2").appendChild(row);
+			}
+			//printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
+		}
+	}
+};
+
+function initHousing(cityNum, house){
+	var i;
+	if (cityNum == 1) {
+		resetFields("housingDisplay1");
+	} else {
+		resetFields("housingDisplay2");
+	}
+
+	for(i = 0; i < house.length; i++){
+		if(house[i].type == "Appartment" ){
+			if(house[i].payment =="Buy"){
+				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
+			}else{
+				var temp = house[i].cost_desc.split("/");
+				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+			}
+		}
+		else {
+			if(house[i].payment =="Buy"){
+				initHousingHelper(cityNum, "home",house[i].payment,house[i].cost,house[i].cost_desc,"");
+			}else{
+				var temp = house[i].cost_desc.split("/");
+				initHousingHelper(cityNum, "home",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+			}
+		}
+	}
+};
+
+function initHousingHelper(cityNum, glif,payment,cost,pre,post){
+	var h4El = document.createElement("H4");
+	var div = document.createElement("DIV");
+	div.setAttribute("class","flex");
+	var spanEl = document.createElement("SPAN");
+	spanEl.setAttribute("class","fa fa-"+glif);
+	var headerText = document.createTextNode("Average " + payment);
+	div.appendChild(spanEl);
+	div.appendChild(headerText);
+	var h2 = document.createElement("H4");
+	h2.setAttribute("style","padding-top:5px;text-align:center");
+	var h2Text = document.createTextNode(pre+cost+post);
+	h2.appendChild(h2Text);
+	h4El.appendChild(div);
+	h4El.appendChild(h2);
+	if (cityNum == 1) {
+		document.getElementById("housingDisplay1").appendChild(h4El);
+	} else {
+		document.getElementById("housingDisplay2").appendChild(h4El);
+	}
+}
+
+function initFood(cityNum, food){
+	var i;
+	if (cityNum == 1) {
+		resetFields("food1");
+	} else {
+		resetFields("food2");
+	}
+	for(i = 0; i < food.length; i++){
+		var temp = food[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(food[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + food[i].cost + "/" + temp[1]);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("food1").appendChild(div);
+			} else {
+				document.getElementById("food2").appendChild(div);
+			}
+		}else{
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(food[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + food[i].cost);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("food1").appendChild(div);
+			} else {
+				document.getElementById("food2").appendChild(div);
+			}
+		}
+	}
+
+};
+
+function initEntertainment(cityNum, ent){
+	var i;
+	if (cityNum == 1) {
+		resetFields("entertainment1");
+	} else {
+		resetFields("entertainment2");
+	}
+	for(i = 0; i < ent.length; i++){
+		var temp = ent[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(ent[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("entertainment1").appendChild(div);
+			} else {
+				document.getElementById("entertainment2").appendChild(div);
+			}
+		}else{
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(ent[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("entertainment1").appendChild(div);
+			} else {
+				document.getElementById("entertainment2").appendChild(div);
+			}
+		}
+	}
+};
+
+function initIndices(cityNum, ind){
+	var i;
+	if (cityNum == 1) {
+		resetFields("qualityOfLife1");
+	} else {
+		resetFields("qualityOfLife2");
+	}
+	for(i = 0; i < ind.length; i++){
+		var h4 = document.createElement("H4");
+		var div = document.createElement("DIV");
+		div.setAttribute("class","flex");
+		var hText = document.createTextNode(ind[i].name + ":");
+		h4.appendChild(hText);
+		var p = document.createElement("P");
+		var pText = document.createTextNode(ind[i].value + ind[i].value_desc);
+		p.setAttribute("class","inlineP");
+		p.appendChild(pText);
+		div.appendChild(h4);
+		div.appendChild(p);
+		if (cityNum == 1) {
+			document.getElementById("qualityOfLife1").appendChild(div);
+		} else {
+			document.getElementById("qualityOfLife2").appendChild(div);
+		}
+	}
+};
+
+function initAttraction(cityNum, att){
+	var i;
+	if (cityNum == 1) {
+		resetFields("attractions1");
+	} else {
+		resetFields("attractions2");
+	}
+	for(i = 0; i < att.length; i++){
+		var temp = att[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			initAttractionHelper(cityNum, att[i].name,att[i].about,att[i].cost,temp[0],temp[1],att[i].image,att[i].link,att[i].location);
+		}else{
+			initAttractionHelper(cityNum, att[i].name,att[i].about,att[i].cost,temp[0],"",att[i].image,att[i].link,att[i].location);
+		}
+	}
+}
+
+function initAttractionHelper(cityNum, name,about,cost,pre,post,imgUrl,webLink,location){
+	var containerDiv = document.createElement("DIV");
+	var table = document.createElement("TABLE");
+	var tr = document.createElement("Tr");
+	var tdImg = document.createElement("Td");
+	var tdContent =document.createElement("Td");
+
+	var img = document.createElement("IMG");
+	img.setAttribute("class","attractImg");
+	img.setAttribute("src",imgUrl);
+
+
+	var h3 = document.createElement("H3");
+	h3.setAttribute("class","paddingNeeded");
+	var h3Text = document.createTextNode(name);
+	h3.appendChild(h3Text);
+
+	var aboutP = document.createElement("P");
+	aboutP.setAttribute("class","paddingNeeded");
+	var aboutPText = document.createTextNode("Description: " + about);
+	aboutP.appendChild(aboutPText);
+
+	var costP = document.createElement("P");
+	costP.setAttribute("class","paddingNeeded");
+	var costPText = document.createTextNode("Cost: " + pre + cost + post);
+	costP.appendChild(costPText);
+
+	var locationP = document.createElement("P");
+	locationP.setAttribute("class","paddingNeeded");
+	var locationPText = document.createTextNode("Address: " + location);
+	locationP.appendChild(locationPText);
+
+	var linkA = document.createElement("A");
+	linkA.setAttribute("class","paddingNeeded");
+	linkA.setAttribute("src",webLink);
+	var linkAText = document.createTextNode("Website: " + webLink);
+	linkA.appendChild(linkAText);
+
+
+	tdImg.appendChild(img);
+	tdContent.appendChild(h3);
+	tdContent.appendChild(aboutP);
+	tdContent.appendChild(costP);
+	tdContent.appendChild(locationP);
+	tdContent.appendChild(linkA);
+
+	tr.appendChild(tdImg);
+	tr.appendChild(tdContent);
+	table.appendChild(tr);
+	containerDiv.appendChild(table);
+	if (cityNum == 1) {
+		document.getElementById("attractions1").appendChild(containerDiv);
+	} else {
+		document.getElementById("attractions2").appendChild(containerDiv);
+	}
+
+}
+
+function resetFields(parentID){
+	while(document.getElementById(parentID).firstChild){
+		document.getElementById(parentID).removeChild(document.getElementById(parentID).firstChild);
 	}
 }
 
