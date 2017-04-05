@@ -5,6 +5,9 @@ html,body {
 #commentEnterArea,#compareLink,#compareBox,#signOutButton{
 	display:none;
 }
+.contribute{
+	float:right;
+}
 .contribute-header {
 	display: flex;
 }
@@ -16,7 +19,9 @@ html,body {
 .contribute-title {
 	width: 100%;
 }
-
+body{
+	margin-top:70px;
+}
 #brand-name {
     font-family: 'Pacifico', cursive;
     font-size: 18pt;

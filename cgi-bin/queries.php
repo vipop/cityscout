@@ -366,7 +366,7 @@
                     $query = "INSERT INTO `cityentertainment` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
                     break;
                 case 'food':
-                    $query = "INSERT INTO `cityfood` (`_id`, `city_id`, `name`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
+                    $query = "INSERT INTO `cityfood` (`_id`, `city_id`, `type`, `cost_desc`, `cost`) VALUES (NULL, \"$cityId\", \"$ctype\", \"$cdesc\", \"$ccost\")";
                     break;
                 case 'housing':
                     $cpay = $post['cpay'];

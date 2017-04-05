@@ -25,7 +25,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -98,7 +98,7 @@
             </div>
         </div>
         <!-- Housing Modal -->
-        <div id="housingModal" class="modal fade" role="dialog">
+        <div id="housingUtilModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -109,33 +109,52 @@
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Property Type</label>
-                                <select id="property-type" class="form-control">
-                                    <option>House</option>
-                                    <option>Appartment</option>
-                                </select>
-                                <p class="help-block">Property type, House or Appartment</p>
-								<label for="inputName" class="control-label">Buying or Renting</label>
-                                <select id="property-ownershipType" class="form-control">
-                                    <option>Buying</option>
-                                    <option>Renting</option>
-                                </select>
-                                <label for="inputName" class="control-label">Price</label>
-                                <input id="housing-price" type="number"  class="form-control" placeholder="Price" min="0">
-                                <p class="help-block">property price buy/rent</p>
-								<label for="inputName" class="control-label">Utility Type</label>
-                                <select id="utilities-type" class="form-control">
-                                    <option>Electricity</option>
-                                    <option>Internet</option>
-                                    <option>Water</option>
-                                </select>
-                                <hr>
-                                <label for="inputName" class="control-label">Cost</label>
-                                <input id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost" min="0">
-                                <p class="help-block">Utility cost.</p>
-                                <button type="button" class="btn btn-success center-block" onClick="submitHousingUtilities()">Submit</button>
-                            </div>
+                            <div class = "tabbable">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#houseTab" data-toggle="tab">Housing</a></li>
+									<li><a href="#utilTab" data-toggle="tab">Utilities</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="houseTab">
+										<form id="housing-form" onsubmit="submitHousing(event)">
+											<div class="form-group">
+												<label for="inputName" class="control-label">Property Type</label>
+												<select id="property-type" class="form-control">
+													<option>House</option>
+													<option>Appartment</option>
+												</select>
+												<p class="help-block">Property type, House or Appartment</p>
+												<label for="inputName" class="control-label">Buying or Renting</label>
+												<select id="property-ownershipType" class="form-control">
+													<option>Buying</option>
+													<option>Renting</option>
+												</select>
+												<label for="inputName" class="control-label">Price</label>
+												<input required id="housing-price" type="number"  class="form-control" placeholder="Price" min="0">
+												<p class="help-block">property price buy/rent</p>
+												<button type="submit" class="btn btn-success center-block">Submit</button>
+											</div>
+										</form>
+									</div>
+									<div class="tab-pane" id="utilTab">
+										<form id="utilities-form" onsubmit="submitUtilities(event)">
+											<div class="form-group">
+												<label for="inputName" class="control-label">Utility Type</label>
+												<select id="utilities-type" class="form-control">
+													<option>Electricity</option>
+													<option>Internet</option>
+													<option>Water</option>
+												</select>
+												<hr>
+												<label for="inputName" class="control-label">Cost</label>
+												<input required id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost" min="0">
+												<p class="help-block">Utility cost.</p>
+												<button type="submit" class="btn btn-success center-block">Submit</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -152,26 +171,28 @@
                             <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
-                        <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Type</label>
-                                <select id="food-group" class="form-control">
-                                    <option>Grains</option>
-                                    <option>Protein</option>
-                                    <option>Fruits and Vegetables</option>
-                                    <option>Dairy</option>
-                                </select>
-                                <label for="inputName" class="control-label">Description</label>
-                                <input id="food-description" type="text" class="form-control" placeholder="Description">
-                                <p class="help-block">Description (Loaf/pound/pint/etc..).</p>
-                                <label for="inputName" class="control-label">Cost</label>
-                                <input id="food-prices" type="number" class="form-control" placeholder="Cost">
-                                <p class="help-block">Cost.</p>
-                            </div>
-                            <hr />
-                            <button type="button" class="btn btn-success center-block">Submit</button>
-                        </div>
-                    </div>
+						<div class="panel-body" style="width: 85%; margin: auto;">
+							<form id="food-form" onsubmit="submitFood(event)">
+								<div class="form-group">
+									<label for="inputName" class="control-label">Type</label>
+									<select id="food-group" class="form-control">
+										<option>Grains</option>
+										<option>Protein</option>
+										<option>Fruits and Vegetables</option>
+										<option>Dairy</option>
+									</select>
+									<label for="inputName" class="control-label">Description</label>
+									<input required id="food-description" type="text" class="form-control" placeholder="Description">
+									<p class="help-block">Description (Loaf/pound/pint/etc..).</p>
+									<label for="inputName" class="control-label">Cost</label>
+									<input required id="food-prices" type="number" class="form-control" placeholder="Cost" min="0">
+									<p class="help-block">Cost.</p>
+								</div>
+								<hr />
+								<button type="submit" class="btn btn-success center-block">Submit</button>
+							</form>	
+						</div>
+					</div>
                 </div>
             </div>
         </div>
@@ -186,35 +207,31 @@
                             <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
-                        <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Type</label>
-                                <select id="transportation-type" class="form-control">
-                                    <option>Subway</option>
-									<option>Car</option>
-									<option>Bus</option>
-									<option>Train</option>
-                                    <option>Taxi</option>
-                                    <option>Rideshare</option>
-                                </select>
-								<p class="help-block">Rideshare = uber,lyft etc..</p>
-                                <br>
-                                <label for="inputName" class="control-label">Description</label>
-                                <input id="transportation-description" type="text" class="form-control" placeholder="Description">
-                                <p class="help-block">Description (Adult/child/senior/etc)</p>
-                                <label for="inputName" class="control-label">Cost</label>
-                               	<input id="transportation-prices" type="number" class="form-control" placeholder="Cost" min="0">
-								<p class="help-block">Cost.(For cars enter average price of gas)</p>
-								<label for="inputName" class="control-label">Provider</label>
-                                <input id="transportation-provider" type="text" class="form-control" placeholder="Provider">
-                                <p class="help-block">Name of provider</p>
-                                <label for="inputName" class="control-label">Link</label>
-                                <input id="transportation-provider-link" type="text" class="form-control" placeholder="Provider">
-                                <p class="help-block">Link/URL to provider's website</p>
-                            </div>
-                            <hr />
-                            <button type="button" class="btn btn-success center-block">Submit</button>
-                        </div>
+						<div class="panel-body" style="width: 85%; margin: auto;">
+							<form id="transportation-form" onSubmit="submitTransportation(event)">
+								<div class="form-group">
+									<label for="inputName" class="control-label">Type</label>
+									<select id="transportation-type" class="form-control">
+										<option>Subway</option>
+										<option>Car</option>
+										<option>Bus</option>
+										<option>Train</option>
+										<option>Taxi</option>
+										<option>Rideshare</option>
+									</select>
+									<p class="help-block">Rideshare = uber,lyft etc..</p>
+									<br>
+									<label for="inputName" class="control-label">Description</label>
+									<input required id="transportation-description" type="text" class="form-control" placeholder="Description">
+									<p class="help-block">Description (Adult/child/senior/etc)</p>
+									<label for="inputName" class="control-label">Cost</label>
+									<input id="transportation-prices" type="number" class="form-control" placeholder="Cost" min="0" required>
+									<p class="help-block">Cost.(For cars enter average price of gas)</p>
+								</div>
+								<hr />
+								<button type="submit" class="btn btn-success center-block">Submit</button>
+							</form>	
+						</div>					
                     </div>
                 </div>
             </div>
@@ -230,62 +247,29 @@
                             <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
-                        <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Type</label>
-                                <select id="entertainment-type" class="form-control">
-                                    <option>Concert</option>
-                                    <option>Movies</option>
-                                    <option>Theatre</option>
-                                    <option>Sports</option>
-                                </select>
-                                <br>
-                                <label for="inputName" class="control-label">Cost</label>
-                                <input id="entertainment-prices" type="number" class="form-control" placeholder="Cost">
-                                <p class="help-block">Cost of ticket/entry to entertainment item</p>
-                                <label for="inputName" class="control-label">Cost Description</label>
-                                <input id="entertainment-prices-description" type="text" class="form-control" placeholder="Cost Description">
-                                <p class="help-block">cost per ticket or per game etc...</p>
-                            </div>
-                            <hr />
-                            <button type="button" class="btn btn-success center-block">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Attractions Modal -->
-        <div id="attractionsModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="panel">
-                        <div class="panel-heading" style="display:flex;">
-                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Entertainment</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
-                        </div>
-                        <hr />
-                        <div class="panel-body" style="width: 85%; margin: auto;">
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Type</label>
-                                <select id="entertainment-type" class="form-control">
-                                    <option>Concert</option>
-                                    <option>Movies</option>
-                                    <option>Theatre</option>
-                                    <option>Sports</option>
-                                </select>
-                                <br>
-                                <label for="inputName" class="control-label">Cost</label>
-                                <input id="entertainment-prices" type="number" class="form-control" placeholder="Cost">
-                                <p class="help-block">Cost of ticket/entry to entertainment item</p>
-                                <label for="inputName" class="control-label">Cost Description</label>
-                                <input id="entertainment-prices-description" type="text" class="form-control" placeholder="Cost Description">
-                                <p class="help-block">$ per ticket or per game etc...</p>
-                            </div>
-                            <hr />
-                            <button type="button" class="btn btn-success center-block">Submit</button>
-                        </div>
-                    </div>
+						<div class="panel-body" style="width: 85%; margin: auto;">
+							<form id="entertainment-form" onsubmit="submitEntertainment(event)">
+								<div class="form-group">
+									<label for="inputName" class="control-label">Type</label>
+									<select id="entertainment-type" class="form-control">
+										<option>Concert</option>
+										<option>Movies</option>
+										<option>Theatre</option>
+										<option>Sports</option>
+									</select>
+									<br>
+									<label for="inputName" class="control-label">Cost</label>
+									<input id="entertainment-prices" type="number" class="form-control" placeholder="Cost" min="0" required>
+									<p class="help-block">Cost of ticket/entry to entertainment item</p>
+									<label for="inputName" class="control-label">Cost Description</label>
+									<input id="entertainment-description" type="text" required class="form-control" placeholder="Cost Description" >
+									<p class="help-block">cost per ticket or per game etc...</p>
+									<hr />
+									<button type="submit" class="btn btn-success center-block">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
                 </div>
             </div>
         </div>
@@ -346,7 +330,7 @@
 				</div>
             </div>
             <hr />
-            <!-- Background & OVerview -->
+            <!-- Background -->
             <div class="row ninety row-eq-height">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel">
@@ -475,7 +459,7 @@
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
-                            <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr>
                         <div class="panel-body" id="transportation"></div>
@@ -486,7 +470,7 @@
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
-                            <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#housingModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#housingUtilModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
 						</div>
                         <hr />
                         <div class="panel-body" id="housing">
@@ -501,14 +485,12 @@
                 </div>
           	</div>
             <br>
-			<!-- Food, Entertainment & Quality of Life Indexes -->
             <div class="row ninety">
-				<!-- Food -->
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
-                            <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr />
                         <div class="panel-body" id="food">
@@ -516,12 +498,11 @@
                         </div>
                     </div>
                 </div>
-				<!-- Entertainment -->
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
-                            <a type="button" style="float: right;" class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span>Contribute</a>
                         </div>
                         <hr>
                         <div class="panel-body" id="entertainment">
@@ -529,11 +510,10 @@
                         </div>
                     </div>
                 </div>
-				<!-- Quality of Life Indexes -->
 				<div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes</h3>
+                            <h3 class="category-title"><span class="fa fa-trophy"></span>Quality of Life Indexes</h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="qualityOfLife"></div>
@@ -546,7 +526,7 @@
                 <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-flag"></span>Attractions</h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="attractions">

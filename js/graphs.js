@@ -1,13 +1,9 @@
-
 function prepareGraphs(){
   google.charts.load('current', {'packages':['corechart']});
 }
 
-function loadGraphs(tempLang,tempClimate,tempUtility){ //languages,container_lang,climate,container_climate) {
+function loadGraphs(tempLang,tempClimate,tempUtility){
 
-  // Load the Visualization API and the corechart package.
-
-  // Set a callback to run when the Google Visualization API is loaded.
   google.charts.setOnLoadCallback(function(){
     var i;
     for(i = 0 ; i < tempLang.length;i++){
@@ -98,7 +94,7 @@ function drawFallChart(snowfall,rainfall,container_fall) {
 }
 function drawUtilityChart(utility,container_utility) {
   console.log(utility);
-
+z
   var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
     [utility[0].type, parseInt(utility[0].cost),"#b87333"] /*,
