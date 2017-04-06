@@ -86,6 +86,7 @@ h2, h3 {
 	align-self: center;
 	width: 60%;
 	min-width: 90px;
+	margin: 0px;
 }
 
 .glyphicon {
@@ -321,7 +322,7 @@ div.flex{
 	.needSmallMargin{
 		margin-top:20px;
 	}
-	#login-username, #login-password {
+	#login-username,#login-password {
 		width: 139px;
 	}
 }

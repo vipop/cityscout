@@ -1,3 +1,6 @@
+var tempLang = [];
+var tempClimate = [];
+var tempUtil = [];
 
 window.onload = function() {
 	var search = new URLSearchParams(window.location.search);
@@ -31,8 +34,8 @@ function getCity(){
 	return city;
 };
 
-function populateCity(cityNum, city, json) {
-
+function populateCity(cityNum, json) {
+	console.log("I am here");
 	//top basic information
     var cityName = json.data.general.name;
 	var country = json.data.general.country;
@@ -55,14 +58,12 @@ function populateCity(cityNum, city, json) {
 	//Housing and Utilities
 	var housing = json.data.housing;
 	var utilities = json.data.utilities;
-    console.log("Utilities: ");
-    console.log(utilities);
 	//Transportation
 	var transportation = json.data.transportation;
 	//Climate
 	var climate = json.data.climate;
 	//Entertainment
-	var entertainments = json.data.entertainment;
+	var entertainment = json.data.entertainment;
 	//Attractions
 	var attractions = json.data.attractions;
 	//Food
@@ -70,92 +71,12 @@ function populateCity(cityNum, city, json) {
 	//Indices happiness quality of life
 	var indices = json.data.indices;
 
-	/*
-	// DUMMY DATA
-
-	var country = "Canada";
-	var language = "English";
-	var pop = "2,991,312";
-	var area = "1,400,200" + " km&sup2;";
-	var gdp = 1231;
-
-	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"}];
-
-	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"};
-
-	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}];
-
-	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"},
-					{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"}];
-
-	var transportation =[	{"type": "Subway", "cost_desc": "$/(Adult)", "cost": "3.25"},
-							{"type": "Train", "cost_desc": "$", "cost": "5.43"},
-							{"type": "Car", "cost_desc": "$/(Adult)", "cost": "3.25"},
-							{"type": "Bus", "cost_desc": "$", "cost": "5.43"},
-							{"type": "Taxi", "cost_desc": "$", "cost": "3.25"},
-							{"type": "RideShare", "cost_desc": "$", "cost": "5.43"}];
-
-	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
-
-	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
-					{"name": "HDI","value_desc": "", "value": "0.913"},
-					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
-
-	var entertainment = [	{"type": "Average cost of dinner (for 2)","cost_desc": "$","cost": "36"},
-							{"type": "Average cost of drink","cost_desc": "$","cost": "5.88"},
-							{"type": "Movie","cost_desc": "$/ticket","cost": "11"},
-							{"type": "Sports","cost_desc": "$/ticket","cost": "250"},
-							{"type": "Theatre","cost_desc": "$/ticket","cost": "55"}];
-
-	var food = [	{"type": "Dairy","cost_desc": "$/L","cost": "2.9"},
-					{"type": "Fruits","cost_desc": "$/kg","cost": "2.83"},
-					{"type": "Grains","cost_desc": "$/Loaf","cost": "1.89"},
-					{"type": "Protein","cost_desc": "$/kg","cost": "6.6"},
-					{"type": "Vegetables","cost_desc": "$/kg","cost": "1.11"}];
-
-	var attractions = [{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						},
-						{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						},
-						{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						}];
-
-	//Overview
-	var ovHappiness = 3;
-	var ovEntertainment = 1;
-	var ovHealthcare = 5;
-	var ovEducation = 2;
-	var ovHousing = 4;
-	var ovCrime = 1;
-
-	// DUMMY DATA
-	*/
 
 	if (cityNum == 1) {
 		// populate city 1
 		initTopInfo(1, country, language, pop, area, gdp);
-		initCityBanner(1, city);
-		initBackground(1, background);
+		initCityBanner(1, cityName);
+		initBackground(1, history);
 		initOverview(1, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(1, transportation);
 		initHousing(1, housing);
@@ -163,11 +84,20 @@ function populateCity(cityNum, city, json) {
 		initEntertainment(1, entertainment);
 		initIndices(1, indices);
 		initAttraction(1, attractions);
+		titleCityDisplay("cityNameTitle1",cityName);
+		var languageObject = {lang:languages, theId:document.getElementById("languages-chart-div1")};
+		var climateObject = {climate:climate[0], theTemp: document.getElementById("climate-bar-temp1"),theFall:document.getElementById("climate-bar-fall1")};
+		var utilObject = {uti:utilities,theId:document.getElementById("utilities-chart-div1")};
+		tempLang[cityNum-1]=languageObject;
+		tempClimate[cityNum-1]=climateObject;
+		tempUtil[cityNum-1]=utilObject;
+		prepareGraphs();
+		loadGraphs(tempLang, tempClimate, tempUtil);
 	} else {
 		// populate city 2
 		initTopInfo(2, country, language, pop, area, gdp);
-		initCityBanner(2, city);
-		initBackground(2, background);
+		initCityBanner(2, cityName);
+		initBackground(2, history);
 		initOverview(2, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(2, transportation);
 		initHousing(2, housing);
@@ -175,7 +105,17 @@ function populateCity(cityNum, city, json) {
 		initEntertainment(2, entertainment);
 		initIndices(2, indices);
 		initAttraction(2, attractions);
+		titleCityDisplay("cityNameTitle2",cityName);
+		var languageObject = {lang:languages, theId:document.getElementById("languages-chart-div2")};
+		var climateObject = {climate:climate[0], theTemp: document.getElementById("climate-bar-temp2"),theFall:document.getElementById("climate-bar-fall2")};
+		var utilObject = {uti:utilities,theId:document.getElementById("utilities-chart-div2")};
+		tempLang[cityNum-1]=languageObject;
+		tempClimate[cityNum-1]=climateObject;
+		tempUtil[cityNum-1]=utilObject;
+		prepareGraphs();
+		loadGraphs(tempLang, tempClimate, tempUtil);
 	}
+		
 }
 
 function getCityInformation(cityNum, city){
@@ -187,7 +127,7 @@ function getCityInformation(cityNum, city){
                 var json = JSON.parse(result);
                 console.log(json);
 				if(json.code == 0){
-					populateCity(cityNum, city, json);
+					populateCity(cityNum, json);
 					//return json;
 				}
 			},function(){
@@ -216,17 +156,11 @@ function initTopInfo(cityNum, country, lang, pop, area, gdp) {
 function initCityBanner(cityNum, city){
 	if (cityNum == 1) {
 		// city 1
-		if(city == "losAngeles") document.getElementById("header-text1").innerHTML = "LOS ANGELES";
-		else if(city == "newYork") document.getElementById("header-text1").innerHTML = "NEW YORK";
-		else document.getElementById("header-text1").innerHTML = city.toUpperCase();
-		//document.getElementById("header1").style.backgroundImage = "url('images/" + city1 + "Image.jpg')";
+		document.getElementById("header-text1").innerHTML = city;
 	} else {
 		// city 2
-		if(city == "losAngeles") document.getElementById("header-text2").innerHTML = "LOS ANGELES";
-		else if(city == "newYork") document.getElementById("header-text2").innerHTML = "NEW YORK";
-		else document.getElementById("header-text2").innerHTML = city.toUpperCase();
-		//document.getElementById("header2").style.backgroundImage = "url('images/" + city2 + "Image.jpg')";
-	}
+		document.getElementById("header-text2").innerHTML = city;
+	}	
 };
 
 function initBackground(cityNum, background) {
@@ -405,12 +339,13 @@ function initHousing(cityNum, house){
 	}
 
 	for(i = 0; i < house.length; i++){
+		console.log(house[i].type + " " + house[i].payment);
 		if(house[i].type == "Appartment" ){
 			if(house[i].payment =="Buy"){
-				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
+				initHousingHelper(cityNum, "building",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+				initHousingHelper(cityNum, "building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
 			}
 		}
 		else {
@@ -425,6 +360,7 @@ function initHousing(cityNum, house){
 };
 
 function initHousingHelper(cityNum, glif,payment,cost,pre,post){
+	console.log(payment + " " + cost + " " + pre + " " + post);
 	var h4El = document.createElement("H4");
 	var div = document.createElement("DIV");
 	div.setAttribute("class","flex");
@@ -697,7 +633,7 @@ function dropdownSelect(ctl, cityNum) {
 			break;
 		case "New York (USA)":
 			city = "newYork";
-			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "New York (Canada)";
+			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "New York (USA)";
 			break;
 		case "Los Angeles (USA)":
 			city = "losAngeles";
@@ -724,11 +660,14 @@ function dropdownSelect(ctl, cityNum) {
 			ctl.parentNode.parentNode.parentNode.firstChild.nextSibling.innerText = "Bucharest (Romania)";
 			break;
 	}
+
 	if (cityNum == 1) {
-		populateCity(1, city);
+		getCityInformation(1, city);
+		//populateCity(1, city);
 		showCity(1);
 	} else {
-		populateCity(2, city);
+		getCityInformation(2, city);
+		//populateCity(2, city);
 		showCity(2);
 	}
 }
@@ -768,4 +707,10 @@ function getCityName(city) {
 			break;
 	}
 	return name;
+}
+function titleCityDisplay(titleId,cityName){
+	var temp = document.getElementsByClass(titleId);
+	for(var i = 0; i < temp.length; i++){
+		temp[i].innerHTML = cityName; 
+	}
 }

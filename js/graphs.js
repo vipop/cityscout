@@ -1,3 +1,4 @@
+
 function prepareGraphs(){
   google.charts.load('current', {'packages':['corechart']});
 }
@@ -43,27 +44,31 @@ function drawLanguageChart(languages,container_lang) {
   data.addColumn('number', 'People');
   data.addRows(rowArray);
   // Set chart options
-  var options = {'title': 'Languages',
-                 'titlePosition': 'none',
-                 'backgroundColor': '#ffffff',
-                 'is3D': 'true',
-                 'width': 'auto',
-                 'height': 'auto',
-				 'chartArea': {'width': '100%', 'height': '85%'},
-                 'legend': {  'textStyle': { 'color': '#101010' },
-                              'position': 'bottom'},
-                  'colors': ['#2c5a71', 'whitesmoke', '#3e606f', '#406d80', '#29768a']
+  var options = { 'title': 'Languages',
+                  'titlePosition': 'none',
+                  'backgroundColor': '#ffffff',
+                  'is3D': 'true',
+                  'width': 'auto',
+                  'height': 'auto',
+				          'chartArea': {'width': '100%', 'height': '85%'},
+                  'legend': {  'textStyle': { 'color': '#101010' },
+                  'position': 'bottom'}
               };
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(container_lang);
+  options.series={};
+    for(var i = 0;i < data.getNumberOfRows();i++){
+        options.series[i]={color:getRandomColor()}
+    }
   chart.draw(data, options);
 }
+
 function drawTempChart(high_avg,low_avg,container_temp) {
     console.log(high_avg + " " + low_avg);
     var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
-    ["High", parseFloat(high_avg), "#b87333"],
-    ["Low", parseFloat(low_avg), "silver"]]);
+    ["High", parseFloat(high_avg), "#EC644B"],
+    ["Low", parseFloat(low_avg), "#446CB3"]]);
 
 	var view = new google.visualization.DataView(data);
 	var options = {
@@ -79,8 +84,8 @@ function drawTempChart(high_avg,low_avg,container_temp) {
 function drawFallChart(snowfall,rainfall,container_fall) {
   var data = google.visualization.arrayToDataTable([
     ["Element", "Value", { role: "style" } ],
-    ["Snowfall", parseInt(snowfall), "#b87333"],
-    ["Rainfall", parseInt(rainfall), "silver"]]);
+    ["Snowfall", parseInt(snowfall), "#E4F1FE"],
+    ["Rainfall", parseInt(rainfall), "#5C97BF"]]);
     var view = new google.visualization.DataView(data);
 	var options = {
     title: "Average Annual Rainfall and Snowfall (cm)",
@@ -94,14 +99,23 @@ function drawFallChart(snowfall,rainfall,container_fall) {
 }
 function drawUtilityChart(utility,container_utility) {
   console.log(utility);
-z
-  var data = google.visualization.arrayToDataTable([
-    ["Element", "Value", { role: "style" } ],
-    [utility[0].type, parseInt(utility[0].cost),"#b87333"] /*,
-    [utility[1].type, parseInt(utility[1].cost),"silver"],
-    [utility[2].type, parseInt(utility[2].cost),"color: #e5e4e2"]*/
-  ]);
+  var color1="#b87333";
+  var color2="#b73ff2";
+  var color3="#0ff210";
+  var colors =[color1,color2,color3]
+  var rowArray=[];
+  rowArray.push(["Element", "Value", { role: "style" } ]);
+  for (var i = 0; i < utility.length; i++) {
+    
+    var array=[];
+    array.push(utility[i].type);
+    array.push(parseInt(utility[i].cost));
+    array.push(colors[i]);
 
+    rowArray.push(array);
+  }
+
+  var data = google.visualization.arrayToDataTable(rowArray); 
   var view = new google.visualization.DataView(data);
 
   var options = {
@@ -114,3 +128,12 @@ z
   var chart = new google.visualization.ColumnChart(container_utility);
   chart.draw(view, options);
 }
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}   

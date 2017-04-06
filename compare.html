@@ -14,11 +14,11 @@
         <link href="css/compare.css" rel="stylesheet">
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-
 		<script src="https://use.fontawesome.com/c1cf09c438.js"></script>
         <script src="js/compare.js"></script>
         <script src="js/users.js"></script>
-
+        <script type="text/javascript" src="js/graphs.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
         <!-- Navigation -->
@@ -126,11 +126,11 @@
         <div class="container-fluid">
             <!-- Header -->
             <div class="row">
-            	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            		<h4 id="header-text1" class="city1">City1</h4>
+            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            		<h4 id="header-text1" class="city1">Toronto</h4>
             	</div>
-            	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            		<h4 id="header-text2" class="city2">City2</h4>
+            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            		<h4 id="header-text2" class="city2">Los Angeles</h4>
             	</div>
             </div>
             <hr />
@@ -138,20 +138,20 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="col-sm-4">
-                        <div class="small-info city1">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="centerText city1">
                             <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                             <h2 id="city1-country" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="small-info city1">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="centerText city1">
                             <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                             <h2 id="city1-lang" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="small-info city1">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                        <div class="centerText city1">
                             <span><span class="glyphicon glyphicon-user"></span>Population</span>
                             <h2 id="city1-pop" class="margin10 top-info"></h2>
                         </div>
@@ -159,20 +159,20 @@
                 </div>
                 <!-- City 2 -->
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                        <div class="small-info city2">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="centerText city2">
                             <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                             <h2 id="city2-country" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                        <div class="small-info city2">
+                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <div class="centerText city2">
                             <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                             <h2 id="city2-lang" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                        <div class="small-info city2">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                        <div class="centerText city2">
                             <span><span class="glyphicon glyphicon-user"></span>Population</span>
                             <h2 id="city2-pop" class="margin10 top-info"></h2>
                         </div>
@@ -182,14 +182,14 @@
             <div class="row ninety">
                 <!-- City 1 -->
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="col-sm-4">
-                        <div class="small-info city1">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="centerText small-infoPushRight city1">
                             <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                             <h2 id="city1-area" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                    <div class="col-sm-2">
-						<div class="small-info city1">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+						<div class="centerText small-infoPushLeft city1">
 							<span><span class="glyphicon glyphicon-globe"></span>GDP</span>
 							<h2 id="city1-gdp" class="margin10 top-info"></h2>
 						</div>
@@ -197,14 +197,14 @@
                 </div>
 			    <!-- City 2 -->
                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <div class="col-sm-4">
-                        <div class="small-info city2">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                        <div class="centerText small-infoPushRight city2">
                             <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                             <h2 id="city2-area" class="margin10 top-info"></h2>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-						<div class="small-info city2">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+						<div class="centerText small-infoPushLeft city2">
 							<span><span class="glyphicon glyphicon-globe"></span>GDP</span>
 							<h2 id="city2-gdp" class="margin10 top-info"></h2>
 						</div>
@@ -215,9 +215,9 @@
             <!-- Background -->
             <div class="row ninety">
                 <!-- City 1 -->
-                <div class="col-sm-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
+                        <div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content" class="cityNameTitle1"> </span></h3></div>
                         <hr />
                         <div class="panel-body">
                             <p id="background1"></p>
@@ -225,10 +225,10 @@
                     </div>
                 </div>
                 <!-- City 2 -->
-                <div class="col-sm-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
-                        <div class="panel-heading"><h3><span class="glyphicon glyphicon-book"></span>Background</h3></div>
-                        <hr />
+                        <div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content" class="cityNameTitle2">asdfasd </span></h3> </div>
+                        <hr /> 
                         <div class="panel-body">
                             <p id="background2"></p>
                         </div>
@@ -239,10 +239,10 @@
             <!-- Overview -->
             <div class="row ninety">
                 <!-- City 1 -->
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<div class="panel city1">
 						<div class="panel-heading">
-							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview <span  class="hide-content" class="cityNameTitle1"> </span></h3>
 						</div>
 						<hr />
 						<div class="row">
@@ -314,10 +314,10 @@
 					</div>
 				</div>
                 <!-- City 2 -->
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<div class="panel city2">
 						<div class="panel-heading">
-							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
+							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview <span class="hide-content" class="cityNameTitle2"> </span></h3>
 						</div>
 						<hr />
 						<div class="row">
@@ -393,38 +393,38 @@
             <!-- Climate -->
             <div class="row ninety">
                 <!-- City 1 -->
-				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
+				<div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                    <div class="panel city1">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate<span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr/>
 						<div class="panel-body" id="climate">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-									<div class="chart climateChart" id="climate-bar-temp"></div>
+									<div class="chart climateChart" id="climate-bar-temp1"></div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-									<div class="chart climateChart" id="climate-bar-fall" ></div>
+									<div class="chart climateChart" id="climate-bar-fall1" ></div>
 								</div>
 							</div>
 						</div>
                     </div>
                 </div>
                 <!-- City 2 -->
-				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
+				<div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                    <div class="panel city2">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate<span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr/>
 						<div class="panel-body" id="climate">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-									<div class="chart climateChart" id="climate-bar-temp"></div>
+									<div class="chart climateChart" id="climate-bar-temp2"></div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-									<div class="chart climateChart" id="climate-bar-fall" ></div>
+									<div class="chart climateChart" id="climate-bar-fall2" ></div>
 								</div>
 							</div>
 						</div>
@@ -435,10 +435,10 @@
 			<!-- Languages -->
 			<div class="row ninety">
 				<!-- City 1 -->
-                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                     <div class="panel city1">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr/>
                         <div class="panel-body" id="languages">
@@ -447,10 +447,10 @@
                     </div>
                 </div>
 				<!-- City 2 -->
-                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                     <div class="panel city2">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr/>
                         <div class="panel-body" id="languages">
@@ -466,7 +466,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="transportation1"></div>
@@ -476,7 +476,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="transportation2"></div>
@@ -490,7 +490,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities <span class="hide-content" class="cityNameTitle1"> </span></h3>
 						</div>
                         <hr />
                         <div class="panel-body" id="housing">
@@ -507,7 +507,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities <span class="hide-content" class="cityNameTitle2"> </span></h3>
 						</div>
                         <hr />
                         <div class="panel-body" id="housing">
@@ -525,20 +525,20 @@
 			<!-- Food -->
             <div class="row ninety">
                 <!-- City 1 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr />
                         <div class="panel-body" id="food1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr />
                         <div class="panel-body" id="food2"></div>
@@ -549,10 +549,10 @@
 			<!-- Entertainment -->
             <div class="row ninety">
                 <!-- City 1 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="entertainment">
@@ -561,10 +561,10 @@
                     </div>
                 </div>
                 <!-- City 2 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
                         <div class="panel-heading contribute-header">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="entertainment">
@@ -577,20 +577,20 @@
             <!-- Quality of Life Indexes -->
             <div class="row ninety">
                 <!-- City 1 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes</h3>
+                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="qualityOfLife1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
-				<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes</h3>
+                            <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="qualityOfLife2"></div>
@@ -604,7 +604,7 @@
 				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions <span class="hide-content" class="cityNameTitle1"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="attractions1"></div>
@@ -614,7 +614,7 @@
 				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
                         <div class="panel-heading">
-                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions</h3>
+                            <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions <span class="hide-content" class="cityNameTitle2"> </span></h3>
                         </div>
                         <hr>
                         <div class="panel-body" id="attractions2"></div>
