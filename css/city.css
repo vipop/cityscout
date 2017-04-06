@@ -293,6 +293,15 @@ div.flex{
 	border-color: #fd625e;
 }
 /*Media */
+@media screen and (max-width: 1242px){
+	.contributeText{
+		display:none;
+	}
+	.contribute{
+		padding:0px;
+	}
+}
+/*Small screen */
 @media screen and (max-width: 991px) {
 	.climateChart{
 		height:150px;
@@ -319,5 +328,11 @@ div.flex{
 	}
 	#map-panel{
 		margin-top:20px;
+	}
+	.needExSmallMargin{
+		margin-top:20px;
+	}
+	#login-username, #login-password {
+		width: 100%;
 	}
 }
