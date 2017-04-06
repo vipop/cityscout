@@ -23,9 +23,6 @@ h1,h2,h3,h4,h5,h6{
 .hide-content{
 	display: none;
 }
-@media screen and (max-width: 1242px){
-
-}
 
 @media screen and (min-width: 991px) and (max-width:1242px) {
 	.small-infoPushLeft{
@@ -56,18 +53,3 @@ h1,h2,h3,h4,h5,h6{
 		display:block;
 	}
 }
-/*
-@media screen and (max-width:767px){
-	.small-infoPushLeft{
-		padding-right: 0px;
-	}
-	.small-infoPushRight{
-		padding-left: 0px;
-	}
-	.centerText{
-		text-align: left;
-	}
-	.panel{
-		margin-top:20px;
-	}
-}*/

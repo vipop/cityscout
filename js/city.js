@@ -480,8 +480,6 @@ function initMap(latitude, longitude, container) {
     var map = new google.maps.Map(container, {
       zoom: 5,
       center: location,
-	  scrollwheel:false,
-	  draggable: false,
 	  styles: [{"featureType": "road","elementType": "labels","stylers": [{"visibility": "off"}]},
     			{"featureType": "poi","elementType": "labels","stylers": [{"visibility": "off"}]},
     			{"featureType": "transit","elementType": "labels.text","stylers": [{"visibility": "off"}]}]
