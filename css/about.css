@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	background-color: whitesmoke;
+	color: #222222;
+}
+
+body{
+	padding-top: 55px;
+}
+
+main {
+	max-width: 1200px;
+}
+/* NAVIGATION */
+.navbar {
+	margin:0px;
+}
+
+#compareLink,#signOutButton{
+	display:none;
+}
+
+#brand-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 18pt;
+    color: whitesmoke;
+}
+#brand-name:hover {
+    color: #9d9d9d;
+    cursor: pointer;
+}
+
+/* */
+.row{
+	max-width: 1000px;
+}
+
+.panel{
+	margin: 10px;
+	padding: 12px 20px 12px 20px;
+}
+
+.panel-info{
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.panel-info a{
+	text-decoration: underline;
+}
+
+.section-header {
+
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-variant: small-caps;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+[class*='col']{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.fa {
+	align-self: center;
+	margin-right: 10px;
+}
+
+.container{
+	width: auto;
+	padding: 10px;
+}
+
+/* DEV LIST */
+ul.dev-title-list{
+	list-style: none;
+}
+
+@media screen and (max-height:505px){
+
+	.carousel .carousel-inner {
+		height:230px;
+	}
+	ul .cityList{
+		margin: 1px 30px 1px 0px;
+	}
+	.row{
+		padding:5px;
+	}
+	h1{
+		margin:1px;
+	}
+	h4{
+		margin:0px;
+		padding:0px;
+	}
+	.btn-huge{
+		padding:10px;
+
+	}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+	#login-username, #login-password {
+		width: 140px;
+	}
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-text{
+	text-align: center;
+}
+
+.center-vertical{
+	margin-top: auto;
+	margin-bottom: auto;
+}

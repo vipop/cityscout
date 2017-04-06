@@ -73,7 +73,7 @@ div.center{
 ul{
 	list-style-type:none;
 }
-#aside-cities{
+#cities{
 	text-align: center;
 }
 
@@ -159,6 +159,7 @@ ul .cityList{
 	}
 
 }
+
 @media screen and (min-width: 768px) and (max-width: 991px){
 	#login-username, #login-password {
 		width: 140px;
@@ -168,11 +169,5 @@ ul .cityList{
 @media screen and (max-width:991px){
 	.carousel .carousel-inner {
 		height:300px;
-	}
-}
-/* Graham add this use need to see if we keep it */
-@media screen and (min-width:1400px){
-	.carousel .carousel-inner {
-		height:500px;
 	}
 }

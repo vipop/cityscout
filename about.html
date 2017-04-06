@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>City Scout</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/users.js"></script>
+		<link rel="stylesheet" href="css/about.css">
+		<script src="https://use.fontawesome.com/c1cf09c438.js"></script>
+	</head>
+	<body>
+		<!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand-name" class="navbar-brand" href="index.html">CityScout</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <form class="navbar-form navbar-right" id="logInForm">
+                        <div class="form-group">
+                            <input id="login-username" type="text" class="form-control" placeholder="Username">
+                            <input id="login-password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
+                    </form>
+					<script type="text/javascript"> //script must be here
+						if(sessionStorage.getItem("userId") != null){
+							$("#logInForm").hide();
+						}
+					</script>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a type="button" class="btn btn-link" id="signOutButton" onClick="signOut()"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+					</ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html #cities">Cities</a></li>
+                        <li id="compareLink"><a href="compare.html">Compare</a></li>
+                        <li class="active"><a href="#">About</a></li>
+                    </ul>
+               </div>
+             </div>
+        </nav>
+	    <main class="container-fluid">
+			<div class="row center">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+					<section class="panel panel-info">
+						<i class="fa fa-github" aria-hidden="true"></i>Check us out on <a href="https://github.com/vipop/project630">GitHub</a>!
+					</section>
+				</div>
+			</div>
+
+			<div class="row center">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+					<section id="section-about" class="panel ">
+						<header class="header-section smallCaps">
+							<h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>About the Devs</h2>
+							<hr/>
+						</header>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Graham Marshall</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Front-end Developer</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Rami Elkhayat</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Front-end Developer</li>
+										<li class="dev-title">Data Integration</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Vlad Pop</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Back-end Developer</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Gianluca Martellacci</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Back-end Developer</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Chris Collins</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Back-end Developer</li>
+										<li class="dev-title">Database Administrator</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+						<article class="article-dev">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 center-text">
+									<i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:60px;"></i>
+								</div>
+								<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+									<h4 class="dev-name">Ji Qi</h4>
+									<hr/>
+									<ul class="dev-title-list">
+										<li class="dev-title">Data Integration</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+
+			<div class="row center">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+					<section id="section-sources" class="panel ">
+						<header class="header-section smallCaps">
+							<h2><i class="fa fa-info" aria-hidden="true"></i>Resources</h2>
+							<hr/>
+						</header>
+
+						Below is a list of our sources:
+						<ul>
+							<li><a href="http://www.google.ca">Google</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</main>
+		<!-- Registration Modal -->
+        <div id="signup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="panel">
+                        <div class="panel-heading" style="display:flex;">
+                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                        </div>
+                        <hr />
+                        <div class="panel-body" style="width: 85%; margin: auto;">
+							<div id="registration-success" style="display:none">
+								<p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
+							</div>
+                            <div id="registration-form" class="form-group">
+                                <label for="inputName" class="control-label">Username</label>
+                                <input id="register-username" type="text" class="form-control" placeholder="Username">
+                                <p class="help-block">Username can contain any letters or numbers, without spaces.</p>
+                                <label for="inputName" class="control-label">Password</label>
+                                <input id="register-password" type="password" class="form-control" placeholder="Password">
+                                <p class="help-block">Password should be at least 4 characters.</p>
+                                <label for="inputName" class="control-label">Password (confirm)</label>
+                                <input id="register-password-confirm" type="password" class="form-control" placeholder="Password (confirm)">
+                                <p class="help-block">Please confirm password.</p>
+                                <label for="inputName" class="control-label">E-mail</label>
+                                <input id="register-email" type="text" class="form-control" placeholder="E-mail">
+                                <p class="help-block">Please provide a valid E-mail address.</p>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
+							<button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </body>
+</html>

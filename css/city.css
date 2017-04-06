@@ -108,7 +108,6 @@ h2, h3 {
 	padding-top: 10px;
 	border: 1px solid #E6E9ED;
 }
-
 .row {
 	margin: 0px;
 }
@@ -118,12 +117,9 @@ h2, h3 {
 }
 
 #map-div{
-	height:406px;
+	height:396px;
 	width:100%;
 	margin:0px;
-}
-#map-panel{
-	padding:0px;
 }
 .small-info {
 	margin-left: 30px;
@@ -296,47 +292,16 @@ div.flex{
 	border-color: #fd625e;
 }
 /*Media */
-@media screen and (max-width: 1242px){
-	.contributeText{
-		display:none;
-	}
-	.contribute{
-		padding:0px;
-	}
-}
-/*Small screen */
 @media screen and (max-width: 991px) {
 	.climateChart{
 		height:150px;
 	}
-	#map-div{
-		height:250px;
-	}
-	#map-panel{
-		margin-top:20px;
-	}
-	#header{
-		height:200px;
-	}
-	.needSmallMargin{
-		margin-top:20px;
-	}
-	#login-username, #login-password {
-		width: 139px;
-	}
 }
-
-@media screen and (max-width:767px){
+@media screen and (max-width:763px){
 	#map-div{
 		height:200px;
 	}
 	#map-panel{
 		margin-top:20px;
-	}
-	.needExSmallMargin{
-		margin-top:20px;
-	}
-	#login-username, #login-password {
-		width: 100%;
 	}
 }
