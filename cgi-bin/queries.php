@@ -116,7 +116,8 @@
 			$result = generateResult(UNSUCCESSFUL, "Unknown request: " + $_POST['type'], false);
             break;
     }
-	echo json_encode($result);
+	$json = json_encode($result);
+    echo checkJsonError($json);
 	mysqli_close($conn);
 
 	/**
@@ -400,6 +401,33 @@
 	/*
 	* Utility functions
 	*/
+    function checkJsonError($json){
+        switch (json_last_error()) {
+            case JSON_ERROR_NONE:
+                return $json;
+                break;
+            case JSON_ERROR_DEPTH:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Maximum stack depth exceeded", false));
+                break;
+            case JSON_ERROR_STATE_MISMATCH:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Underflow or the modes mismatch", false));
+                break;
+            case JSON_ERROR_CTRL_CHAR:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Unexpected control character found", false));
+                break;
+            case JSON_ERROR_SYNTAX:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Syntax error, malformed JSON", false));
+                break;
+            case JSON_ERROR_UTF8:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Malformed UTF-8 characters, possibly incorrectly encoded", false));
+                break;
+            default:
+                return json_encode(generateResult(UNSUCCESSFUL, "JSON error: Unknown error", false));
+                break;
+        }
+    }
+
+
 	function getConnection(){
 		$dbhost = "localhost";
         $dbname = "cityscout";
