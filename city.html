@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>CityScout</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -105,7 +105,7 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Housing and Utilities</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" onclick = "closeHU('housing-form','utilities-form')" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
@@ -119,18 +119,25 @@
 										<form id="housing-form" onsubmit="submitHousing(event)">
 											<div class="form-group">
 												<label for="inputName" class="control-label">Property Type</label>
-												<select id="property-type" class="form-control">
+												<select id="property-type" class="form-control" >
 													<option>House</option>
 													<option>Appartment</option>
 												</select>
 												<p class="help-block">Property type, House or Appartment</p>
 												<label for="inputName" class="control-label">Buying or Renting</label>
-												<select id="property-ownershipType" class="form-control">
+												<select id="property-ownershipType" class="form-control" onchange="selectionChange('unit-housing','property-ownershipType')">
 													<option>Buying</option>
 													<option>Renting</option>
 												</select>
-												<label for="inputName" class="control-label">Price</label>
-												<input required id="housing-price" type="number"  class="form-control" placeholder="Price" min="0">
+												
+												<label for="inputName" class="control-label">Average Price</label>
+												<div class="flex">
+													<input required id="housing-price" type="number" class="form-control" placeholder="Price" min="0" step="0.01">
+													<select id="unit-Selector" class="form-control">
+														<option id ="unit-housing"></option>
+														<option>m&sup2</option>
+													</select>
+												</div>	
 												<p class="help-block">property price buy/rent</p>
 												<button type="submit" class="btn btn-success center-block">Submit</button>
 											</div>
@@ -147,8 +154,8 @@
 												</select>
 												<hr>
 												<label for="inputName" class="control-label">Cost</label>
-												<input required id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost" min="0">
-												<p class="help-block">Utility cost.</p>
+												<input required id="housing-utilities-prices" type="number" class="form-control" placeholder="Utilities Cost" min="0" step="0.01">
+												<p class="help-block">$/month</p>
 												<button type="submit" class="btn btn-success center-block">Submit</button>
 											</div>
 										</form>
@@ -167,26 +174,23 @@
                 <div class="modal-content">
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
-                            <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Food</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <h3 style="width: 90%" ><span class="glyphicon glyphicon-user"></span>Food</h3>
+                            <button type="button" class="close" onclick="closeForm('food-form')" data-dismiss="modal"  style="width:10%">&times;</button>
                         </div>
                         <hr />
 						<div class="panel-body" style="width: 85%; margin: auto;">
 							<form id="food-form" onsubmit="submitFood(event)">
 								<div class="form-group">
 									<label for="inputName" class="control-label">Type</label>
-									<select id="food-group" class="form-control">
-										<option>Grains</option>
-										<option>Protein</option>
+									<select id="food-group" class="form-control" onchange="selectionChange('help-block-food','food-group')">
 										<option>Fruits and Vegetables</option>
+										<option>Protein</option>
+										<option>Grains</option>
 										<option>Dairy</option>
 									</select>
-									<label for="inputName" class="control-label">Description</label>
-									<input required id="food-description" type="text" class="form-control" placeholder="Description">
-									<p class="help-block">Description (Loaf/pound/pint/etc..).</p>
 									<label for="inputName" class="control-label">Cost</label>
-									<input required id="food-prices" type="number" class="form-control" placeholder="Cost" min="0">
-									<p class="help-block">Cost.</p>
+									<input required id="food-prices" type="number" class="form-control" placeholder="Cost" min="0" step="0.01">
+									<p class="help-block" id="help-block-food">Cost.</p>
 								</div>
 								<hr />
 								<button type="submit" class="btn btn-success center-block">Submit</button>
@@ -204,14 +208,14 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Transportation</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" onclick = "closeForm('transportation-form')" data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
 						<div class="panel-body" style="width: 85%; margin: auto;">
 							<form id="transportation-form" onSubmit="submitTransportation(event)">
 								<div class="form-group">
 									<label for="inputName" class="control-label">Type</label>
-									<select id="transportation-type" class="form-control">
+									<select id="transportation-type" class="form-control" onchange="selectionChange('help-block-transportation','transportation-type')">
 										<option>Subway</option>
 										<option>Car</option>
 										<option>Bus</option>
@@ -221,12 +225,9 @@
 									</select>
 									<p class="help-block">Rideshare = uber,lyft etc..</p>
 									<br>
-									<label for="inputName" class="control-label">Description</label>
-									<input required id="transportation-description" type="text" class="form-control" placeholder="Description">
-									<p class="help-block">Description (Adult/child/senior/etc)</p>
 									<label for="inputName" class="control-label">Cost</label>
-									<input id="transportation-prices" type="number" class="form-control" placeholder="Cost" min="0" required>
-									<p class="help-block">Cost.(For cars enter average price of gas)</p>
+									<input id="transportation-prices" type="number" class="form-control" placeholder="Cost" min="0" step="0.01" required>
+									<p class="help-block" id="help-block-transportation"></p>
 								</div>
 								<hr />
 								<button type="submit" class="btn btn-success center-block">Submit</button>
@@ -244,14 +245,14 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Entertainment</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" onclick = "closeForm('entertainment-form')"data-dismiss="modal" style="width:10%">&times;</button>
                         </div>
                         <hr />
 						<div class="panel-body" style="width: 85%; margin: auto;">
 							<form id="entertainment-form" onsubmit="submitEntertainment(event)">
 								<div class="form-group">
 									<label for="inputName" class="control-label">Type</label>
-									<select id="entertainment-type" class="form-control">
+									<select id="entertainment-type" class="form-control" onchange ="selectionChange('help-block-entertainment','entertainment-type')">
 										<option>Concert</option>
 										<option>Movies</option>
 										<option>Theatre</option>
@@ -259,11 +260,8 @@
 									</select>
 									<br>
 									<label for="inputName" class="control-label">Cost</label>
-									<input id="entertainment-prices" type="number" class="form-control" placeholder="Cost" min="0" required>
-									<p class="help-block">Cost of ticket/entry to entertainment item</p>
-									<label for="inputName" class="control-label">Cost Description</label>
-									<input id="entertainment-description" type="text" required class="form-control" placeholder="Cost Description" >
-									<p class="help-block">cost per ticket or per game etc...</p>
+									<input id="entertainment-prices" type="number" class="form-control" placeholder="Cost" min="0" step="0.01" required>
+									<p class="help-block" id="help-block-entertainment"></p>
 									<hr />
 									<button type="submit" class="btn btn-success center-block">Submit</button>
 								</div>
@@ -277,37 +275,37 @@
         <div class="container-fluid">
             <!-- Top Information -->
             <div class="row ninety">
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-flag"></span>Country</span>
                         <h2 id="top-info-country" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-paperclip"></span>Top Language</span>
                         <h2 id="top-info-lang" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-user"></span>Population</span>
                         <h2 id="top-info-pop" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-map-marker"></span>Area</span>
                         <h2 id="top-info-area" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div class="small-info">
                         <span><span class="glyphicon glyphicon-globe"></span>GDP</span>
                         <h2 id="top-info-gdp" class="margin10 top-info"></h2>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-6">
+                <div class="col-sm-4 col-lg-2 col-md-2 col-xs-12">
                     <div id="compareBox" class="small-info">
                         <button id="compare-button" type="button" class="btn btn-success center-block" onclick="compare()">Compare</button>
                     </div>
@@ -351,10 +349,10 @@
 						</div>
 						<hr />
 						<div class="row">
-							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							<div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
 							</div>
-							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							<div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-happiness-bar" class="my-progress-bar"></div>
 								</div>
@@ -362,10 +360,10 @@
 							</div>
 						</div>
 						<div class="row">
-							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							  <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #80ba52;" class="glyphicon glyphicon-film overview center-block" data-toggle="tooltip" title="Entertainment"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							 <div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-entertainment-bar" class="my-progress-bar"></div>
 								</div>
@@ -373,10 +371,10 @@
 							</div>
 						</div>
 						<div class="row">
-							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							 <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #b44545;" class="glyphicon glyphicon-heart overview center-block" data-toggle="tooltip" title="Healthcare"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							 <div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-healthcare-bar" class="my-progress-bar"></div>
 								</div>
@@ -384,10 +382,10 @@
 							</div>
 						</div>
 						<div class="row">
-							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							 <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #2c5a71;" class="glyphicon glyphicon-education overview center-block" data-toggle="tooltip" title="Education"></span><br /></td>
 							</div>
-							  <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							  <div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-education-bar" class="my-progress-bar"></div>
 								</div>
@@ -395,10 +393,10 @@
 							</div>
 						</div>
 						<div class="row">
-							  <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							  <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: lightpink;" class="glyphicon glyphicon-home overview center-block" data-toggle="tooltip" title="Housing"></span><br /></td>
 							</div>
-							<div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							<div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-housing-bar" class="my-progress-bar"></div>
 								</div>
@@ -406,10 +404,10 @@
 							</div>
 						</div>
 						<div class="row">
-							 <div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+							 <div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #222222;" class="glyphicon glyphicon-thumbs-down overview center-block" data-toggle="tooltip" title="Crime"></span><br /></td>
 							</div>
-							 <div class="col-sm-9 col-xs-10 col-md-10 col-lg-10 ovProgress">
+							 <div class="col-sm-9 col-xs-9 col-md-10 col-lg-10 ovProgress">
 								<div class="rating-bar">
 									<div id="ov-crime-bar" class="my-progress-bar"></div>
 								</div>
@@ -430,10 +428,10 @@
                         <hr/>
 						<div class="panel-body" id="climate">
 							<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="chart climateChart" id="climate-bar-temp"></div>
 								</div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="chart climateChart" id="climate-bar-fall" ></div>
 								</div>
 							</div>
@@ -456,29 +454,28 @@
             <hr />
             <div class="row ninety">
 				<!-- Transportation -->
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-4">
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
-                            <a type="button"  class="btn btn-link 
-							" data-toggle="modal" data-target="#transportationModal"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
+                            <a type="button" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"  data-backdrop="static" data-keyboard="false"  onclick="selectionChange('help-block-transportation','transportation-type')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
                         <hr>
                         <div class="panel-body" id="transportation"></div>
                     </div>
                 </div>
 				<!-- Housing -->
-				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+				<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">
                     <div class="panel needSmallMargin">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
-                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#housingUtilModal"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#housingUtilModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('unit-housing','property-ownershipType')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
 						</div>
                         <hr />
                         <div class="panel-body" id="housing">
 							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay"></div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="housingDisplay"></div>
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 									 <div id="utilities-chart-div" class="chart"></div>
 								</div>
 							</div>
@@ -487,12 +484,13 @@
                 </div>
           	</div>
             <hr />
+			<!--Food -->
             <div class="row ninety">
-                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
-                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('help-block-food','food-group')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
                         <hr />
                         <div class="panel-body" id="food">
@@ -500,11 +498,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+			<!-- Entertainment -->	
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel needExSmallMargin">
                         <div class="panel-heading contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
-                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
+                            <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('help-block-entertainment','entertainment-type')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
                         <hr>
                         <div class="panel-body" id="entertainment">
@@ -512,8 +511,8 @@
                         </div>
                     </div>
                 </div>
-				<div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="panel needExSmallMargin">
+				<div class=" col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="panel needExSmallMargin needSmallMargin">
                         <div class="panel-heading">
                             <h3 class="category-title"><span class="fa fa-trophy"></span>Quality of Life Indexes</h3>
                         </div>

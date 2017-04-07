@@ -1,111 +1,19 @@
-function dummyInfo() {
-
-	var languages =[{"name":"english","population":"15"},{"name":"glish","population":"40"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"},{"name":"ish","population":"45"}];
-
-	var climate ={"high_avg":"20","low_avg":"-10","rainfall":"133","snowfall":"100"};
-
-	var utilities=[{"type": "Electricity","cost_desc": "$/month","cost": "143.07"},{"type": "Water","cost_desc": "$/month","cost": "143.07"},{"type": "Internet","cost_desc":"$/month","cost": "143.07"}];
-
-	var housing = [	{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"},
-					{"type":"Appartment","cost_desc":"$/month","cost":"1350","payment":"Rent"},
-					{"type":"House","cost_desc":"$","cost":"1280000","payment":"Buy"}];
-
-	var transportation =[	{"type": "Subway", "cost_desc": "$/(Adult)", "cost": "3.25"},
-							{"type": "Train", "cost_desc": "$", "cost": "5.43"},
-							{"type": "Car", "cost_desc": "$/(Adult)", "cost": "3.25"},
-							{"type": "Bus", "cost_desc": "$", "cost": "5.43"},
-							{"type": "Taxi", "cost_desc": "$", "cost": "3.25"},
-							{"type": "RideShare", "cost_desc": "$", "cost": "5.43"}];
-
-	var background = "People have lived in Toronto since shortly after the last ice age. The urban community dates to 1793 when British colonial officials founded the Town of York on what was then the Upper Canadian frontier. That village grew to become the City of Toronto in 1834, and through its subsequent evolution and expansion, Toronto has emerged as one of the most liveable and multicultural urban places in the world."
-
-	var indices = [	{"name": "GDI","value_desc": "", "value": "0.982" },
-					{"name": "HDI","value_desc": "", "value": "0.913"},
-					{"name": "Unemployment Rate","value_desc":"%","value": "6.5"}];
-
-	var entertainment = [	{"type": "Average cost of dinner (for 2)","cost_desc": "$","cost": "36"},
-							{"type": "Average cost of drink","cost_desc": "$","cost": "5.88"},
-							{"type": "Movie","cost_desc": "$/ticket","cost": "11"},
-							{"type": "Sports","cost_desc": "$/ticket","cost": "250"},
-							{"type": "Theatre","cost_desc": "$/ticket","cost": "55"}];
-
-	var food = [	{"type": "Dairy","cost_desc": "$/L","cost": "2.9"},
-					{"type": "Fruits","cost_desc": "$/kg","cost": "2.83"},
-					{"type": "Grains","cost_desc": "$/Loaf","cost": "1.89"},
-					{"type": "Protein","cost_desc": "$/kg","cost": "6.6"},
-					{"type": "Vegetables","cost_desc": "$/kg","cost": "1.11"}];
-
-	var attractions = [{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						},
-						{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						},
-						{"name": "CN Tower",
-						"about": "Landmark, over 553-metre tower featuring a glass floor & a revolving eatery with panoramic views.",
-						"cost": "47",
-						"cost_desc": "$/Adult (13-64)",
-						"image": "images/attractions/CNTower.png",
-						"link": "http://www.cntower.ca/en-ca/home.html",
-						"location": "301 Front St W, Toronto, ON M5V 2T6"
-						}];
-						prepareGraphs();
-
-	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
-	var tempClimate = [{"climate":climate,"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
-	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
-
-	
-	loadGraphs(tempLang,tempClimate,tempUtility);
-	//Overview
-	var ovHappiness = 3;
-	var ovEntertainment = 1;
-	var ovHealthcare = 5;
-	var ovEducation = 2;
-	var ovHousing = 4;
-	var ovCrime = 1;
-
-	initBackground(background);
-	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
-	initHousing(housing);
-	initTransportation(transportation);
-	initIndices(indices);
-	initEntertainment(entertainment);
-	initFood(food);
-	initAttraction(attractions);
-}
 document.addEventListener("DOMContentLoaded", function(event) {
    if(sessionStorage.getItem("userId") != null){
 		displayFullContent();
 	}
 });
-
 window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
-	dummyInfo();
 };
-
-
-
 function loadCity(city, json){
 	//top basic information
     var cityName = json.data.general.name;
 	var country = json.data.general.country;
 	var language = json.data.languages[0].name;
 	var languages = json.data.languages;
-	var pop = json.data.general.population;
+	var pop = json.data.general.population +"M";
 	var area = json.data.general.area + " km&sup2;";
 	var lat = json.data.general.lat;
 	var lng = json.data.general.lng;
@@ -234,7 +142,7 @@ function initHousing(house){
 				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/" + temp[1]);
 			}
 		}
 		else {
@@ -242,7 +150,9 @@ function initHousing(house){
 				initHousingHelper("home",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				initHousingHelper("home",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
+				console.log(temp[0]);
+				
+				initHousingHelper("home",house[i].payment,house[i].cost,temp[0],"/" + temp[1]);
 			}
 		}
 	}
@@ -253,98 +163,28 @@ function initHousingHelper(glif,payment,cost,pre,post){
 	var div = document.createElement("DIV");
 	div.setAttribute("class","flex");
 	var spanEl = document.createElement("SPAN");
-	spanEl.setAttribute("class","fa fa-"+glif);
+	spanEl.setAttribute("class","fa fa-"+glif +" global-glyphs");
 	var headerText = document.createTextNode("Average " + payment);
 	div.appendChild(spanEl);
 	div.appendChild(headerText);
-	var h2 = document.createElement("H4");
-	h2.setAttribute("style","padding-top:5px;text-align:center");
-	var h2Text = document.createTextNode(pre+cost+post);
-	h2.appendChild(h2Text);
+	var h4 = document.createElement("H4");
+	h4.setAttribute("style","padding-top:5px;text-align:center");
+	h4.innerHTML = pre + cost + post;
 	h4El.appendChild(div);
-	h4El.appendChild(h2);
+	h4El.appendChild(h4);
 	document.getElementById("housingDisplay").appendChild(h4El);
 }
 
 function initTransportation(tran){
 	var i;
 	resetFields("transportation");
+	
 	for(i = 0; i < tran.length; i++){
 		var temp = tran[i].cost_desc.split("/");
 		if(temp[1] != null){
-			var row = document.createElement("div");
-			row.style.display = "flex";
-			var g = document.createElement("p");
-			g.style.width = "20%";
-			g.style.display = "flex";
-			switch (tran[i].type) {
-				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-			}
-			var p = document.createElement("p");
-			p.style.width = "30%";
-			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
-			var p2 = document.createElement("p");
-			p2.style.width = "50%";
-			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + " " + temp[1];"<h4>";
-			row.appendChild(g);
-			row.appendChild(p);
-			row.appendChild(p2);
-			document.getElementById("transportation").appendChild(row);
-			//printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
+			printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"/","transportation");
 		}else{
-			var row = document.createElement("div");
-			row.style.display = "flex";
-			var g = document.createElement("p");
-			g.style.width = "20%";
-			g.style.display = "flex";
-			switch (tran[i].type) {
-				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block 16pt global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-			}
-			var p = document.createElement("p");
-			p.style.width = "30%";
-			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
-			var p2 = document.createElement("p");
-			p2.style.width = "50%";
-			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + "<h4>";
-			row.appendChild(g);
-			row.appendChild(p);
-			row.appendChild(p2);
-			document.getElementById("transportation").appendChild(row);
-			//printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
+			printHelper(tran[i].type,tran[i].cost,temp[0],"","/","transportation");
 		}
 	}
 };
@@ -382,22 +222,38 @@ function initEntertainment(ent){
 		}
 	}
 };
-
 function printHelper(headerText,value,pre,post,divider,panelId){
+		var row = document.createElement("DIV");
+		row.setAttribute("class","row flex");
+		var headDiv = document.createElement("DIV");
+		var iconDiv = document.createElement("DIV");
+		var pDiv = document.createElement("DIV");
+		
+		iconDiv.setAttribute("class","col-xs-2 col-sm-2 col-md-2 col-lg-2 textCenter removePadding");
+		iconDiv.setAttribute("style","padding-top:8px");
+		headDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-6 col-lg-5 removePadding");
+		pDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-4 col-lg-5 removePadding");
+				
+		var theIcon = getIcon(headerText);
+		var iconSpan = document.createElement("SPAN");
+		iconSpan.setAttribute("class",theIcon + " center-block 16pt global-glyphs");
+		iconDiv.appendChild(iconSpan);
+		
 		var h4 = document.createElement("H4");
-		var div = document.createElement("DIV");
-		div.setAttribute("class","flex");
-		var hText = document.createTextNode(headerText+":");
+		var hText = document.createTextNode(headerText);
 		h4.appendChild(hText);
-		var p = document.createElement("P");
+		headDiv.appendChild(h4);
+		
+		var p = document.createElement("H4");
 		var pText = document.createTextNode(pre + value + divider + post);
-		p.setAttribute("class","inlineP");
 		p.appendChild(pText);
-		div.appendChild(h4);
-		div.appendChild(p);
-		document.getElementById(panelId).appendChild(div);
-};
-
+		pDiv.appendChild(p);
+		
+		row.appendChild(iconDiv);
+		row.appendChild(headDiv);
+		row.appendChild(pDiv);
+		document.getElementById(panelId).appendChild(row);
+}
 function initAttraction(att){
 	var i;
 	resetFields("attractions");
@@ -464,6 +320,46 @@ function initAttractionHelper(name,about,cost,pre,post,imgUrl,webLink,location,p
 	document.getElementById(panelId).appendChild(containerDiv);
 
 }
+function getIcon(type){
+	switch (type){
+		case "Subway":
+			return "fa fa-subway";
+		case "Train":
+			return "fa fa-train";
+		case "Car":
+			return "fa fa-car";
+		case "Bus":
+			return "fa fa-bus";			
+		case "Taxi":
+			return "fa fa-taxi";			
+		case "Rideshare":
+			return "fa fa-car";
+		//food
+		case "Vegetables":
+			return "fa fa-leaf";
+		case "Fruits":
+			return "fa fa-apple";
+		case "Dairy":
+			return "fa fa-tint";
+		case "Grains":
+			return "fa fa-pagelines";
+		case "Protein":
+			return "fa fa-github-alt";
+		//Entertainment
+		case "Sports":
+			return "fa fa-futbol-o"; 
+		case "Movies":
+			return "fa fa-video-camera";
+		case "Theatre":
+			return "fa fa-ticket";
+		case "Concert":
+			return "fa fa-music";
+		default:
+			return "fa fa-caret-right";
+			break;
+	}	
+};
+
 
 function resetFields(parentID){
 	while(document.getElementById(parentID).firstChild){
@@ -480,6 +376,8 @@ function initMap(latitude, longitude, container) {
     var map = new google.maps.Map(container, {
       zoom: 5,
       center: location,
+	  draggable: false,
+	  scrollwheel: false,
 	  styles: [{"featureType": "road","elementType": "labels","stylers": [{"visibility": "off"}]},
     			{"featureType": "poi","elementType": "labels","stylers": [{"visibility": "off"}]},
     			{"featureType": "transit","elementType": "labels.text","stylers": [{"visibility": "off"}]}]

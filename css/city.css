@@ -7,6 +7,7 @@ html,body {
 }
 .contribute{
 	float:right;
+	display:none;
 }
 .contribute-header {
 	display: flex;
@@ -47,7 +48,12 @@ header {
 	width: 100%;
 	height: 408px;
 }
-
+.textCenter{
+	text-align:center;
+}
+.removePadding{
+	padding:0px;
+}
 #header-text {
 	align-self: center;
 	margin: auto;
@@ -210,6 +216,7 @@ p.inlineP{
 h4.commentUserName{
 	font-weight:bold;
 	width:100%;
+	display:flex;
 }
 p.attHeader{
 	margin: 0px;
@@ -244,6 +251,13 @@ div.commentContainer{
 div.flex{
 	display:flex;
 }
+#housing-price{
+	width:70%;
+}
+#unit-Selector{
+	width:30%;
+}
+
 .chart {
   width: 100%;
   justify-content:center;
@@ -298,7 +312,7 @@ div.flex{
 	border-color: #fd625e;
 }
 /*Media */
-@media screen and (max-width: 1242px){
+@media screen and (max-width: 1302px){
 	.contributeText{
 		display:none;
 	}
@@ -339,5 +353,32 @@ div.flex{
 	}
 	#login-username, #login-password {
 		width: 100%;
+	}
+}
+@media screen and (max-width:680px){
+	.commentPanel{
+		flex-direction:column;
+	}
+	
+}
+@media screen and (max-width:480px){
+	#header-text{
+		font-size:50px;
+	}
+	.lessStars{
+		font-size:15px;
+	}
+	.threeStars{
+		font-size:15px;
+	}
+	.greaterStars{
+		font-size:15px;
+	}
+	.row.ninety {
+		margin: auto;
+		width: 100%;
+	}
+	img.attractImg{
+		width:0px;
 	}
 }
