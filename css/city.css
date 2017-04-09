@@ -16,7 +16,9 @@ html,body {
 .category-title {
 	display: flex;
 }
-
+.doneButton{
+	display:none;
+}
 .contribute-title {
 	width: 100%;
 }

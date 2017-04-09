@@ -1,0 +1,58 @@
+/*
+	for(i = 0; i < ent.length; i++){
+		var temp = ent[i].cost_desc.split("/");
+		if(temp[1] != undefined){
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(ent[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("entertainment1").appendChild(div);
+			} else {
+				document.getElementById("entertainment2").appendChild(div);
+			}
+		}else{
+			var h4 = document.createElement("H4");
+			var div = document.createElement("DIV");
+			div.setAttribute("class","flex");
+			var hText = document.createTextNode(ent[i].type + ":");
+			h4.appendChild(hText);
+			var p = document.createElement("P");
+			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
+			p.setAttribute("class","inlineP");
+			p.appendChild(pText);
+			div.appendChild(h4);
+			div.appendChild(p);
+			if (cityNum == 1) {
+				document.getElementById("entertainment1").appendChild(div);
+			} else {
+				document.getElementById("entertainment2").appendChild(div);
+			}
+		}
+	}*/
+/*
+	for(i = 0; i < ind.length; i++){
+		var h4 = document.createElement("H4");
+		var div = document.createElement("DIV");
+		div.setAttribute("class","flex");
+		var hText = document.createTextNode(ind[i].name + ":");
+		h4.appendChild(hText);
+		var p = document.createElement("P");
+		var pText = document.createTextNode(ind[i].value + ind[i].value_desc);
+		p.setAttribute("class","inlineP");
+		p.appendChild(pText);
+		div.appendChild(h4);
+		div.appendChild(p);
+		if (cityNum == 1) {
+			document.getElementById("qualityOfLife1").appendChild(div);
+		} else {
+			document.getElementById("qualityOfLife2").appendChild(div);
+		}
+	}*/	

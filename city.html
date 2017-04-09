@@ -38,8 +38,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <form class="navbar-form navbar-right" id="logInForm">
                         <div class="form-group">
-                            <input id="login-username" type="text" class="form-control" placeholder="Username">
-                            <input id="login-password" type="password" class="form-control" placeholder="Password">
+                            <input id="login-username" type="text" class="form-control" placeholder="Username" onkeypress="enterHit(event)">
+                            <input id="login-password" type="password" class="form-control" placeholder="Password" onkeypress="enterHit(event)">
                         </div>
                         <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
                     </form>
@@ -55,7 +55,7 @@
 					<ul class="nav navbar-nav navbar-right">
                         <li><a href="index.html#Cities">Cities</a></li>
                         <li id="compareLink"><a href="compare.html">Compare</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                             </div>
                             <hr>
                             <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
-                            <button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+                            <button type="button" class="btn btn-success center-block doneButton" onclick="doneRegistration()" data-dismiss="modal" id="registration-done">Done</button>
                         </div>
                     </div>
                 </div>
@@ -148,9 +148,11 @@
 											<div class="form-group">
 												<label for="inputName" class="control-label">Utility Type</label>
 												<select id="utilities-type" class="form-control">
+													<option>Utilities</option>
 													<option>Electricity</option>
 													<option>Internet</option>
 													<option>Water</option>
+													<option>Cable</option>
 												</select>
 												<hr>
 												<label for="inputName" class="control-label">Cost</label>
@@ -183,7 +185,8 @@
 								<div class="form-group">
 									<label for="inputName" class="control-label">Type</label>
 									<select id="food-group" class="form-control" onchange="selectionChange('help-block-food','food-group')">
-										<option>Fruits and Vegetables</option>
+										<option>Fruits </option>
+										<option>Vegetables</option>
 										<option>Protein</option>
 										<option>Grains</option>
 										<option>Dairy</option>
@@ -217,7 +220,7 @@
 									<label for="inputName" class="control-label">Type</label>
 									<select id="transportation-type" class="form-control" onchange="selectionChange('help-block-transportation','transportation-type')">
 										<option>Subway</option>
-										<option>Car</option>
+										<option>Gas</option>
 										<option>Bus</option>
 										<option>Train</option>
 										<option>Taxi</option>
@@ -476,6 +479,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="housingDisplay"></div>
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+									 <h4 id="utilities-total"></h4>
 									 <div id="utilities-chart-div" class="chart"></div>
 								</div>
 							</div>

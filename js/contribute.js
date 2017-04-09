@@ -2,31 +2,16 @@ function submitHousing(event){
 	event.preventDefault();
 	var city = getCity();
 	console.log(city);
-	var houseCost = console
 	var house_type = document.getElementById("property-type").value;
 	var ownership = document.getElementById("property-ownershipType").value;
 	var housePrice = document.getElementById("housing-price").value;
+	var houseUnit = document.getElementById("unit-Selector").value;
 
 
 	console.log(house_type + ownership + housePrice);
 	var url = "cgi-bin/queries.php";
-	var housing_params = "type=POST_CONTRIBUTION&city_id=" + city + "&field=housing" + "&ctype="+house_type + "&ccost="+housePrice;
-
-
-	console.log(ownership);
-	switch(ownership){
-		case "Buying":
-			housing_params += "&cdesc=$&cpay=Buy";
-			break;
-		case "Renting":
-			housing_params += "&cdesc=$/month&cpay=Rent";
-			break;
-		default:
-			break;
-	}
+	var housing_params = "type=POST_CONTRIBUTION&city_id=" + city + "&field=housing" + "&ctype="+house_type + "&ccost="+housePrice + "&cdesc=" + houseUnit + "&cpay=" + ownership;
 	console.log(housing_params);
-
-
 	// for housing
 	sendRequest(url, housing_params, function(result){
         console.log(result);
@@ -41,9 +26,7 @@ function submitHousing(event){
     }, function(statusText){
         console.log(statusText);
     })
-
-	reset("housing-form");
-	hide ("housingUtilModal");
+	hide ("housingUtilModal","housing-form");
 
 }
 
@@ -56,7 +39,6 @@ function submitUtilities(event){
 	var url = "cgi-bin/queries.php";
 
 	var utilities_params = "type=POST_CONTRIBUTION&city_id=" + city + "&field=utilities" + "&ctype="+utitlitiesType + "&cdesc=$/month" + "&ccost="+utilitiesPrice;
-
 
 	console.log(utilities_params);
 
@@ -74,16 +56,19 @@ function submitUtilities(event){
     }, function(statusText){
         console.log(statusText);
     })
-	reset("utilities-form");
-	hide ("housingUtilModal");
-
+	hide("housingUtilModal","utilities-form");
 }
+function selectionChange(helpBlockId,selectorId){
+	var type = document.getElementById(selectorId).value;
+	console.log("Selector is: " + type); 
+	document.getElementById(helpBlockId).innerHTML = getUnit(type);
+};
 function submitTransportation(event){
 	event.preventDefault();
 	var city = getCity();
 	console.log("Transporation city" + city);
 	var type = document.getElementById("transportation-type").value;
-	var costDesc = document.getElementById("transportation-description").value;
+	var costDesc = getUnit(type);
 	var cost = document.getElementById("transportation-prices").value;
 
 	console.log(type);
@@ -91,7 +76,7 @@ function submitTransportation(event){
 	console.log(cost);
 
 	var url = "cgi-bin/queries.php";
-	var transportation_param = "type=POST_CONTRIBUTION&city_id=" + city + "&field=transportation" + "&ctype="+type + "&cdesc=$/" + costDesc + "&ccost="+cost;
+	var transportation_param = "type=POST_CONTRIBUTION&city_id=" + city + "&field=transportation" + "&ctype="+type + "&cdesc=" + costDesc + "&ccost="+cost;
 
 	sendRequest(url, transportation_param, function(result){
         console.log("Food Q: " + result);
@@ -104,16 +89,57 @@ function submitTransportation(event){
     }, function(statusText){
         console.log(statusText);
     });
-	reset("transportation-form");
-	hide ("transportationModal");
-}
+	
+	hide("transportationModal","transportation-form");
+};
 
+function getUnit(type){
+	console.log("Get unit: " + type);
+	switch(type) {
+		case "Subway":
+			return "$/Ticket";
+		case "Gas":
+			return "$/Litre";
+		case "Bus":
+			return "$/Ticket";
+		case "Train":
+			return "$/Ticket";
+		case "Taxi":
+			return "$/km";
+		case "Rideshare":
+			return "$/km";
+		case "Concert":
+			return "$/Ticket";
+		case "Movies":
+			return "$/Ticket";
+		case "Theatre":
+			return "$/Ticket";
+		case "Sports":
+			return "$/Ticket";
+		case "Grains":
+			return "$/Grams";
+		case "Protein":
+			return "$/Pounds";
+		case "Fruits":
+			return "$/Pounds";
+		case "Vegetables":
+			return "$/Pounds";
+		case "Dairy":
+			return "$/Pounds";
+		case "Buying":
+			return "$";
+		case "Renting":
+			return "$/month";
+		default:
+			break;
+	}
+};
 function submitFood(event){
 	event.preventDefault();
 	var city = getCity();
 	console.log("Submit food city" + city);
 	var type = document.getElementById("food-group").value;
-	var costDesc = document.getElementById("food-description").value;
+	var costDesc = getUnit(type);
 	var cost = document.getElementById("food-prices").value;
 
 	console.log("Food");
@@ -135,15 +161,14 @@ function submitFood(event){
     }, function(statusText){
         console.log(statusText);
     });
-	reset("food-form");
-	hide ("foodModal");
+	hide ("foodModal","food-form");
 };
 function submitEntertainment(event){
 	event.preventDefault();
 	var city = getCity();
 	console.log("Submit Entertainment city: " + city);
 	var type = document.getElementById("entertainment-type").value;
-	var costDesc = document.getElementById("entertainment-description").value;
+	var costDesc = getUnit(type);
 	var cost = document.getElementById("entertainment-prices").value;
 
 	console.log(type);
@@ -151,7 +176,7 @@ function submitEntertainment(event){
 	console.log(cost);
 
 	var url = "cgi-bin/queries.php";
-	var entertainment_param = "type=POST_CONTRIBUTION&city_id=" + city + "&field=entertainment" + "&ctype="+type + "&cdesc=$/" + costDesc + "&ccost="+cost;
+	var entertainment_param = "type=POST_CONTRIBUTION&city_id=" + city + "&field=entertainment" + "&ctype="+type + "&cdesc=" + costDesc + "&ccost="+cost;
 
 	sendRequest(url, entertainment_param, function(result){
         console.log("Food Q: " + result);
@@ -164,13 +189,22 @@ function submitEntertainment(event){
     }, function(statusText){
         console.log(statusText);
     });
-	reset("entertainment-form");
-	hide("entertainmentModal");
+	
+	hide("entertainmentModal","entertainment-form");
 };
-
+function hide(idModel,idForm){
+	reset(idForm);
+	$('#'+idModel).modal('hide');
+};
 function reset(id){
 	document.getElementById(id).reset();
 };
-function hide(id){
-	$('#'+id).modal('hide');
+function closeForm(id){
+	console.log(id);
+	reset(id);
+};
+function closeHU(id1,id2){
+	console.log(id1 + "" + id2);
+	reset(id1);
+	reset(id2);
 };

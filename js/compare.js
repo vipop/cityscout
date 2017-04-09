@@ -73,6 +73,7 @@ function populateCity(cityNum, json) {
 
 
 	if (cityNum == 1) {
+		console.log("I am here");
 		// populate city 1
 		initTopInfo(1, country, language, pop, area, gdp);
 		initCityBanner(1, cityName);
@@ -80,6 +81,7 @@ function populateCity(cityNum, json) {
 		initOverview(1, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(1, transportation);
 		initHousing(1, housing);
+		initUtilities(1,utilities);
 		initFood(1, food);
 		initEntertainment(1, entertainment);
 		initIndices(1, indices);
@@ -101,6 +103,7 @@ function populateCity(cityNum, json) {
 		initOverview(2, ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 		initTransportation(2, transportation);
 		initHousing(2, housing);
+		initUtilities(2,utilities);
 		initFood(2, food);
 		initEntertainment(2, entertainment);
 		initIndices(2, indices);
@@ -162,7 +165,6 @@ function initCityBanner(cityNum, city){
 		document.getElementById("header-text2").innerHTML = city;
 	}	
 };
-
 function initBackground(cityNum, background) {
 	if (cityNum == 1) {
 		document.getElementById("background1").innerHTML = background;
@@ -238,94 +240,10 @@ function initTransportation(cityNum, tran){
 	}
 	for(i = 0; i < tran.length; i++){
 		var temp = tran[i].cost_desc.split("/");
-		if(temp[1] != null){
-			var row = document.createElement("div");
-			row.style.display = "flex";
-			var g = document.createElement("p");
-			g.style.width = "20%";
-			g.style.display = "flex";
-			switch (tran[i].type) {
-				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-			}
-			var p = document.createElement("p");
-			p.style.width = "30%";
-			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
-			var p2 = document.createElement("p");
-			p2.style.width = "50%";
-			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + " " + temp[1];"<h4>";
-			row.appendChild(g);
-			row.appendChild(p);
-			row.appendChild(p2);
-
-			if (cityNum == 1) {
-				// city 1
-				document.getElementById("transportation1").appendChild(row);
-			} else {
-				// city 2
-				document.getElementById("transportation2").appendChild(row);
-			}
-			//printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"","transportation");
-		}else{
-			var row = document.createElement("div");
-			row.style.display = "flex";
-			var g = document.createElement("p");
-			g.style.width = "20%";
-			g.style.display = "flex";
-			switch (tran[i].type) {
-				case "Subway":
-					g.innerHTML = '<i class="fa fa-subway center-block 16pt global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Train":
-					g.innerHTML = '<i class="fa fa-train center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Car":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Bus":
-					g.innerHTML = '<i class="fa fa-bus center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "Taxi":
-					g.innerHTML = '<i class="fa fa-taxi center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-				case "RideShare":
-					g.innerHTML = '<i class="fa fa-car center-block global-glyphs" aria-hidden="true"></i>';
-					break;
-			}
-			var p = document.createElement("p");
-			p.style.width = "30%";
-			p.innerHTML =  "<h4>" + tran[i].type + "</h4>";
-			var p2 = document.createElement("p");
-			p2.style.width = "50%";
-			p2.innerHTML = "<h4 style='margin-left: 35px;'>Ticket: " + temp[0] + tran[i].cost + "<h4>";
-			row.appendChild(g);
-			row.appendChild(p);
-			row.appendChild(p2);
-
-			if (cityNum == 1) {
-				// city 1
-				document.getElementById("transportation1").appendChild(row);
-			} else {
-				// city 2
-				document.getElementById("transportation2").appendChild(row);
-			}
-			//printHelper(tran[i].type,tran[i].cost,temp[0],"","","transportation");
+		if (cityNum == 1) {
+			printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"/","transportation1");
+		} else {
+			printHelper(tran[i].type,tran[i].cost,temp[0],temp[1],"/","transportation2");
 		}
 	}
 };
@@ -337,7 +255,6 @@ function initHousing(cityNum, house){
 	} else {
 		resetFields("housingDisplay2");
 	}
-
 	for(i = 0; i < house.length; i++){
 		console.log(house[i].type + " " + house[i].payment);
 		if(house[i].type == "Appartment" ){
@@ -350,7 +267,8 @@ function initHousing(cityNum, house){
 		}
 		else {
 			if(house[i].payment =="Buy"){
-				initHousingHelper(cityNum, "home",house[i].payment,house[i].cost,house[i].cost_desc,"");
+				var temp = house[i].cost_desc.split("/");
+				initHousingHelper(cityNum, "home",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
 			}else{
 				var temp = house[i].cost_desc.split("/");
 				initHousingHelper(cityNum, "home",house[i].payment,house[i].cost,temp[0],"/"+temp[1]);
@@ -358,7 +276,20 @@ function initHousing(cityNum, house){
 		}
 	}
 };
+function initUtilities(cityNum, utilities){
+	var i;
+	for(i = 0; i < utilities.length;i++){
+		if(utilities[i].type == "Utilities"){
+			var temp = utilities[i].cost_desc.split("/");
+			if(cityNum == 1){
+				document.getElementById("utilities-total-header1").innerHTML = "Average Total: " + temp[0] + utilities[i].cost +"/"+ temp[1];
+			}else{
+				document.getElementById("utilities-total-header2").innerHTML = "Average Total: " + temp[0] + utilities[i].cost +"/"+ temp[1];
+			}
+		}
+	}
 
+}
 function initHousingHelper(cityNum, glif,payment,cost,pre,post){
 	console.log(payment + " " + cost + " " + pre + " " + post);
 	var h4El = document.createElement("H4");
@@ -380,8 +311,7 @@ function initHousingHelper(cityNum, glif,payment,cost,pre,post){
 	} else {
 		document.getElementById("housingDisplay2").appendChild(h4El);
 	}
-}
-
+};
 function initFood(cityNum, food){
 	var i;
 	if (cityNum == 1) {
@@ -391,45 +321,13 @@ function initFood(cityNum, food){
 	}
 	for(i = 0; i < food.length; i++){
 		var temp = food[i].cost_desc.split("/");
-		if(temp[1] != undefined){
-			var h4 = document.createElement("H4");
-			var div = document.createElement("DIV");
-			div.setAttribute("class","flex");
-			var hText = document.createTextNode(food[i].type + ":");
-			h4.appendChild(hText);
-			var p = document.createElement("P");
-			var pText = document.createTextNode(temp[0] + food[i].cost + "/" + temp[1]);
-			p.setAttribute("class","inlineP");
-			p.appendChild(pText);
-			div.appendChild(h4);
-			div.appendChild(p);
-			if (cityNum == 1) {
-				document.getElementById("food1").appendChild(div);
-			} else {
-				document.getElementById("food2").appendChild(div);
-			}
-		}else{
-			var h4 = document.createElement("H4");
-			var div = document.createElement("DIV");
-			div.setAttribute("class","flex");
-			var hText = document.createTextNode(food[i].type + ":");
-			h4.appendChild(hText);
-			var p = document.createElement("P");
-			var pText = document.createTextNode(temp[0] + food[i].cost);
-			p.setAttribute("class","inlineP");
-			p.appendChild(pText);
-			div.appendChild(h4);
-			div.appendChild(p);
-			if (cityNum == 1) {
-				document.getElementById("food1").appendChild(div);
-			} else {
-				document.getElementById("food2").appendChild(div);
-			}
+		if (cityNum == 1) {
+			printHelper(food[i].type,food[i].cost,temp[0],temp[1],"/","food1");
+		} else {
+			printHelper(food[i].type,food[i].cost,temp[0],temp[1],"/","food2");
 		}
-	}
-
+	}	
 };
-
 function initEntertainment(cityNum, ent){
 	var i;
 	if (cityNum == 1) {
@@ -439,40 +337,10 @@ function initEntertainment(cityNum, ent){
 	}
 	for(i = 0; i < ent.length; i++){
 		var temp = ent[i].cost_desc.split("/");
-		if(temp[1] != undefined){
-			var h4 = document.createElement("H4");
-			var div = document.createElement("DIV");
-			div.setAttribute("class","flex");
-			var hText = document.createTextNode(ent[i].type + ":");
-			h4.appendChild(hText);
-			var p = document.createElement("P");
-			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
-			p.setAttribute("class","inlineP");
-			p.appendChild(pText);
-			div.appendChild(h4);
-			div.appendChild(p);
-			if (cityNum == 1) {
-				document.getElementById("entertainment1").appendChild(div);
-			} else {
-				document.getElementById("entertainment2").appendChild(div);
-			}
-		}else{
-			var h4 = document.createElement("H4");
-			var div = document.createElement("DIV");
-			div.setAttribute("class","flex");
-			var hText = document.createTextNode(ent[i].type + ":");
-			h4.appendChild(hText);
-			var p = document.createElement("P");
-			var pText = document.createTextNode(temp[0] + ent[i].cost + "/" + temp[1]);
-			p.setAttribute("class","inlineP");
-			p.appendChild(pText);
-			div.appendChild(h4);
-			div.appendChild(p);
-			if (cityNum == 1) {
-				document.getElementById("entertainment1").appendChild(div);
-			} else {
-				document.getElementById("entertainment2").appendChild(div);
-			}
+		if (cityNum == 1) {
+			printHelper(ent[i].type,ent[i].cost,temp[0],temp[1],"/","entertainment1");
+		} else {
+			printHelper(ent[i].type,ent[i].cost,temp[0],temp[1],"/","entertainment2");
 		}
 	}
 };
@@ -485,23 +353,44 @@ function initIndices(cityNum, ind){
 		resetFields("qualityOfLife2");
 	}
 	for(i = 0; i < ind.length; i++){
-		var h4 = document.createElement("H4");
-		var div = document.createElement("DIV");
-		div.setAttribute("class","flex");
-		var hText = document.createTextNode(ind[i].name + ":");
-		h4.appendChild(hText);
-		var p = document.createElement("P");
-		var pText = document.createTextNode(ind[i].value + ind[i].value_desc);
-		p.setAttribute("class","inlineP");
-		p.appendChild(pText);
-		div.appendChild(h4);
-		div.appendChild(p);
 		if (cityNum == 1) {
-			document.getElementById("qualityOfLife1").appendChild(div);
+			printHelper(ind[i].name,ind[i].value,"",ind[i].value_desc,"","qualityOfLife1");
 		} else {
-			document.getElementById("qualityOfLife2").appendChild(div);
+			printHelper(ind[i].name,ind[i].value,"",ind[i].value_desc,"","qualityOfLife2");
 		}
 	}
+};
+function printHelper(headerText,value,pre,post,divider,panelId){
+	var row = document.createElement("DIV");
+	row.setAttribute("class","row flex");
+	var headDiv = document.createElement("DIV");
+	var iconDiv = document.createElement("DIV");
+	var pDiv = document.createElement("DIV");
+	
+	iconDiv.setAttribute("class","col-xs-2 col-sm-2 col-md-2 col-lg-2 textCenter removePadding");
+	iconDiv.setAttribute("style","padding-top:1px");
+	headDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-6 col-lg-5 removePadding");
+	pDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-4 col-lg-5 removePadding");
+			
+	var theIcon = getIcon(headerText);
+	var iconSpan = document.createElement("SPAN");
+	iconSpan.setAttribute("class",theIcon + " center-block 16pt global-glyphs");
+	iconDiv.appendChild(iconSpan);
+	
+	var h4 = document.createElement("H4");
+	var hText = document.createTextNode(headerText);
+	h4.appendChild(hText);
+	headDiv.appendChild(h4);
+	
+	var p = document.createElement("H4");
+	var pText = document.createTextNode(pre + value + divider + post);
+	p.appendChild(pText);
+	pDiv.appendChild(p);
+	
+	row.appendChild(iconDiv);
+	row.appendChild(headDiv);
+	row.appendChild(pDiv);
+	document.getElementById(panelId).appendChild(row);
 };
 
 function initAttraction(cityNum, att){
@@ -708,9 +597,53 @@ function getCityName(city) {
 	}
 	return name;
 }
+
+function getIcon(type){
+	switch (type){
+		case "Subway":
+			return "fa fa-subway";
+		case "Train":
+			return "fa fa-train";
+		case "Gas":
+			return "fa fa-fire";
+		case "Bus":
+			return "fa fa-bus";			
+		case "Taxi":
+			return "fa fa-taxi";			
+		case "Rideshare":
+			return "fa fa-car";
+		//food
+		case "Vegetables":
+			return "fa fa-leaf";
+		case "Fruits":
+			return "fa fa-apple";
+		case "Dairy":
+			return "fa fa-tint";
+		case "Grains":
+			return "fa fa-pagelines";
+		case "Protein":
+			return "fa fa-github-alt";
+		//Entertainment
+		case "Sports":
+			return "fa fa-futbol-o"; 
+		case "Movies":
+			return "fa fa-video-camera";
+		case "Theatre":
+			return "fa fa-ticket";
+		case "Concert":
+			return "fa fa-music";
+		default:
+			return "fa fa-caret-right";
+			break;
+	}	
+};
 function titleCityDisplay(titleId,cityName){
-	var temp = document.getElementsByClass(titleId);
-	for(var i = 0; i < temp.length; i++){
-		temp[i].innerHTML = cityName; 
+	console.log("The cityName in titleCityDisplay: " + cityName);
+	var temp = document.getElementsByClassName(titleId);
+	console.log("CityDisplay: " + temp);
+	var i;
+	for(i = 0; i < temp.length; i++){
+		console.log(temp[i]);
+	temp[i].innerHTML = "(" + cityName + ")"; 
 	}
 }

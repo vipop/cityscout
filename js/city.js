@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 window.onload = function() {
 	city = getCity();
 	getCityInformation(city); //queries from database
+	
 };
 function loadCity(city, json){
 	//top basic information
@@ -51,18 +52,19 @@ function loadCity(city, json){
 	initBackground(history);
 	initOverview(ovHappiness, ovEntertainment, ovHealthcare, ovEducation, ovHousing, ovCrime);
 	initHousing(housing);
+	initUtilities(utilities);
 	initTransportation(transportation);
 	initEntertainment(entertainments);
 	initAttraction(attractions)
 	initIndices(indices);
 	initFood(food);
-						prepareGraphs();
+						
 
 	var tempLang = [{"lang":languages,"theId":document.getElementById("languages-chart-div")}];
 	var tempClimate = [{"climate":climate[0],"theTemp":document.getElementById("climate-bar-temp"),"theFall":document.getElementById("climate-bar-fall")}];
 	var tempUtility = [{"uti":utilities,"theId":document.getElementById("utilities-chart-div")}];
 	
-	
+	prepareGraphs();
 	loadGraphs(tempLang,tempClimate,tempUtility);
 	loadComments(json); //This function is defined in the comments.js
 }
@@ -139,7 +141,9 @@ function initHousing(house){
 	for(i = 0; i < house.length; i++){
 		if(house[i].type == "Appartment" ){
 			if(house[i].payment =="Buy"){
-				initHousingHelper("building",house[i].payment,house[i].cost,house[i].cost_desc,"");
+				var temp1 = house[i].cost_desc.split("/");
+				
+				initHousingHelper("building",house[i].payment,house[i].cost,temp1[0],"/" + temp1[1]);
 			}else{
 				var temp = house[i].cost_desc.split("/");
 				initHousingHelper("building",house[i].payment,house[i].cost,temp[0],"/" + temp[1]);
@@ -147,17 +151,25 @@ function initHousing(house){
 		}
 		else {
 			if(house[i].payment =="Buy"){
-				initHousingHelper("home",house[i].payment,house[i].cost,house[i].cost_desc,"");
+				var temp1 = house[i].cost_desc.split("/");
+				initHousingHelper("building",house[i].payment,house[i].cost,temp1[0],"/" + temp1[1]);
 			}else{
 				var temp = house[i].cost_desc.split("/");
-				console.log(temp[0]);
-				
 				initHousingHelper("home",house[i].payment,house[i].cost,temp[0],"/" + temp[1]);
 			}
 		}
 	}
 };
+function initUtilities(utilities){
+	var i;
+	for(i = 0; i < utilities.length;i++){
+		if(utilities[i].type == "Utilities"){
+			var temp = utilities[i].cost_desc.split("/");
+			document.getElementById("utilities-total").innerHTML = "Average Total: " + temp[0] + utilities[i].cost +"/"+ temp[1];
+		}
+	}
 
+}
 function initHousingHelper(glif,payment,cost,pre,post){
 	var h4El = document.createElement("H4");
 	var div = document.createElement("DIV");
@@ -178,7 +190,6 @@ function initHousingHelper(glif,payment,cost,pre,post){
 function initTransportation(tran){
 	var i;
 	resetFields("transportation");
-	
 	for(i = 0; i < tran.length; i++){
 		var temp = tran[i].cost_desc.split("/");
 		if(temp[1] != null){
@@ -326,8 +337,8 @@ function getIcon(type){
 			return "fa fa-subway";
 		case "Train":
 			return "fa fa-train";
-		case "Car":
-			return "fa fa-car";
+		case "Gas":
+			return "fa fa-fire";
 		case "Bus":
 			return "fa fa-bus";			
 		case "Taxi":
@@ -359,8 +370,6 @@ function getIcon(type){
 			break;
 	}	
 };
-
-
 function resetFields(parentID){
 	while(document.getElementById(parentID).firstChild){
 		document.getElementById(parentID).removeChild(document.getElementById(parentID).firstChild);

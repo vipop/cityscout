@@ -33,8 +33,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <form class="navbar-form navbar-right" id="logInForm">
                         <div class="form-group">
-                            <input id="login-username" type="text" class="form-control" placeholder="Username">
-                            <input id="login-password" type="password" class="form-control" placeholder="Password">
+                            <input id="login-username" type="text" class="form-control" placeholder="Username" onkeypress="enterHit(event)">
+                            <input id="login-password" type="password" class="form-control" placeholder="Password" onkeypress="enterHit(event)">
                         </div>
                         <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
                     </form>
@@ -112,7 +112,7 @@
 									<h4 class="dev-name">Vlad Pop</h4>
 									<hr/>
 									<ul class="dev-title-list">
-										<li class="dev-title">Back-end Developer</li>
+										<li class="dev-title">Front-end Developer</li>
 									</ul>
 								</div>
 							</div>
@@ -214,7 +214,7 @@
                             </div>
                             <hr />
                             <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
-							<button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+							<button type="button" class="btn btn-success center-block" onclick="doneRegistration()" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
                         </div>
                     </div>
                 </div>

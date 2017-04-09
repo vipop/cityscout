@@ -102,17 +102,19 @@ function drawUtilityChart(utility,container_utility) {
   var color1="#b87333";
   var color2="#b73ff2";
   var color3="#0ff210";
-  var colors =[color1,color2,color3]
+  var color4="#66ffff";
+  var colors =[color1,color2,color3,color4]
   var rowArray=[];
   rowArray.push(["Element", "Value", { role: "style" } ]);
   for (var i = 0; i < utility.length; i++) {
-    
     var array=[];
-    array.push(utility[i].type);
-    array.push(parseInt(utility[i].cost));
-    array.push(colors[i]);
-
-    rowArray.push(array);
+	if(utility[i].type != "Utilities"){
+		array.push(utility[i].type);
+		array.push(parseInt(utility[i].cost));
+		array.push(colors[i]);
+		rowArray.push(array);
+	}
+  
   }
 
   var data = google.visualization.arrayToDataTable(rowArray); 
