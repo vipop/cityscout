@@ -44,7 +44,7 @@
 						}
 					</script>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton" data-backdrop="static" data-keyboard="false"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 						<li><a type="button" class="btn btn-link" id="signOutButton" onClick="signOut()"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
 					</ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -178,6 +178,16 @@
 						Below is a list of our sources:
 						<ul>
 							<li><a href="http://www.google.ca">Google</a></li>
+							<li><a href="http://www.statcan.gc.ca">Statics Canada</a></li>
+							<li><a href="http://www.google.ca">Human Development Report 2015</a></li>
+							<li><a href="https://www.travelchinaguide.com/cityguides/shanghai/when-to-go.htm">Travel China Guide</a></li>
+							<li><a href="http://www.chinahighlights.com/shanghai/article-top-festivals.htm">China Highlights</a></li>
+							<li><a href="https://wearetop10.com/wealthiest-cities-of-the-world-by-gdp/">Wealthiest Cities</a></li>
+							<li><a href="http://statisticstimes.com/economy/projected-world-gdp-ranking.php">Statistics Times</a></li>
+							<li><a href="https://www.numbeo.com/cost-of-living/">Numbeo</a></li>
+							<li><a href="https://www.expatistan.com/cost-of-living/shanghai?currency=USD">Expatistan</a></li>
+							<li><a href="http://www.translink.ca/en/Fares-and-Passes/Single-Fares.aspx">Trans Link</a></li>
+							<li><a href="http://www.laalmanac.com/LA/la10.php">Los Angeles Almanac</a></li>
 						</ul>
 					</section>
 				</div>
@@ -191,7 +201,7 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%" onClick="resetRegFields()">&times;</button>
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">

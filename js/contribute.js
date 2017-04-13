@@ -97,35 +97,35 @@ function getUnit(type){
 	console.log("Get unit: " + type);
 	switch(type) {
 		case "Subway":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Gas":
-			return "$/Litre";
+			return "$/L";
 		case "Bus":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Train":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Taxi":
-			return "$/km";
+			return "$/8km";
 		case "Rideshare":
-			return "$/km";
+			return "$/8km";
 		case "Concert":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Movies":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Theatre":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Sports":
-			return "$/Ticket";
+			return "$/ticket";
 		case "Grains":
-			return "$/Grams";
+			return "$/gram";
 		case "Protein":
-			return "$/Pounds";
+			return "$/lbs";
 		case "Fruits":
-			return "$/Pounds";
+			return "$/lbs";
 		case "Vegetables":
-			return "$/Pounds";
+			return "$/lbs";
 		case "Dairy":
-			return "$/Pounds";
+			return "$/lbs";
 		case "Buying":
 			return "$";
 		case "Renting":

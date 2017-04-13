@@ -16,6 +16,10 @@ body{
 main {
 	max-width: 1200px;
 }
+.doneButton{
+	display:none;
+}
+
 /* NAVIGATION */
 .navbar {
 	margin:0px;

@@ -5,22 +5,21 @@ html,body {
 #commentEnterArea,#compareLink,#compareBox,#signOutButton{
 	display:none;
 }
-.contribute{
-	float:right;
-	display:none;
-}
 .contribute-header {
 	display: flex;
+	color: white;
 }
 
 .category-title {
 	display: flex;
+	color: white;
 }
 .doneButton{
 	display:none;
 }
 .contribute-title {
 	width: 100%;
+	color:white;
 }
 body{
 	margin-top:70px;
@@ -114,8 +113,12 @@ h2, h3 {
 
 .panel {
 	margin: 0px;
-	padding: 10px;
+	padding: 0px;
 	border: 1px solid #E6E9ED;
+}
+.mainHeader{
+	background-color: rgb(34,34,34);
+	margin-bottom:10px;
 }
 
 #map-panel{
@@ -176,13 +179,17 @@ p{
 }
 
 .btn-link {
-	color: black;
 	text-decoration: none;
 }
 
 .btn-link:hover {
-	color: #80ba52;
+	color: orange;
 	text-decoration: none;
+}
+.contribute{
+	float:right;
+	display:none;
+	color:white;
 }
 
 .paddingNeeded{
@@ -223,7 +230,7 @@ h4.commentUserName{
 p.attHeader{
 	margin: 0px;
 	margin-right:auto;
-	width:100px;
+	width:200px;
 }
 div.starContainer{
 	display: flex;
@@ -237,7 +244,7 @@ div.starContainer div{
 	margin: 0px;
 	margin-right:auto;
 	width: 100px;
-	padding-top:4px;
+	padding-top:0px;
 }
 div.commentPanel{
 	word-wrap: break-word;
@@ -320,6 +327,13 @@ div.flex{
 	}
 	.contribute{
 		padding:0px;
+		color:white;
+	}
+	
+}
+@media screen and (min-width:991px) and (max-width:1182px){
+	#header-text{
+		font-size:46pt;
 	}
 }
 /*Small screen */
@@ -342,6 +356,9 @@ div.flex{
 	#login-username,#login-password {
 		width: 139px;
 	}
+	div.commentContainer{
+		padding:5px;
+	}
 }
 @media screen and (max-width:763px){
 	#map-div{
@@ -356,16 +373,22 @@ div.flex{
 	#login-username, #login-password {
 		width: 100%;
 	}
-}
+}	
 @media screen and (max-width:680px){
 	.commentPanel{
 		flex-direction:column;
 	}
-	
+
+}
+@media screen and (min-width:480px) and (max-width:584px){
+	#header-text{
+		font-size:43pt;
+	}
+
 }
 @media screen and (max-width:480px){
 	#header-text{
-		font-size:50px;
+		font-size:30pt;
 	}
 	.lessStars{
 		font-size:15px;
@@ -382,5 +405,16 @@ div.flex{
 	}
 	img.attractImg{
 		width:0px;
+	}
+	.panel-body{
+		padding:5px;
+	}
+	.imgTd{
+		padding:0px;
+	}
+	p.attHeader{
+		margin: 0px;
+		margin-right:auto;
+		width:130px;
 	}
 }

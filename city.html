@@ -49,7 +49,7 @@
 						}
 					</script>
 					<ul class="nav navbar-nav navbar-right">
-                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton" data-backdrop="static" data-keyboard="false"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 						<li id="signOutButton"><a type="button" class="btn btn-link" onclick="signOut()"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -68,14 +68,13 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%" onClick="resetRegFields()">&times;</button>
                         </div>
-						<hr>
-                        <div class="panel-body" style="width: 85%; margin: auto;">
+						<div class="panel-body" style="width: 85%; margin: auto;">
                             <div id="registration-success" style="display:none">
                                 <p style="text-align: center">Welcome to CityScout! You have successfuly registered.</p>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" id="registration-form">
                                 <label for="inputName" class="control-label">Username</label>
                                 <input id="register-username" type="text" class="form-control" placeholder="Username">
                                 <p class="help-block">Username can contain any letters or numbers, without spaces.</p>
@@ -121,7 +120,7 @@
 												<label for="inputName" class="control-label">Property Type</label>
 												<select id="property-type" class="form-control" >
 													<option>House</option>
-													<option>Appartment</option>
+													<option>Apartment</option>
 												</select>
 												<p class="help-block">Property type, House or Appartment</p>
 												<label for="inputName" class="control-label">Buying or Renting</label>
@@ -129,7 +128,7 @@
 													<option>Buying</option>
 													<option>Renting</option>
 												</select>
-												
+
 												<label for="inputName" class="control-label">Average Price</label>
 												<div class="flex">
 													<input required id="housing-price" type="number" class="form-control" placeholder="Price" min="0" step="0.01">
@@ -137,7 +136,7 @@
 														<option id ="unit-housing"></option>
 														<option>m&sup2</option>
 													</select>
-												</div>	
+												</div>
 												<p class="help-block">property price buy/rent</p>
 												<button type="submit" class="btn btn-success center-block">Submit</button>
 											</div>
@@ -197,7 +196,7 @@
 								</div>
 								<hr />
 								<button type="submit" class="btn btn-success center-block">Submit</button>
-							</form>	
+							</form>
 						</div>
 					</div>
                 </div>
@@ -234,8 +233,8 @@
 								</div>
 								<hr />
 								<button type="submit" class="btn btn-success center-block">Submit</button>
-							</form>	
-						</div>					
+							</form>
+						</div>
                     </div>
                 </div>
             </div>
@@ -335,22 +334,22 @@
             <div class="row ninety row-eq-height">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background</h3>
                         </div>
-                        <hr />
+                       
                         <div class="panel-body">
                             <p id="background"></p>
                         </div>
                     </div>
                 </div>
-			<!-- Overview -->	
+			<!-- Overview -->
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="panel needExSmallMargin">
-						<div class="panel-heading">
+						<div class="panel-heading mainHeader">
 							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview</h3>
 						</div>
-						<hr />
+						
 						<div class="row">
 							<div class="col-sm-3 col-xs-3 col-md-2 col-lg-2">
 								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
@@ -425,10 +424,10 @@
                 <!-- Climate  -->
 				<div class="col-xs-12 col-sm-6 col-lg-6 col-md-8">
                    <div class="panel">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate</h3>
                         </div>
-                        <hr/>
+                       
 						<div class="panel-body" id="climate">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -444,10 +443,10 @@
                 <!-- Languages  -->
                 <div class="col-xs-12 col-sm-6 col-lg-6 col-md-4">
                     <div class="panel needExSmallMargin">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages</h3>
                         </div>
-                        <hr/>
+                        
                         <div class="panel-body" id="languages">
                         <div id="languages-chart-div" class="chart"></div>
                         </div>
@@ -459,22 +458,22 @@
 				<!-- Transportation -->
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-4">
                     <div class="panel">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-road"></span>Transportation</h3>
                             <a type="button" class="btn btn-link contribute" data-toggle="modal" data-target="#transportationModal"  data-backdrop="static" data-keyboard="false"  onclick="selectionChange('help-block-transportation','transportation-type')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="transportation"></div>
                     </div>
                 </div>
 				<!-- Housing -->
 				<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">
                     <div class="panel needSmallMargin">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities</h3>
                             <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#housingUtilModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('unit-housing','property-ownershipType')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
 						</div>
-                        <hr />
+                       
                         <div class="panel-body" id="housing">
 							<div class="row">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="housingDisplay"></div>
@@ -492,24 +491,23 @@
             <div class="row ninety">
                 <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-cutlery"></span>Food</h3>
                             <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#foodModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('help-block-food','food-group')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
-                        <hr />
                         <div class="panel-body" id="food">
 
                         </div>
                     </div>
                 </div>
-			<!-- Entertainment -->	
+			<!-- Entertainment -->
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel needExSmallMargin">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="contribute-title"><span class="glyphicon glyphicon-film"></span>Entertainment</h3>
                             <a type="button"  class="btn btn-link contribute" data-toggle="modal" data-target="#entertainmentModal"  data-backdrop="static" data-keyboard="false" onclick="selectionChange('help-block-entertainment','entertainment-type')"><span class="glyphicon glyphicon-pencil"></span><span class="contributeText">Contribute</span></a>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="entertainment">
                             <p id="entertainment"></p>
                         </div>
@@ -517,24 +515,24 @@
                 </div>
 				<div class=" col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="panel needExSmallMargin needSmallMargin">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="fa fa-trophy"></span>Quality of Life Indexes</h3>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="qualityOfLife"></div>
                     </div>
                 </div>
-			
+
 			</div>
             <hr>
 			<div class="row ninety">
 				<!-- Attraction -->
                 <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-flag"></span>Attractions</h3>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="attractions">
 
                         </div>
@@ -543,19 +541,18 @@
 			</div>
 			<hr>
 			<div class="row ninety">
-                <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel">
-                        <div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
-                        <hr />
+                        <div class="panel-heading mainHeader"><h3 class="category-title"><span class="glyphicon glyphicon-comment"></span>Comments</h3></div>
                         <div class="panel-body">
                             <div id="commentEnterArea" class="row">
-                                <div class="col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <textarea placeholder="Leave a comment" class="form-control"  id="commentText"></textarea>
                                         <button onclick="submitComment()" class="btn btn-default" style="margin-top: 15px;">Submit</button>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div id="rating1" style="margin-left: 10.5%; width: 80%">
                                         <span style="float: left;">Happiness</span>
                                         <div style="float: right;" id="happiness-rating"></div>

@@ -32,8 +32,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <form class="navbar-form navbar-right" id="logInForm">
                         <div class="form-group">
-                            <input id="login-username" type="text" class="form-control" placeholder="Username">
-                            <input id="login-password" type="password" class="form-control" placeholder="Password">
+                            <input id="login-username" type="text" class="form-control" placeholder="Username" onkeypress="enterHit(event)">
+                            <input id="login-password" type="password" class="form-control" placeholder="Password" onkeypress="enterHit(event)">
                         </div>
                         <input type="button" class="btn btn-default" value="Login" onclick="login()"></input>
                     </form>
@@ -43,7 +43,7 @@
 						}
 					</script>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a type="button" class="btn btn-link" data-toggle="modal" data-target="#signup" id="signUpButton" data-backdrop="static" data-keyboard="false"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 						<li><a type="button" class="btn btn-link" id="signOutButton" onClick="signOut()"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
 					</ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -87,8 +87,7 @@
 					</div>
 				<div id="cities" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="container panel" id="listcontainer">
-						<button type="button" class="btn btn-primary btm-lg btn-block btn-huge" data-toggle="modal" data-target="#signup">Sign Up for more features</button>
-
+						<button type="button" class="btn btn-primary btm-lg btn-block btn-huge" data-toggle="modal" data-target="#signup" id="moreFeatures">Sign Up for more features</button>
 						<h1>Select City</h1>
 						<ul>
 							<li class="city cityList" id="toronto" onClick="loadCity(this)">Toronto (Canada)</li>
@@ -115,7 +114,7 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%" onclick="resetRegFields()">&times;</button>
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
@@ -138,7 +137,7 @@
                             </div>
                             <hr />
                             <button type="button" class="btn btn-success center-block" onclick="register()" id="registration-register">Register</button>
-							<button type="button" class="btn btn-success center-block" data-dismiss="modal" style="display:none" id="registration-done">Done</button>
+							<button type="button" class="btn btn-success center-block doneButton" onclick="doneRegistration()" data-dismiss="modal" id="registration-done">Done</button>
                         </div>
                     </div>
                 </div>

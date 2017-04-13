@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- CSS Stylesheets -->
         <link href="css/city.css" rel="stylesheet">
-        <link href="css/compare.css" rel="stylesheet">
+        <link href="css/compare.css" rel="stylesheet"> 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		<script src="https://use.fontawesome.com/c1cf09c438.js"></script>
@@ -52,7 +52,7 @@
                     <div class="panel">
                         <div class="panel-heading" style="display:flex;">
                             <h3 style="width: 90%"><span class="glyphicon glyphicon-user"></span>Sign Up</h3>
-                            <button type="button" class="close" data-dismiss="modal" style="width:10%">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" style="width:10%" onClick="resetRegFields()">&times;</button>
                         </div>
                         <hr />
                         <div class="panel-body" style="width: 85%; margin: auto;">
@@ -217,9 +217,8 @@
                 <!-- City 1 -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
-						<div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content cityNameTitle1"> </span></h3></div>
-						<hr />
-                        <div class="panel-body">
+						<div class="panel-heading mainHeader"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content cityNameTitle1"> </span></h3></div>
+						 <div class="panel-body">
                             <p id="background1"></p>
                         </div>
                     </div>
@@ -227,8 +226,8 @@
                 <!-- City 2 -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
-						<div class="panel-heading"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content cityNameTitle2"></span></h3> </div>
-                        <hr /> 
+						<div class="panel-heading mainHeader"><h3 class="category-title"><span class="glyphicon glyphicon-book"></span>Background <span class="hide-content cityNameTitle2"></span></h3> </div>
+                        
                         <div class="panel-body">
                             <p id="background2"></p>
                         </div>
@@ -241,10 +240,10 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<div class="panel city1">
-						<div class="panel-heading">
+						<div class="panel-heading mainHeader">
 							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview <span  class="hide-content cityNameTitle1"> </span></h3>
 						</div>
-						<hr />
+						
 						<div class="row">
 							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
 								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
@@ -316,10 +315,10 @@
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<div class="panel city2">
-						<div class="panel-heading">
+						<div class="panel-heading mainHeader">
 							<h3 class="category-title"><span class="glyphicon glyphicon-pushpin"></span>Overview <span class="hide-content cityNameTitle2"> </span></h3>
 						</div>
-						<hr />
+						
 						<div class="row">
 							<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
 								<span style="color: #eec485;" class="glyphicon glyphicon-star-empty overview center-block" data-toggle="tooltip" title="Happiness"></span></td>
@@ -395,10 +394,10 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                    <div class="panel city1">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate<span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr/>
+                        
 						<div class="panel-body" id="climate">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
@@ -414,10 +413,10 @@
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                    <div class="panel city2">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-cloud"></span>Climate<span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr/>
+                      
 						<div class="panel-body" id="climate">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
@@ -437,22 +436,22 @@
 				<!-- City 1 -->
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                     <div class="panel city1">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr/>
+                       
                         <div class="panel-body" id="languages">
-                        <div id="languages-chart-div1" class="chart"></div>
+							<div id="languages-chart-div1" class="chart"></div>
                         </div>
                     </div>
                 </div>
 				<!-- City 2 -->
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                     <div class="panel city2">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-bullhorn"></span>Languages <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr/>
+                       
                         <div class="panel-body" id="languages">
                         <div id="languages-chart-div2" class="chart"></div>
                         </div>
@@ -465,20 +464,20 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr>
+                       
                         <div class="panel-body" id="transportation1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-road"></span>Transportation <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr>
+                     
                         <div class="panel-body" id="transportation2"></div>
                     </div>
                 </div>
@@ -489,10 +488,10 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities <span class="hide-content cityNameTitle1"> </span></h3>
 						</div>
-                        <hr />
+                       
                         <div class="panel-body" id="housing">
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay1"></div>
@@ -507,10 +506,10 @@
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-home"></span>Housing and Utilities <span class="hide-content cityNameTitle2"> </span></h3>
 						</div>
-                        <hr />
+                       
                         <div class="panel-body" id="housing">
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="housingDisplay2"></div>
@@ -529,20 +528,20 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr />
+                      
                         <div class="panel-body" id="food1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-cutlery"></span>Food <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr />
+                      
                         <div class="panel-body" id="food2"></div>
                     </div>
                 </div>
@@ -553,10 +552,10 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="entertainment">
                             <p id="entertainment1"></p>
                         </div>
@@ -565,10 +564,10 @@
                 <!-- City 2 -->
 				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
-                        <div class="panel-heading contribute-header">
+                        <div class="panel-heading mainHeader contribute-header">
                             <h3 class="category-title"><span class="glyphicon glyphicon-film"></span>Entertainment <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr>
+                       
                         <div class="panel-body" id="entertainment">
                             <p id="entertainment2"></p>
                         </div>
@@ -581,20 +580,20 @@
                 <!-- City 1 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city1">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="qualityOfLife1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel city2">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="fa fa-trophy glyphicon"></span>Quality of Life Indexes <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr>
+                        
                         <div class="panel-body" id="qualityOfLife2"></div>
                     </div>
                 </div>
@@ -605,20 +604,20 @@
                 <!-- City 1 -->
 				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city1">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions <span class="hide-content cityNameTitle1"> </span></h3>
                         </div>
-                        <hr>
+                       
                         <div class="panel-body" id="attractions1"></div>
                     </div>
                 </div>
                 <!-- City 2 -->
 				<div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="panel city2">
-                        <div class="panel-heading">
+                        <div class="panel-heading mainHeader">
                             <h3 class="category-title"><span class="glyphicon glyphicon-camera"></span>Attractions <span class="hide-content cityNameTitle2"> </span></h3>
                         </div>
-                        <hr>
+                      
                         <div class="panel-body" id="attractions2"></div>
                     </div>
                 </div>

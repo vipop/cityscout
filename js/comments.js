@@ -19,8 +19,23 @@ function submitComment(){
 		var rating6 = $crime.rateYo("rating");
 		var comment={city:cityName,text:commentText,happiness:rating1,entertainment:rating2,healthcare:rating3,education:rating4,housing:rating5,crime:rating6};
 		sendComment(comment);
-		document.getElementById("commentText").value="";
+		resetComment();
 	}
+}
+function resetComment(){
+	document.getElementById("commentText").value="";
+	var $happiness = $("#happiness-rating").rateYo();
+	$happiness.rateYo("rating",0);
+	var $entertainment = $("#entertainment-rating").rateYo();
+	$entertainment.rateYo("rating",0);
+	var $healthcare = $("#healthcare-rating").rateYo();
+	$healthcare.rateYo("rating",0);
+	var $education = $("#education-rating").rateYo();
+	$education.rateYo("rating",0);
+	var $housing = $("#housing-rating").rateYo();
+	$housing.rateYo("rating",0);
+	var $crime = $("#crime-rating").rateYo();
+	$crime.rateYo("rating",0);
 }
 
 function displayComments(comments){
@@ -45,7 +60,10 @@ function displayComments(comments){
 		
 		var userNameHeader = document.createElement("H4");
 		userNameHeader.setAttribute("Class","commentUserName");
+		var userIcon = document.createElement("SPAN");
+		userIcon.setAttribute("Class","fa fa-user-circle-o");
 		var tempUserName = document.createTextNode(userName);
+		userNameHeader.append(userIcon);
 		userNameHeader.appendChild(tempUserName); 
 		
 		var internalDiv  = document.createElement("DIV");

@@ -19,11 +19,10 @@ h1,h2,h3,h4,h5,h6{
 .small-infoPushRight{
 	padding-left: 71px;
 }
-
 .hide-content{
+	margin-left: 10px;
 	display: none;
 }
-
 @media screen and (min-width: 991px) and (max-width:1242px) {
 	.small-infoPushLeft{
 		padding-right: 0px;

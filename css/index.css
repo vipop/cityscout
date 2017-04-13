@@ -34,6 +34,9 @@ main {
     color: #9d9d9d;
     cursor: pointer;
 }
+.doneButton{
+	display:none;
+}
 
 /* */
 .panel{

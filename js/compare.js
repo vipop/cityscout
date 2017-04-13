@@ -41,20 +41,20 @@ function populateCity(cityNum, json) {
 	var country = json.data.general.country;
 	var language = json.data.languages[0].name;
 	var languages = json.data.languages;
-	var pop = json.data.general.population;
+	var pop = json.data.general.population + "M";
 	var area = json.data.general.area + " km&sup2;";
 	var lat = json.data.general.lat;
 	var lng = json.data.general.lng;
-	var gdp = json.data.general.gdp;
+	var gdp = json.data.general.gdp + "B";
 	//Background
 	var history = json.data.general.history;
 	//Overview
-	var ovHappiness = json.data.ratings[0].happiness;
-	var ovEntertainment = json.data.ratings[0].entertainment;
-    var ovHealthcare = json.data.ratings[0].healthcare;
-	var ovEducation = json.data.ratings[0].education;
-	var ovHousing = json.data.ratings[0].housing;
-	var ovCrime = json.data.ratings[0].crime;
+	var ovHappiness = roundNum(json.data.ratings[0].happiness);
+	var ovEntertainment = roundNum(json.data.ratings[0].entertainment);
+    	var ovHealthcare = roundNum(json.data.ratings[0].healthcare);
+	var ovEducation = roundNum(json.data.ratings[0].education);
+	var ovHousing = roundNum(json.data.ratings[0].housing);
+	var ovCrime = roundNum(json.data.ratings[0].crime);	
 	//Housing and Utilities
 	var housing = json.data.housing;
 	var utilities = json.data.utilities;
@@ -120,6 +120,9 @@ function populateCity(cityNum, json) {
 	}
 		
 }
+function roundNum(number){
+	return  Math.round(number * 10)/10;
+};
 
 function getCityInformation(cityNum, city){
 	var url = "cgi-bin/queries.php";
@@ -257,7 +260,7 @@ function initHousing(cityNum, house){
 	}
 	for(i = 0; i < house.length; i++){
 		console.log(house[i].type + " " + house[i].payment);
-		if(house[i].type == "Appartment" ){
+		if(house[i].type == "Apartment" ){
 			if(house[i].payment =="Buy"){
 				initHousingHelper(cityNum, "building",house[i].payment,house[i].cost,house[i].cost_desc,"");
 			}else{
@@ -282,7 +285,7 @@ function initUtilities(cityNum, utilities){
 		if(utilities[i].type == "Utilities"){
 			var temp = utilities[i].cost_desc.split("/");
 			if(cityNum == 1){
-				document.getElementById("utilities-total-header1").innerHTML = "Average Total: " + temp[0] + utilities[i].cost +"/"+ temp[1];
+				document.getElementById("utilities-total-header1").innerHTML = "Average Total Utilities: " + temp[0] + utilities[i].cost +"/"+ temp[1];
 			}else{
 				document.getElementById("utilities-total-header2").innerHTML = "Average Total: " + temp[0] + utilities[i].cost +"/"+ temp[1];
 			}
@@ -300,12 +303,11 @@ function initHousingHelper(cityNum, glif,payment,cost,pre,post){
 	var headerText = document.createTextNode("Average " + payment);
 	div.appendChild(spanEl);
 	div.appendChild(headerText);
-	var h2 = document.createElement("H4");
-	h2.setAttribute("style","padding-top:5px;text-align:center");
-	var h2Text = document.createTextNode(pre+cost+post);
-	h2.appendChild(h2Text);
+	var h4 = document.createElement("H4");
+	h4.setAttribute("style","padding-top:5px;text-align:center");
+	h4.innerHTML = pre + cost + post;
 	h4El.appendChild(div);
-	h4El.appendChild(h2);
+	h4El.appendChild(h4);
 	if (cityNum == 1) {
 		document.getElementById("housingDisplay1").appendChild(h4El);
 	} else {
@@ -354,11 +356,61 @@ function initIndices(cityNum, ind){
 	}
 	for(i = 0; i < ind.length; i++){
 		if (cityNum == 1) {
-			printHelper(ind[i].name,ind[i].value,"",ind[i].value_desc,"","qualityOfLife1");
+			var temp = ind[i].value_desc.split("/");
+			if(temp[1] != undefined){
+				printHelperWithToopTip(ind[i].name,ind[i].value,temp[0],temp[1],"qualityOfLife1");
+			}else{
+				printHelperWithToopTip(ind[i].name,ind[i].value,"",temp[0],"qualityOfLife1");
+			}
 		} else {
-			printHelper(ind[i].name,ind[i].value,"",ind[i].value_desc,"","qualityOfLife2");
+			var temp = ind[i].value_desc.split("/");
+			if(temp[1] != undefined){
+				printHelperWithToopTip(ind[i].name,ind[i].value,temp[0],temp[1],"qualityOfLife2");
+			}else{
+				printHelperWithToopTip(ind[i].name,ind[i].value,"",temp[0],"qualityOfLife2");
+			}
 		}
 	}
+};
+function printHelperWithToopTip(headerText,value,post,toolText,panelId){
+	
+	var row = document.createElement("DIV");
+	row.setAttribute("class","row flex");
+	var headDiv = document.createElement("DIV");
+	var iconDiv = document.createElement("DIV");
+	var pDiv = document.createElement("DIV");
+	
+	iconDiv.setAttribute("class","col-xs-2 col-sm-2 col-md-2 col-lg-2 textCenter removePadding");
+	iconDiv.setAttribute("style","padding-top:1px");
+	headDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-6 col-lg-5 removePadding");
+	
+	pDiv.setAttribute("class","col-xs-5 col-sm-5 col-md-4 col-lg-5 removePadding");
+				
+	var theIcon = getIcon(headerText);
+	var iconSpan = document.createElement("SPAN");
+	iconSpan.setAttribute("class",theIcon + " center-block 16pt global-glyphs");
+	iconSpan.setAttribute("data-toggle","tooltip");
+	iconSpan.setAttribute("title", toolText);
+	iconDiv.appendChild(iconSpan);
+	var h4 = document.createElement("H4");
+	var hText = document.createTextNode(headerText);
+	h4.setAttribute("data-toggle","tooltip");
+	h4.setAttribute("title", toolText);
+	h4.setAttribute("style","width:40px");
+	h4.appendChild(hText);
+	headDiv.appendChild(h4);
+
+	var p = document.createElement("H4");
+	var pText = document.createTextNode(value + post);
+	p.appendChild(pText);
+	pDiv.appendChild(p);
+	
+		
+	row.appendChild(iconDiv);
+	row.appendChild(headDiv);
+	row.appendChild(pDiv);
+	document.getElementById(panelId).appendChild(row);
+	$('[data-toggle="tooltip"]').tooltip();
 };
 function printHelper(headerText,value,pre,post,divider,panelId){
 	var row = document.createElement("DIV");
@@ -434,7 +486,7 @@ function initAttractionHelper(cityNum, name,about,cost,pre,post,imgUrl,webLink,l
 
 	var costP = document.createElement("P");
 	costP.setAttribute("class","paddingNeeded");
-	var costPText = document.createTextNode("Cost: " + pre + cost + post);
+	var costPText = document.createTextNode("Cost: " + pre + cost +"/"+ post);
 	costP.appendChild(costPText);
 
 	var locationP = document.createElement("P");
@@ -444,7 +496,7 @@ function initAttractionHelper(cityNum, name,about,cost,pre,post,imgUrl,webLink,l
 
 	var linkA = document.createElement("A");
 	linkA.setAttribute("class","paddingNeeded");
-	linkA.setAttribute("src",webLink);
+	linkA.setAttribute("href",webLink);
 	var linkAText = document.createTextNode("Website: " + webLink);
 	linkA.appendChild(linkAText);
 
