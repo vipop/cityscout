@@ -1,4 +1,4 @@
-# project630
+# CityScout
 
 ### CPS630 - Project
 
